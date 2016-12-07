@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">VCoupon</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Vcoupon</string>
+    <string name="splash_description_0">Tìm kiếm, theo dõi và nhận tất cả các loại mã giảm giá xung quanh bạn trong vòng 30s</string>
+    <string name="splash_description_1">Vcoupon giúp bạn theo dõi nhiều nhà khuyến mãi, loại khuyến mãi khác nhau</string>
+    <string name="splash_description_2">Lưu trữ và sử dụng mã khuyến mãi dễ dàng hơn, bạn sẽ không bao giờ bỏ lỡ bất kỳ khuyến mãi nào</string>
 </resources>

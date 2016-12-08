@@ -12,14 +12,13 @@ import com.happybot.vcoupon.R;
  * Created by Nguyễn Phương Tuấn on 08-Dec-16.
  */
 
-public class ReceivedFragment extends Fragment {
+public class TechnologyFragment extends Fragment {
 
-    public ReceivedFragment() {
+    public TechnologyFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_received, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_technology, container, false);
     }
 }

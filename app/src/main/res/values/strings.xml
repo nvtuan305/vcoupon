@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="category1">Quanh đây</string>
+    <string name="category2">Ăn uống</string>
+    <string name="category3">Quần áo</string>
+    <string name="category4">Công nghệ</string>
+    <string name="voucher_received_text">Đã nhận</string>
+    <string name="voucher_pinned_text">Đã ghim</string>
 </resources>

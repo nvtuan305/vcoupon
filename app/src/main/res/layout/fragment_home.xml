@@ -65,6 +65,8 @@
                         android:layout_weight="1"
                         card_view:cardCornerRadius="7dp" >
                         <RelativeLayout
+                            android:id="@+id/home_nearby"
+                            android:clickable="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <ImageView
@@ -90,7 +92,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:paddingTop="20dp"
-                                    android:text="Quanh đây"
+                                    android:text="@string/category1"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
                                     android:textColor="#2196F3">
@@ -113,6 +115,8 @@
                         android:layout_weight="1"
                         card_view:cardCornerRadius="7dp" >
                         <RelativeLayout
+                            android:id="@+id/home_food"
+                            android:clickable="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <ImageView
@@ -138,7 +142,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:paddingTop="20dp"
-                                    android:text="Ăn uống"
+                                    android:text="@string/category2"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/white">
@@ -165,6 +169,8 @@
                         android:layout_weight="1"
                         card_view:cardCornerRadius="7dp" >
                         <RelativeLayout
+                            android:id="@+id/home_clothes"
+                            android:clickable="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <ImageView
@@ -190,7 +196,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:paddingTop="20dp"
-                                    android:text="Quần áo"
+                                    android:text="@string/category3"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/white">
@@ -212,6 +218,8 @@
                         android:layout_weight="1"
                         card_view:cardCornerRadius="7dp" >
                         <RelativeLayout
+                            android:id="@+id/home_technology"
+                            android:clickable="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <ImageView
@@ -237,7 +245,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:paddingTop="20dp"
-                                    android:text="Công nghệ"
+                                    android:text="@string/category4"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/white">

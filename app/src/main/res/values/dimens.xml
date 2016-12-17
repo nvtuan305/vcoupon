@@ -4,6 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="coupon_image_height">200dp</dimen>
     <dimen name="coupon_detail_height">200dp</dimen>
-    <dimen name="button_get_coupon_radius">15dp</dimen>
+    <dimen name="button_get_coupon_radius">20dp</dimen>
     <dimen name="voucher_detail_rating_radius">7dp</dimen>
 </resources>

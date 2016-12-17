@@ -7,15 +7,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:layout_height="wrap_content">
                 <include
                     layout="@layout/coupon_item"
                     android:layout_width="match_parent"
@@ -23,8 +22,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:layout_height="wrap_content">
                 <include
                     layout="@layout/coupon_item"
                     android:layout_width="match_parent"
@@ -32,8 +30,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:layout_height="wrap_content">
                 <include
                     layout="@layout/coupon_item"
                     android:layout_width="match_parent"

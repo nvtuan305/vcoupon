@@ -15,6 +15,7 @@ import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
 import com.happybot.vcoupon.fragment.ProfileFragment;
 import com.happybot.vcoupon.fragment.SearchFragment;
+import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 
 public class HomeActivity extends AppCompatActivity {
@@ -85,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
                         fragment = new VoucherFragment();
                         break;
                     case 2:
-                        fragment = new SearchFragment();
+                        fragment = new VoucherDetailFragment();
                         break;
                     case 3:
                         fragment = new NotificationFragment();
@@ -94,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                         fragment = new ProfileFragment();
                         break;
                 }
+                clearBackstack();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_container, fragment).commit();
                 return true;
@@ -116,6 +118,15 @@ public class HomeActivity extends AppCompatActivity {
             //additional code
         } else {
             getFragmentManager().popBackStack();
+        }
+
+    }
+    public void clearBackstack()
+    {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(0);
+            getSupportFragmentManager().popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().executePendingTransactions();
         }
 
     }

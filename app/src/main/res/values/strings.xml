@@ -10,4 +10,9 @@
     <string name="category4">Công nghệ</string>
     <string name="voucher_received_text">Đã nhận</string>
     <string name="voucher_pinned_text">Đã ghim</string>
+    <string name="voucher_detail_time">Thời gian:\u0020</string>
+    <string name="voucher_detail_sale_percent">Giảm đến:\u0020</string>
+    <string name="voucher_detail_number">Còn lại:\u0020</string>
+    <string name="voucher_detail_place">Áp dụng tại</string>
+    <string name="voucher_detail_condition_title">Điều kiện áp dụng</string>
 </resources>

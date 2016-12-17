@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Created by Nguyễn Phương Tuấn on 05-Dec-16.
+ */
+
+
+/**
  * Created by Admin on 05-Dec-16.
  */
 public class NotificationFragment extends Fragment {

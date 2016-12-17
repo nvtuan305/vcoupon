@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#23CE6B</color>
     <color name="colorPrimaryDark">#07CB79</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#E84855</color>
     <color name="colorSelected">#07CB79</color>
     <color name="colorUnSelected">#AFB4B6</color>
     <color name="colorButtonPressed">#2CDA9D</color>
@@ -11,5 +11,4 @@
     <color name="colorSecondaryText">#878787</color>
     <color name="colorBorder">#AFB4B6</color>
     <color name="colorBackgroundPrimary">#f1f0f0</color>
-
 </resources>

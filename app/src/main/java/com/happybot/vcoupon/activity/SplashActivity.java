@@ -1,6 +1,7 @@
 package com.happybot.vcoupon.activity;
 
-
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -52,7 +53,8 @@ public class SplashActivity extends FragmentActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showRegisterSplashDialog();
+                //showRegisterSplashDialog();
+              startActivity(new Intent(getApplicationContext(),HomeActivity.class));
             }
         });
     }

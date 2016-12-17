@@ -10,4 +10,5 @@
     <color name="colorPrimaryText">#3E3E3E</color>
     <color name="colorSecondaryText">#878787</color>
     <color name="colorBorder">#AFB4B6</color>
+    <color name="colorBackgroundPrimary">#f1f0f0</color>
 </resources>

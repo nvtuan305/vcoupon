@@ -160,7 +160,6 @@
                     android:text="Nhận mã"
                     android:textColor="@color/white"
                     android:textSize="12sp">
-
                 </Button>
             </LinearLayout>
         </LinearLayout>

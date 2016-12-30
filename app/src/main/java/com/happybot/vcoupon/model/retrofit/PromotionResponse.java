@@ -1,8 +1,11 @@
 package com.happybot.vcoupon.model.retrofit;
 
-/**
- * Created by ApisMantis on 12/28/2016.
- */
+import com.happybot.vcoupon.model.Promotion;
 
-public class PromotionResponse {
+public class PromotionResponse extends ResponseObject {
+    private Promotion promotion;
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
 }

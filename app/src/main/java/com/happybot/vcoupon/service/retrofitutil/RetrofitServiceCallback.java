@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import retrofit2.Call;
 
-public interface ServiceCallback<Result> {
+public interface RetrofitServiceCallback<Result> {
 
     void setAsyncTask(AsyncTask task);
 

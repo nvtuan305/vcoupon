@@ -3,8 +3,8 @@ package com.happybot.vcoupon.service;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.service.retrofitinterface.PromotionInterfaceService;
+import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -20,10 +20,23 @@ public class PromotionRetrofitService extends VCouponRetrofitService implements 
     }
 
     // Get API interface service
+    // Best practice for Singleton pattern:
+    // https://medium.com/@huynhquangthao/m%E1%BA%ABu-thi%E1%BA%BFt-k%E1%BA%BF-singleton-5997128c71b9#.ysh3n52lt
     @Override
     public RetrofitInterfaceService getService() {
-        Retrofit retrofit = getRetrofit();
-        return retrofit.create(PromotionInterfaceService.class);
+        RetrofitInterfaceService mService = service;
+        if (mService == null) {
+            synchronized (RetrofitInterfaceService.class) {
+                mService = service;
+
+                if (mService == null) {
+                    Retrofit retrofit = getRetrofit();
+                    service = retrofit.create(PromotionInterfaceService.class);
+                }
+            }
+        }
+
+        return mService;
     }
 
     // TODO Cài đặt hàm gọi api tại đây

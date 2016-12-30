@@ -6,6 +6,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.happybot.vcoupon.application.VCouponApplication;
+import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.AddHeaderInterceptor;
 import com.happybot.vcoupon.service.retrofitutil.GsonDateFormatAdapter;
 import com.happybot.vcoupon.service.retrofitutil.RetryInterceptor;
@@ -40,6 +41,8 @@ public class VCouponRetrofitService {
 
     // Helper for get user id and access token from local
     private SharePreferenceHelper spHelper = null;
+
+    protected RetrofitInterfaceService service = null;
 
     public VCouponRetrofitService(Context context) {
         mContext = context;

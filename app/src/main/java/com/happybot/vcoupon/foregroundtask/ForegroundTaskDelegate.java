@@ -4,13 +4,13 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.happybot.vcoupon.activity.BaseActivity;
-import com.happybot.vcoupon.service.retrofitutil.ServiceCallback;
+import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 
 import java.lang.ref.WeakReference;
 
 import retrofit2.Call;
 
-public class ForegroundTaskDelegate<Result> implements ServiceCallback<Result> {
+public class ForegroundTaskDelegate<Result> implements RetrofitServiceCallback<Result> {
 
     protected final WeakReference<BaseActivity> activityWeakReference;
     private AsyncTask task;

@@ -59,10 +59,10 @@
                     <android.support.v7.widget.CardView
                         xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:id="@+id/card_view"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:background="@color/white"
+                        card_view:cardElevation="0dp"
                         card_view:cardCornerRadius="7dp" >
                         <RelativeLayout
                             android:id="@+id/home_nearby"
@@ -91,7 +91,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
-                                    android:paddingTop="20dp"
                                     android:text="@string/category1"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
@@ -110,10 +109,10 @@
                     <android.support.v7.widget.CardView
                         xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        card_view:cardCornerRadius="7dp" >
+                        card_view:cardElevation="0dp"
+                        card_view:cardCornerRadius="7dp">
                         <RelativeLayout
                             android:id="@+id/home_food"
                             android:clickable="true"
@@ -133,7 +132,8 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="5"
+                                    android:layout_weight="7"
+                                    android:padding="15dp"
                                     android:src="@drawable/ic_food">
                                 </ImageView>
                                 <TextView
@@ -141,7 +141,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
-                                    android:paddingTop="20dp"
                                     android:text="@string/category2"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
@@ -164,10 +163,10 @@
                     <android.support.v7.widget.CardView
                         xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        card_view:cardCornerRadius="7dp" >
+                        card_view:cardElevation="0dp"
+                        card_view:cardCornerRadius="7dp">
                         <RelativeLayout
                             android:id="@+id/home_clothes"
                             android:clickable="true"
@@ -187,7 +186,8 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="5"
+                                    android:layout_weight="7"
+                                    android:padding="15dp"
                                     android:src="@drawable/ic_clothes">
                                 </ImageView>
                                 <TextView
@@ -195,7 +195,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
-                                    android:paddingTop="20dp"
                                     android:text="@string/category3"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
@@ -213,10 +212,10 @@
                     <android.support.v7.widget.CardView
                         xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        card_view:cardCornerRadius="7dp" >
+                        card_view:cardElevation="0dp"
+                        card_view:cardCornerRadius="7dp">
                         <RelativeLayout
                             android:id="@+id/home_technology"
                             android:clickable="true"
@@ -236,7 +235,8 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="5"
+                                    android:layout_weight="7"
+                                    android:padding="15dp"
                                     android:src="@drawable/ic_technology">
                                 </ImageView>
                                 <TextView
@@ -244,7 +244,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
-                                    android:paddingTop="20dp"
                                     android:text="@string/category4"
                                     android:textSize="18sp"
                                     android:textStyle="bold"

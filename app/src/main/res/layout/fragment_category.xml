@@ -27,6 +27,7 @@
                 android:id="@+id/category_tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/colorPrimary"
                 app:tabTextColor="@color/colorPrimaryText"
                 app:tabIndicatorHeight="4dp"

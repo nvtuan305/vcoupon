@@ -17,6 +17,11 @@ public class SharePreferenceHelper {
         editor = sharedPreferences.edit();
     }
 
+    public void initializeSampleAuth() {
+        saveUserId("5867d9c050fb07001111397b");
+        saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODY3ZDljMDUwZmIwNzAwMTExMTM5N2IiLCJwaG9uZU51bWJlciI6IjE5OSIsImlhdCI6MTQ4MzI1NjE3NiwiZXhwIjoxNDkxODk2MTc2fQ.ZtupyQcoUApFF3foGegT1l_CtPZX81vFJZYD5qZT3kw");
+    }
+
     public void saveAccessToken(String accessToken) {
         if (editor != null) {
             editor.putString(ACCESS_TOKEN, accessToken);

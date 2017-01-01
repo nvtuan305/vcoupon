@@ -21,6 +21,7 @@ public abstract class TranslateRetrofitCallback<T extends ResponseObject> implem
 
         // Finish request
         onFinish(call, response.body(), exception);
+        //response.raw().close();
     }
 
     @Override

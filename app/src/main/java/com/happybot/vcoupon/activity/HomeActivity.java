@@ -18,7 +18,7 @@ import com.happybot.vcoupon.fragment.ProfileFragment;
 import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     private Fragment fragment;
     private FragmentManager fragmentManager;

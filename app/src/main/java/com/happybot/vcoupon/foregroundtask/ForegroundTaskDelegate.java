@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 
 import retrofit2.Call;
 
-public class ForegroundTaskDelegate<Result> implements RetrofitServiceCallback<Result> {
+public class ForegroundTaskDelegate<Result extends Object> implements RetrofitServiceCallback<Result> {
 
     protected final WeakReference<BaseActivity> activityWeakReference;
     private AsyncTask task;

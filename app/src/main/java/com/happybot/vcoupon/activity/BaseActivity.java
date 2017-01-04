@@ -26,13 +26,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @LayoutRes
-    protected int getRootLayoutRes() {
-        return 0;
-    }
-
-    protected View rootLayout;
-
     protected final boolean FORCE_SCREEN_ORIENTATION_PORTRAIT = true;
 
     protected final String TAG_PROGRESS_DIALOG = "VCouponProgressDialog";
@@ -40,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     // List of foreground task
     protected List<ForegroundTaskDelegate> listOfForegroundTaskDelegates;
 
-    public final VCouponApplication getAMADApplication() {
+    public final VCouponApplication getVCouponApplication() {
         return (VCouponApplication) getApplication();
     }
 
@@ -51,11 +44,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (FORCE_SCREEN_ORIENTATION_PORTRAIT) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-
-        rootLayout = getLayoutInflater().inflate(getRootLayoutRes(), null);
-        setContentView(rootLayout);
-
-        ButterKnife.bind(this);
 
         listOfForegroundTaskDelegates = new Vector<>();
     }

@@ -17,7 +17,7 @@
         android:weightSum="8">
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/coupon_avatar"
+            android:id="@+id/imvProviderAvatar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,7 +33,7 @@
             android:gravity="center_vertical"
             android:layout_marginRight="7dp">
             <TextView
-                android:id="@+id/coupon_description"
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryText"

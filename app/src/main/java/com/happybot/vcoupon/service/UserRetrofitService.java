@@ -19,29 +19,33 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
-public class UserRetrofitService extends VCouponRetrofitService implements RetrofitInterfaceService {
+public class UserRetrofitService extends VCouponRetrofitService {
+
+    // Service
+    protected UserInterfaceService service = null;
 
     public UserRetrofitService(Context context) {
         super(context);
     }
 
-    public UserRetrofitService(Context context, HttpLoggingInterceptor loggingInterceptor, Gson gson) {
+    public UserRetrofitService(Context context,
+                               HttpLoggingInterceptor loggingInterceptor,
+                               Gson gson) {
         super(context, loggingInterceptor, gson);
     }
 
-    // Best practice for Singleton pattern:
-    // https://medium.com/@huynhquangthao/m%E1%BA%ABu-thi%E1%BA%BFt-k%E1%BA%BF-singleton-5997128c71b9#.ysh3n52lt
-    @Override
-    public RetrofitInterfaceService getService() {
-        RetrofitInterfaceService mService = service;
+    // Get service
+    public UserInterfaceService getService() {
+        UserInterfaceService mService = service;
 
         if (mService == null) {
-            synchronized (RetrofitInterfaceService.class) {
+            synchronized (UserInterfaceService.class) {
                 mService = service;
 
                 if (mService == null) {
                     Retrofit retrofit = getRetrofit();
                     service = retrofit.create(UserInterfaceService.class);
+                    mService = service;
                 }
             }
         }
@@ -72,10 +76,13 @@ public class UserRetrofitService extends VCouponRetrofitService implements Retro
         // Make asynchronous request
         promotionListResponseCall.enqueue(new TranslateRetrofitCallback<PromotionListResponse>() {
             @Override
-            public void onFinish(Call<PromotionListResponse> call, PromotionListResponse responseObject, BaseException exception) {
+            public void onFinish(Call<PromotionListResponse> call,
+                                 PromotionListResponse responseObject,
+                                 BaseException exception) {
                 super.onFinish(call, responseObject, exception);
 
                 if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
 
                     if (responseObject.getPromotions() == null) {
                         callback.onPostExecute(new Vector<Promotion>(), exception);

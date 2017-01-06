@@ -12,9 +12,9 @@ import com.happybot.vcoupon.R;
  * Created by Nguyễn Phương Tuấn on 08-Dec-16.
  */
 
-public class ReceivedFragment extends Fragment {
+public class ReceivedPromotionFragment extends Fragment {
 
-    public ReceivedFragment() {
+    public ReceivedPromotionFragment() {
     }
 
     @Override

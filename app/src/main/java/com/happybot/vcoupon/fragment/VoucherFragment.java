@@ -6,13 +6,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 
 import com.happybot.vcoupon.R;
 
@@ -41,8 +38,8 @@ public class VoucherFragment extends Fragment {
     }
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ReceivedFragment(), getString(R.string.voucher_received_text));
-        adapter.addFragment(new PinnedFragment(), getString(R.string.voucher_pinned_text));
+        adapter.addFragment(new ReceivedPromotionFragment(), getString(R.string.voucher_received_text));
+        adapter.addFragment(new PinnedPromotionFragment(), getString(R.string.voucher_pinned_text));
         viewPager.setAdapter(adapter);
     }
 

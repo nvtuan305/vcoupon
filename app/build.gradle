@@ -3,9 +3,14 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
+    repositories {
+        mavenCentral()
+    }
+
     defaultConfig {
         applicationId "com.happybot.vcoupon"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -60,4 +65,10 @@ dependencies {
 
     // Picaso for image loader
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //Material EditText
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    //Facebook SDK
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
 }

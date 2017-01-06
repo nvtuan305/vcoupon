@@ -56,6 +56,7 @@ public class PinnedPromotionFragment extends Fragment {
         rcvPinnedPromotion = (RecyclerView) view.findViewById(R.id.rcvPinnedPromotion);
         emptyLayout = (LinearLayout) view.findViewById(R.id.lnEmptyLayout);
         progressDialog = view.findViewById(R.id.progressDialog);
+      
         mContext = view.getContext();
 
         return view;
@@ -68,11 +69,9 @@ public class PinnedPromotionFragment extends Fragment {
         // Initialize recycle view
         rcvPinnedPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
-        rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);
-
+        rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);      
         activity = (BaseActivity) getActivity();
         getPinnedTripDelegate = new GetPinnedTripDelegate(activity);
-
 
         // Load pinned promotion
         loadPinnedPromotion();

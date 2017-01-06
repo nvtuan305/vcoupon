@@ -38,7 +38,8 @@
             android:textAllCaps="false"
             android:textSize="16dp"
             android:textColor="#fff"
-            android:text="Mình cung cấp khuyến mãi nè"/>
+            android:text="Mình cung cấp khuyến mãi nè"
+            android:id="@+id/btnProvider" />
 
     </LinearLayout>
 
@@ -62,7 +63,8 @@
             android:textAllCaps="false"
             android:textSize="16dp"
             android:textColor="#fff"
-            android:text="Mình chỉ tìm khuyến mãi thôi"/>
+            android:text="Mình chỉ tìm khuyến mãi thôi"
+            android:id="@+id/btnNormalUser" />
 
     </LinearLayout>
 

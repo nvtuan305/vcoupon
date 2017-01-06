@@ -57,4 +57,7 @@ dependencies {
     // Okhttp client
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    // Picaso for image loader
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

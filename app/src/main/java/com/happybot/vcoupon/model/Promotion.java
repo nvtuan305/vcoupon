@@ -10,8 +10,8 @@ public class Promotion {
     private String title;
     private String cover;
     private String condition;
-    private Date startDate;
-    private Date endDate;
+    private long startDate;
+    private long endDate;
     private int amountLimit;
     private int amountRegistered;
     private int discount;
@@ -71,7 +71,7 @@ public class Promotion {
 } */
 
     public Promotion(String _category, User _provider, String title, String cover, String condition,
-                     Date startDate, Date endDate, int amountLimit, int amountRegistered,
+                     long startDate, long endDate, int amountLimit, int amountRegistered,
                      int discount, String discountType, List<Address> addresses) {
         this._category = _category;
         this._provider = _provider;
@@ -127,19 +127,19 @@ public class Promotion {
         this.condition = condition;
     }
 
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 

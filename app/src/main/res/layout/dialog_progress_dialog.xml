@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:padding="18dp">
 
     <RelativeLayout
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_centerHorizontal="true"
-        android:padding="@dimen/padding_6dp"
-        android:background="@drawable/bg_circle">
+        android:padding="@dimen/margin_10dp"
+        android:background="@drawable/bg_circle_shadow">
 
         <ProgressBar
             android:layout_width="wrap_content"

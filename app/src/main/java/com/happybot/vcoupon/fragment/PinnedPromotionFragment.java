@@ -28,7 +28,10 @@ public class PinnedPromotionFragment extends Fragment {
     private SwipeRefreshLayout srParentLayout = null;
     private RecyclerView rcvPinnedPromotion = null;
     private LinearLayout emptyLayout = null;
+    private View progressDialog = null;
+
     private LinearLayoutManager mLinearLayoutManager = null;
+    private BaseActivity activity = null;
     private Context mContext = null;
     private PromotionAdapter adapter = null;
 
@@ -52,6 +55,8 @@ public class PinnedPromotionFragment extends Fragment {
         srParentLayout = (SwipeRefreshLayout) view.findViewById(R.id.srParentLayout);
         rcvPinnedPromotion = (RecyclerView) view.findViewById(R.id.rcvPinnedPromotion);
         emptyLayout = (LinearLayout) view.findViewById(R.id.lnEmptyLayout);
+        progressDialog = view.findViewById(R.id.progressDialog);
+      
         mContext = view.getContext();
 
         return view;
@@ -64,9 +69,9 @@ public class PinnedPromotionFragment extends Fragment {
         // Initialize recycle view
         rcvPinnedPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
-        rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);
-
-        getPinnedTripDelegate = new GetPinnedTripDelegate((BaseActivity) getActivity());
+        rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);      
+        activity = (BaseActivity) getActivity();
+        getPinnedTripDelegate = new GetPinnedTripDelegate(activity);
 
         // Load pinned promotion
         loadPinnedPromotion();
@@ -89,13 +94,13 @@ public class PinnedPromotionFragment extends Fragment {
                     totalItemCount = mLinearLayoutManager.getItemCount();
                     pastVisiblesItems = mLinearLayoutManager.findFirstVisibleItemPosition();
 
-                    //if (canScroll) {
+                    if (canScroll) {
                         if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
                             canScroll = false;
-                            Log.v("...", "Last Item Wow !");
+                            Log.d("KKKK", "Last Item Wow !");
                             loadPinnedPromotion();
                         }
-                   // }
+                    }
                 }
             }
         });
@@ -132,8 +137,9 @@ public class PinnedPromotionFragment extends Fragment {
 
         @Override
         public void onPreExecute() {
-            if (!srParentLayout.isRefreshing() || canScroll)
-                super.onPreExecute();
+            if (!srParentLayout.isRefreshing()) {
+                progressDialog.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -156,7 +162,13 @@ public class PinnedPromotionFragment extends Fragment {
                 } else {
                     adapter.addData(promotions);
                 }
+
+                // Disable swipe down to load more if has no more promotion
+                canScroll = promotions.size() > 0;
             }
+
+            // Hide progress dialog
+            progressDialog.setVisibility(View.GONE);
 
             // Show empty layout without any promotions
             showView();

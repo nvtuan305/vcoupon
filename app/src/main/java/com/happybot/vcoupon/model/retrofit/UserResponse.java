@@ -1,4 +1,10 @@
 package com.happybot.vcoupon.model.retrofit;
 
-public class UserResponse {
+import com.happybot.vcoupon.model.User;
+
+public class UserResponse extends ResponseObject {
+
+    private User user;
+
+    public User getUser(){return user;}
 }

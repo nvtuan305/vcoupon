@@ -121,7 +121,7 @@ public class PinnedPromotionFragment extends Fragment {
     public void loadPinnedPromotion() {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        helper.initializeSampleAuth();
+        //helper.initializeSampleAuth();
 
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
         userRetrofitService.getPinnedPromotion(helper.getUserId(), currentPage, getPinnedTripDelegate);

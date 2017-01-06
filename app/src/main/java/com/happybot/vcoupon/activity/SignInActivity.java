@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -20,6 +19,7 @@ import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.service.SignInSignUpRetrofitService;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 import java.lang.ref.WeakReference;
 import java.util.regex.Pattern;
@@ -47,10 +47,10 @@ public class SignInActivity extends BaseActivity {
         fragmentTransaction.replace(R.id.layoutFacebook, fragment);
         fragmentTransaction.commit();
 
-        Button btnLoginNormal = (Button)findViewById(R.id.btnLoginNormal);
+        Button btnLoginNormal = (Button) findViewById(R.id.btnLoginNormal);
 
-        final EditText etUsername = (EditText)findViewById(R.id.etUsernameLogin);
-        final EditText etPassword = (EditText)findViewById(R.id.etPasswordLogin);
+        final EditText etUsername = (EditText) findViewById(R.id.etUsernameLogin);
+        final EditText etPassword = (EditText) findViewById(R.id.etPasswordLogin);
 
         btnLoginNormal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,12 +65,10 @@ public class SignInActivity extends BaseActivity {
                 else if (etPassword.getText().length() < 6)
                     etPassword.setError("Password nhỏ hơn 6 kí tự");
 
-                if (etUsername.getError() == null && etPassword.getError() == null)
-                {
+                if (etUsername.getError() == null && etPassword.getError() == null) {
                     if (!isNetworkConnected())
                         Toast.makeText(getApplicationContext(), "Không có kết nối internet", Toast.LENGTH_LONG).show();
-                    else
-                    {
+                    else {
                         User userSignIn = new User(etUsername.getText().toString(), etPassword.getText().toString());
 
                         HttpLoggingInterceptor defaultLogging = newDefaultLogging();
@@ -89,7 +87,7 @@ public class SignInActivity extends BaseActivity {
             }
         });
 
-        Button btnLoginFacebook = (Button)findViewById(R.id.btnLoginFacebook);
+        Button btnLoginFacebook = (Button) findViewById(R.id.btnLoginFacebook);
     }
 
     private boolean validEmail(String email) {
@@ -103,12 +101,11 @@ public class SignInActivity extends BaseActivity {
         return logging;
     }
 
-    private boolean isInteger (String phone){
+    private boolean isInteger(String phone) {
         try {
             int integer = Integer.parseInt(phone);
             return true;
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -119,10 +116,16 @@ public class SignInActivity extends BaseActivity {
         return cm.getActiveNetworkInfo() != null;
     }
 
+    public void saveAuthenticationInfo(String accessToken, String userID) {
+        SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
+        helper.saveAccessToken(accessToken);
+        helper.saveUserId(userID);
+    }
+
     private class GetSigninDelegate implements Callback<UserResponse> {
         private final WeakReference<SignInActivity> activityWeakReference;
 
-        public GetSigninDelegate(@NonNull final SignInActivity activity){
+        public GetSigninDelegate(@NonNull final SignInActivity activity) {
             activityWeakReference = new WeakReference<>(activity);
         }
 
@@ -132,8 +135,13 @@ public class SignInActivity extends BaseActivity {
             SignInActivity activity = activityWeakReference.get();
             if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
                 activity.dismissProgressDialog();
-                if (response.code() == 200)
-                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                if (response.code() == 200) {
+                    String token = response.body().getUser().getAccessToken();
+                    String userID = response.body().getUser().getId();
+                    activity.saveAuthenticationInfo(token, userID);
+
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                }
             }
         }
 

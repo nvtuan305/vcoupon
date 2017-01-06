@@ -4,7 +4,7 @@ import com.happybot.vcoupon.model.User;
 
 public class UserResponse extends ResponseObject {
 
-    private User response;
+    private User user;
 
-    public User getResponse(){return response;}
+    public User getUser(){return user;}
 }

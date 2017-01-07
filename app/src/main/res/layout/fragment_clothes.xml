@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLayoutClothes"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundPrimary"
+    android:orientation="vertical"
+    android:paddingBottom="50dp">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="CLOTHES"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewClothesPromotion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/margin_8dp"
+            android:paddingTop="@dimen/margin_8dp" />
+
+        <LinearLayout
+            android:id="@+id/emptyLayoutClothes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/ic_discount" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/empty_promotion"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/progressDialog"
+            layout="@layout/dialog_progress_dialog"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

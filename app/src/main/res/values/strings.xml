@@ -23,4 +23,5 @@
     <string name="btn_get_promotion_title">Nhận mã</string>
     <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
     <string name="app_id">225931637863625</string>
+    <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
 </resources>

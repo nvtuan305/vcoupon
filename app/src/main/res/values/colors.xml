@@ -11,4 +11,6 @@
     <color name="colorSecondaryText">#878787</color>
     <color name="colorBorder">#AFB4B6</color>
     <color name="colorBackgroundPrimary">#f1f0f0</color>
+    <color name="colorFollowButton">#2196f3</color>
+    <color name="colorFollowButtonPressed">#22DBF3</color>
 </resources>

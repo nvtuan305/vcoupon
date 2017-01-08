@@ -5,9 +5,10 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
+import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
-import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -93,6 +94,39 @@ public class UserRetrofitService extends VCouponRetrofitService {
                 } else {
                     callback.onPostExecute(null, exception);
                 }
+            }
+        });
+    }
+
+    /**
+     * Get pinned promotion
+     *
+     * @param userId
+     * @param subscribeBody
+     * @param callback
+     */
+
+    public void followPromotion(@NonNull String userId, @NonNull SubscribeBody subscribeBody,
+                                   final RetrofitServiceCallback<String> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).followPromotion(userId, subscribeBody);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                callback.onPostExecute(responseObject.getResultMessage(), exception);
             }
         });
     }

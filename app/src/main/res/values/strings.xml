@@ -24,4 +24,8 @@
     <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
     <string name="app_id">225931637863625</string>
     <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="follow_title">Theo dõi</string>
+    <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
+    <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
+    <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
 </resources>

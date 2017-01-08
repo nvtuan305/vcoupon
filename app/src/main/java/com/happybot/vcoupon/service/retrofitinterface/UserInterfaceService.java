@@ -1,7 +1,9 @@
 package com.happybot.vcoupon.service.retrofitinterface;
 
+import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 
 import retrofit2.Call;
@@ -9,7 +11,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -34,4 +35,7 @@ public interface UserInterfaceService {
     @POST("users/sign-in")
     Call<UserResponse> getUser(@Body User user);
 
+    @Headers("Content-Type:application/json")
+    @POST("users/{userId}/subscribing-topic")
+    Call<ResponseObject> followPromotion(@Path("userId") String userId, @Body SubscribeBody subscribeBody);
 }

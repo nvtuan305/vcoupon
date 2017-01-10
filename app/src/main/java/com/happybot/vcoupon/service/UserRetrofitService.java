@@ -5,9 +5,10 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
+import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
-import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -90,6 +91,78 @@ public class UserRetrofitService extends VCouponRetrofitService {
                         callback.onPostExecute(responseObject.getPromotions(), exception);
                     }
 
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Follow promotion
+     *
+     * @param userId
+     * @param subscribeBody
+     * @param callback
+     */
+
+    public void followPromotion(@NonNull String userId, @NonNull SubscribeBody subscribeBody,
+                                final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).followPromotion(userId, subscribeBody);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Unfollow promotion
+     *
+     * @param userId
+     * @param publisherId
+     * @param callback
+     */
+
+    public void unfollowPromotion(@NonNull String userId, @NonNull String publisherId,
+                                  final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).unfollowPromotion(userId, publisherId);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
                 } else {
                     callback.onPostExecute(null, exception);
                 }

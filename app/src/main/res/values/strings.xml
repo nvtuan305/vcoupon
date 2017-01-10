@@ -4,6 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="main_toolbar_title">VCOUPON</string>
     <string name="category1">Quanh đây</string>
     <string name="category2">Ăn uống</string>
     <string name="category3">Quần áo</string>
@@ -22,4 +23,10 @@
     <string name="btn_get_promotion_title">Nhận mã</string>
     <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
     <string name="app_id">225931637863625</string>
+    <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="follow_title">Theo dõi</string>
+    <string name="unfollow_title">Bỏ theo dõi</string>
+    <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
+    <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
+    <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
 </resources>

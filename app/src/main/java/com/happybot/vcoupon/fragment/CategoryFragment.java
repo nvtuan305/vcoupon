@@ -23,6 +23,7 @@ import java.util.List;
 public class CategoryFragment extends Fragment {
 
     private int mPosition;
+
     public CategoryFragment() {
     }
 
@@ -38,6 +39,7 @@ public class CategoryFragment extends Fragment {
         viewPager.setCurrentItem(Integer.parseInt(stringPosition));
         return view;
     }
+
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new NearByFragment(), getString(R.string.category1));

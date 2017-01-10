@@ -11,14 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.SubscribeBody;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
+import com.happybot.vcoupon.service.UserRetrofitService;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 import java.util.List;
 
@@ -27,7 +33,9 @@ import java.util.List;
  */
 
 public class ClothesFragment extends Fragment {
+
     private static final String CLOTHES_CATEGORY_ID = "5842fbab0f0bc105b77eb74f";
+    private boolean followedCategory;
 
     private SwipeRefreshLayout swipeRefreshLayoutClothes = null;
     private RecyclerView recyclerViewClothesPromotion = null;
@@ -46,6 +54,8 @@ public class ClothesFragment extends Fragment {
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
 
+    private Button btnFollowClothesCategory;
+
     public ClothesFragment() {
     }
 
@@ -59,6 +69,14 @@ public class ClothesFragment extends Fragment {
         emptyLayoutClothes = (LinearLayout) view.findViewById(R.id.emptyLayoutClothes);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();
+        btnFollowClothesCategory = (Button) view.findViewById(R.id.btnFollowClothesCategory);
+        followedCategory = false;
+        if (followedCategory) {
+            btnFollowClothesCategory.setText(R.string.unfollow_title);
+        }
+        else {
+            btnFollowClothesCategory.setText(R.string.follow_title);
+        }
 
         return view;
     }
@@ -66,7 +84,22 @@ public class ClothesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //Subscribe category
+        btnFollowClothesCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharePreferenceHelper helper = new SharePreferenceHelper(v.getContext());
+                UserRetrofitService userRetrofitService = new UserRetrofitService(v.getContext());
 
+                if (followedCategory) {
+                    userRetrofitService.unfollowPromotion(helper.getUserId(), CLOTHES_CATEGORY_ID, new ClothesFragment.SubscribeDelegate((BaseActivity)v.getContext()));
+                }
+                else {
+                    SubscribeBody subscribeBody = new SubscribeBody(CLOTHES_CATEGORY_ID, "CATEGORY");
+                    userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new ClothesFragment.SubscribeDelegate((BaseActivity)v.getContext()));
+                }
+            }
+        });
         // Initialize recycle view
         recyclerViewClothesPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
@@ -180,6 +213,40 @@ public class ClothesFragment extends Fragment {
         } else {
             recyclerViewClothesPromotion.setVisibility(View.VISIBLE);
             emptyLayoutClothes.setVisibility(View.GONE);
+        }
+    }
+    private class SubscribeDelegate extends ForegroundTaskDelegate<ResponseObject> {
+
+        SubscribeDelegate(BaseActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPreExecute() {
+        }
+
+        @Override
+        public void onPostExecute(ResponseObject responseObject, Throwable throwable) {
+            super.onPostExecute(responseObject, throwable);
+            if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
+                Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowClothesCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowClothesCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            } else {
+                Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowClothesCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowClothesCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            }
         }
     }
 }

@@ -11,13 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.SubscribeBody;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
@@ -31,6 +35,7 @@ import java.util.List;
 public class FoodFragment extends Fragment {
 
     private static final String FOOD_CATEGORY_ID = "5842fbab0f0bc105b77eb74e";
+    private boolean followedCategory;
 
     private SwipeRefreshLayout swipeRefreshLayoutFood = null;
     private RecyclerView recyclerViewFoodPromotion = null;
@@ -49,6 +54,8 @@ public class FoodFragment extends Fragment {
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
 
+    private Button btnFollowFoodCategory;
+
     public FoodFragment() {
     }
 
@@ -59,17 +66,40 @@ public class FoodFragment extends Fragment {
 
         swipeRefreshLayoutFood = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutFood);
         recyclerViewFoodPromotion = (RecyclerView) view.findViewById(R.id.recyclerViewFoodPromotion);
+        recyclerViewFoodPromotion.setNestedScrollingEnabled(false);
         recyclerViewFoodPromotion.setAdapter(adapter);
         emptyLayoutFood = (LinearLayout) view.findViewById(R.id.emptyLayoutFood);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();
-
+        btnFollowFoodCategory = (Button) view.findViewById(R.id.btnFollowFoodCategory);
+        followedCategory = false;
+        if (followedCategory) {
+            btnFollowFoodCategory.setText(R.string.unfollow_title);
+        } else {
+            btnFollowFoodCategory.setText(R.string.follow_title);
+        }
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Subscribe category
+        btnFollowFoodCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharePreferenceHelper helper = new SharePreferenceHelper(v.getContext());
+                UserRetrofitService userRetrofitService = new UserRetrofitService(v.getContext());
+
+                if (followedCategory) {
+                    userRetrofitService.unfollowPromotion(helper.getUserId(), FOOD_CATEGORY_ID, new SubscribeDelegate((BaseActivity) v.getContext()));
+                } else {
+                    SubscribeBody subscribeBody = new SubscribeBody(FOOD_CATEGORY_ID, "CATEGORY");
+                    userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new SubscribeDelegate((BaseActivity) v.getContext()));
+                }
+            }
+        });
 
         // Initialize recycle view
         recyclerViewFoodPromotion.setHasFixedSize(true);
@@ -184,6 +214,41 @@ public class FoodFragment extends Fragment {
         } else {
             recyclerViewFoodPromotion.setVisibility(View.VISIBLE);
             emptyLayoutFood.setVisibility(View.GONE);
+        }
+    }
+
+    private class SubscribeDelegate extends ForegroundTaskDelegate<ResponseObject> {
+
+        SubscribeDelegate(BaseActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPreExecute() {
+        }
+
+        @Override
+        public void onPostExecute(ResponseObject responseObject, Throwable throwable) {
+            super.onPostExecute(responseObject, throwable);
+            if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
+                Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowFoodCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowFoodCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            } else {
+                Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowFoodCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowFoodCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            }
         }
     }
 }

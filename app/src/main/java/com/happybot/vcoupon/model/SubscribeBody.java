@@ -6,6 +6,11 @@ package com.happybot.vcoupon.model;
 
 public class SubscribeBody {
 
+    public SubscribeBody(String _publisherId) {
+        this._publisherId = _publisherId;
+        this.subscribeType = null;
+    }
+
     public SubscribeBody(String _publisherId, String subscribeType) {
         this._publisherId = _publisherId;
         this.subscribeType = subscribeType;

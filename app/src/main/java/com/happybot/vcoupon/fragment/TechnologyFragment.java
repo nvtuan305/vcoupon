@@ -11,14 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.SubscribeBody;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
+import com.happybot.vcoupon.service.UserRetrofitService;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 import java.util.List;
 
@@ -28,6 +34,7 @@ import java.util.List;
 
 public class TechnologyFragment extends Fragment {
     private static final String TECHNOLOGY_CATEGORY_ID = "5842fbab0f0bc105b77eb750";
+    private boolean followedCategory;
 
     private SwipeRefreshLayout swipeRefreshLayoutTechnology = null;
     private RecyclerView recyclerViewTechnologyPromotion = null;
@@ -45,6 +52,7 @@ public class TechnologyFragment extends Fragment {
 
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
+    private Button btnFollowTechnologyCategory;
 
     public TechnologyFragment() {
     }
@@ -59,6 +67,13 @@ public class TechnologyFragment extends Fragment {
         emptyLayoutTechnology = (LinearLayout) view.findViewById(R.id.emptyLayoutTechnology);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();
+        btnFollowTechnologyCategory = (Button) view.findViewById(R.id.btnFollowTechnologyCategory);
+        followedCategory = false;
+        if (followedCategory) {
+            btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+        } else {
+            btnFollowTechnologyCategory.setText(R.string.follow_title);
+        }
 
         return view;
     }
@@ -66,7 +81,21 @@ public class TechnologyFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //Subscribe category
+        btnFollowTechnologyCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharePreferenceHelper helper = new SharePreferenceHelper(v.getContext());
+                UserRetrofitService userRetrofitService = new UserRetrofitService(v.getContext());
 
+                if (followedCategory) {
+                    userRetrofitService.unfollowPromotion(helper.getUserId(), TECHNOLOGY_CATEGORY_ID, new TechnologyFragment.SubscribeDelegate((BaseActivity) v.getContext()));
+                } else {
+                    SubscribeBody subscribeBody = new SubscribeBody(TECHNOLOGY_CATEGORY_ID, "CATEGORY");
+                    userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new TechnologyFragment.SubscribeDelegate((BaseActivity) v.getContext()));
+                }
+            }
+        });
         // Initialize recycle view
         recyclerViewTechnologyPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
@@ -180,6 +209,41 @@ public class TechnologyFragment extends Fragment {
         } else {
             recyclerViewTechnologyPromotion.setVisibility(View.VISIBLE);
             emptyLayoutTechnology.setVisibility(View.GONE);
+        }
+    }
+
+    private class SubscribeDelegate extends ForegroundTaskDelegate<ResponseObject> {
+
+        SubscribeDelegate(BaseActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPreExecute() {
+        }
+
+        @Override
+        public void onPostExecute(ResponseObject responseObject, Throwable throwable) {
+            super.onPostExecute(responseObject, throwable);
+            if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
+                Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowTechnologyCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            } else {
+                Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
+                if (followedCategory) {
+                    btnFollowTechnologyCategory.setText(R.string.follow_title);
+                    followedCategory = false;
+                } else {
+                    btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+                    followedCategory = true;
+                }
+            }
         }
     }
 }

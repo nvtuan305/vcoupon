@@ -8,6 +8,7 @@ import com.happybot.vcoupon.model.retrofit.UserResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -19,8 +20,9 @@ public interface UserInterfaceService {
     /**
      * Get pinned promotion of the user page by page
      * default page size is 15 promotion
+     *
      * @param userId: Id of user
-     * @param page: Pinned promotion page
+     * @param page:   Pinned promotion page
      * @return PromotionListResponse
      */
     @GET("users/{userId}/pinned-promotion")
@@ -36,6 +38,9 @@ public interface UserInterfaceService {
     Call<UserResponse> getUser(@Body User user);
 
     @Headers("Content-Type:application/json")
-    @POST("users/{userId}/subscribing-topic")
+    @POST("users/{userId}/follows")
     Call<ResponseObject> followPromotion(@Path("userId") String userId, @Body SubscribeBody subscribeBody);
+
+    @DELETE("users/{userId}/follows/{publisherId}")
+    Call<ResponseObject> unfollowPromotion(@Path("userId") String userId, @Path("publisherId") String publisherId);
 }

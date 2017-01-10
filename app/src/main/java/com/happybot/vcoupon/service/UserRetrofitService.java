@@ -99,7 +99,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
     }
 
     /**
-     * Get pinned promotion
+     * Follow promotion
      *
      * @param userId
      * @param subscribeBody
@@ -107,7 +107,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
      */
 
     public void followPromotion(@NonNull String userId, @NonNull SubscribeBody subscribeBody,
-                                   final RetrofitServiceCallback<String> callback) {
+                                final RetrofitServiceCallback<ResponseObject> callback) {
 
         Call<ResponseObject> followPromotionResponseCall
                 = ((UserInterfaceService) getService()).followPromotion(userId, subscribeBody);
@@ -124,9 +124,48 @@ public class UserRetrofitService extends VCouponRetrofitService {
                                  ResponseObject responseObject,
                                  BaseException exception) {
                 super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
 
-                LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
-                callback.onPostExecute(responseObject.getResultMessage(), exception);
+    /**
+     * Unfollow promotion
+     *
+     * @param userId
+     * @param publisherId
+     * @param callback
+     */
+
+    public void unfollowPromotion(@NonNull String userId, @NonNull String publisherId,
+                                  final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).unfollowPromotion(userId, publisherId);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
             }
         });
     }

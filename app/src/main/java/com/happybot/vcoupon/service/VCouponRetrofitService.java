@@ -6,6 +6,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.happybot.vcoupon.application.VCouponApplication;
+import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.AddHeaderInterceptor;
 import com.happybot.vcoupon.service.retrofitutil.GsonDateFormatAdapter;
 import com.happybot.vcoupon.service.retrofitutil.RetryInterceptor;
@@ -26,6 +27,7 @@ public class VCouponRetrofitService {
 
     // API base url
     private final String BASE_URL = "https://vcoupon.herokuapp.com/api/v1/";
+    //private final String BASE_URL = "http://192.168.11.112:3000/api/v1/";
 
     // Logger
     protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -49,7 +51,9 @@ public class VCouponRetrofitService {
         defaultGson = newDefaultGson();
     }
 
-    public VCouponRetrofitService(Context context, HttpLoggingInterceptor loggingInterceptor, Gson gson) {
+    public VCouponRetrofitService(Context context,
+                                  HttpLoggingInterceptor loggingInterceptor,
+                                  Gson gson) {
         mContext = context;
         defaultLogging = loggingInterceptor;
         defaultGson = gson;
@@ -84,8 +88,10 @@ public class VCouponRetrofitService {
     }
 
     protected Retrofit getRetrofit() {
+        String token = spHelper.getAccessToken();
+
         OkHttpClient client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new AddHeaderInterceptor(spHelper.getAccessToken(), spHelper.getUserId()))
+                .addNetworkInterceptor(new AddHeaderInterceptor(spHelper.getUserId(), spHelper.getAccessToken()))
                 .addInterceptor(defaultLogging)
                 .addInterceptor(new RetryInterceptor())
                 .readTimeout(readTimeOut, TimeUnit.SECONDS)

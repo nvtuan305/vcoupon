@@ -1,6 +1,6 @@
 package com.happybot.vcoupon.service.retrofitinterface;
 
-public interface PromotionInterfaceService extends RetrofitInterfaceService {
+public interface PromotionInterfaceService {
 
     // TODO Định nghĩa các API
 

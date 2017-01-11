@@ -12,13 +12,14 @@ import android.support.v4.app.FragmentTransaction;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.fragment.EditProfileFragment;
 import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
 import com.happybot.vcoupon.fragment.ProfileFragment;
 import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     private Fragment fragment;
     private FragmentManager fragmentManager;
@@ -98,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
                         fragment = new NotificationFragment();
                         break;
                     case 4:
-                        fragment = new ProfileFragment();
+                        fragment = new EditProfileFragment();
                         break;
                 }
                 clearBackStack();

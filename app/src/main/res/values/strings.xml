@@ -18,4 +18,7 @@
     <string name="splash_description_0">Tìm kiếm, theo dõi và nhận tất cả các loại mã giảm giá xung quanh bạn trong vòng 30s</string>
     <string name="splash_description_1">Vcoupon giúp bạn theo dõi nhiều nhà khuyến mãi, loại khuyến mãi khác nhau</string>
     <string name="splash_description_2">Lưu trữ và sử dụng mã khuyến mãi dễ dàng hơn, bạn sẽ không bao giờ bỏ lỡ bất kỳ khuyến mãi nào</string>
+    <string name="promotion_title">Day la tieu de cua mot chuong trinh khuyen mai</string>
+    <string name="btn_get_promotion_title">Nhận mã</string>
+    <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
 </resources>

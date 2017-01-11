@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 import com.happybot.vcoupon.R;
 
 /**
- * Created by Nguyễn Phương Tuấn on 08-Dec-16.
+ * Created by Admin on 12/15/2016.
  */
-
-public class ReceivedFragment extends Fragment {
-
-    public ReceivedFragment() {
-    }
+public class ZeroSplashFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_received, container, false);
-        return view;
+
+        ViewGroup rootView = (ViewGroup) inflater.inflate(
+                R.layout.fragment_splash_zero, container, false);
+
+        return rootView;
     }
 }
+

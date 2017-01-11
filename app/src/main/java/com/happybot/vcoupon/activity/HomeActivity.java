@@ -2,11 +2,13 @@ package com.happybot.vcoupon.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -14,21 +16,23 @@ import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
 import com.happybot.vcoupon.fragment.ProfileFragment;
-import com.happybot.vcoupon.fragment.SearchFragment;
 import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     private Fragment fragment;
     private FragmentManager fragmentManager;
+    private AHBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        getSupportActionBar().hide();
+        //set up toolbar
+        Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(mainToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 
@@ -37,6 +41,11 @@ public class HomeActivity extends AppCompatActivity {
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.main_container, fragment).commit();
 
+        // Initialize bottom navigation
+        initializeBottomNavigation();
+    }
+
+    private void initializeBottomNavigation() {
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
         // Create items
@@ -72,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigation.setNotificationBackgroundColor(Color.RED);
 
         // Add notification for each item, see more ahbottomnavigation.notification.AHNotification
-//        bottomNavigation.setNotification("3", 0);
+        //  bottomNavigation.setNotification("3", 0);
 
         // Set listeners
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
@@ -95,14 +104,16 @@ public class HomeActivity extends AppCompatActivity {
                         fragment = new ProfileFragment();
                         break;
                 }
-                clearBackstack();
+                clearBackStack();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_container, fragment).commit();
                 return true;
             }
         });
+
         bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-            @Override public void onPositionChange(int y) {
+            @Override
+            public void onPositionChange(int y) {
                 // Manage the new y position
             }
         });
@@ -121,13 +132,12 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
-    public void clearBackstack()
-    {
+
+    public void clearBackStack() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
             FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(0);
             getSupportFragmentManager().popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             getSupportFragmentManager().executePendingTransactions();
         }
-
     }
 }

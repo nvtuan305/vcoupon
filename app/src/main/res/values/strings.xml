@@ -4,6 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="main_toolbar_title">VCOUPON</string>
     <string name="category1">Quanh đây</string>
     <string name="category2">Ăn uống</string>
     <string name="category3">Quần áo</string>
@@ -15,4 +16,17 @@
     <string name="voucher_detail_number">Còn lại:\u0020</string>
     <string name="voucher_detail_place">Áp dụng tại</string>
     <string name="voucher_detail_condition_title">Điều kiện áp dụng</string>
+    <string name="splash_description_0">Tìm kiếm, theo dõi và nhận tất cả các loại mã giảm giá xung quanh bạn trong vòng 30s</string>
+    <string name="splash_description_1">Vcoupon giúp bạn theo dõi nhiều nhà khuyến mãi, loại khuyến mãi khác nhau</string>
+    <string name="splash_description_2">Lưu trữ và sử dụng mã khuyến mãi dễ dàng hơn, bạn sẽ không bao giờ bỏ lỡ bất kỳ khuyến mãi nào</string>
+    <string name="promotion_title">Day la tieu de cua mot chuong trinh khuyen mai</string>
+    <string name="btn_get_promotion_title">Nhận mã</string>
+    <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="app_id">225931637863625</string>
+    <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="follow_title">Theo dõi</string>
+    <string name="unfollow_title">Bỏ theo dõi</string>
+    <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
+    <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
+    <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
 </resources>

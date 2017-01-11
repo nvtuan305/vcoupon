@@ -1,17 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_splash"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.happybot.vcoupon.activity.SplashActivity">
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1.0">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:src="@drawable/vimeo"
+            android:layout_width="match_parent"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            android:layout_height="1dp"
+            android:layout_weight="0.4"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvCopyright"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_signin"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Đăng nhập ngay"
+            android:id="@+id/btnSignin" />
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_signup"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="Đăng ký tài khoản"/>
+
+    </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvCopyright"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:textSize="14dp"
+        android:textColor="#ffffff"
+        android:text="Copyright by HappyBot © 2016"/>
+
 </RelativeLayout>
+

@@ -34,4 +34,6 @@
     <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
     <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
     <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
+    <string name="sign_in_label">Đăng nhập</string>
+    <string name="sign_up_label">Đăng ký tài khoản</string>
 </resources>

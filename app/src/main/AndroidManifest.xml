@@ -19,12 +19,6 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
 
-        <activity android:name=".activity.HomeActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,9 +27,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.SignInActivity" />
-        <activity android:name=".activity.SignUpProviderActivity" />
-        <activity android:name=".activity.SignUpNormalUserActivity"></activity>
+        <activity android:name=".activity.HomeActivity" />
+
+        <activity android:name=".activity.IntroActivity" />
+
+        <activity
+            android:name=".activity.SignInActivity"
+            android:label="@string/sign_in_label" />
+
+        <activity
+            android:name=".activity.SignUpProviderActivity"
+            android:label="@string/sign_up_label" />
+
+        <activity
+            android:name=".activity.SignUpNormalUserActivity"
+            android:label="@string/sign_up_label" />
     </application>
 
 </manifest>

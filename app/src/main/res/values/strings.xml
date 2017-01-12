@@ -29,4 +29,8 @@
     <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
     <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
     <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
+    <string name="search_title">Tap to Search</string>
+    <string name="search_not_found">Không tìm thấy, vui lòng thử từ khóa khác</string>
+    <string name="search_tab_title_1">Provider</string>
+    <string name="search_tab_title_2">Promotion</string>
 </resources>

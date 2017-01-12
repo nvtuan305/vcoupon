@@ -4,6 +4,7 @@ import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
+import com.happybot.vcoupon.model.retrofit.UserListResponse;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 
 import retrofit2.Call;
@@ -43,4 +44,7 @@ public interface UserInterfaceService {
 
     @DELETE("users/{userId}/follows/{publisherId}")
     Call<ResponseObject> unfollowPromotion(@Path("userId") String userId, @Path("publisherId") String publisherId);
+
+    @GET("users/providers")
+    Call<UserListResponse> getSearchProvider(@Query("searchText") String searchQuery, @Query("page") int page);
 }

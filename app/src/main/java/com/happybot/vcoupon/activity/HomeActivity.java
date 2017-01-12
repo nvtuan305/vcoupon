@@ -16,6 +16,7 @@ import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
 import com.happybot.vcoupon.fragment.ProfileFragment;
+import com.happybot.vcoupon.fragment.SearchFragment;
 import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 
@@ -90,18 +91,23 @@ public class HomeActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         fragment = new HomeFragment();
+                        getSupportActionBar().show();
                         break;
                     case 1:
                         fragment = new VoucherFragment();
+                        getSupportActionBar().show();
                         break;
                     case 2:
-                        fragment = new VoucherDetailFragment();
+                        fragment = new SearchFragment();
+                        getSupportActionBar().hide();
                         break;
                     case 3:
                         fragment = new NotificationFragment();
+                        getSupportActionBar().show();
                         break;
                     case 4:
                         fragment = new ProfileFragment();
+                        getSupportActionBar().show();
                         break;
                 }
                 clearBackStack();

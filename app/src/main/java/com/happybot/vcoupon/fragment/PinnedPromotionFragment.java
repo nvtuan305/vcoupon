@@ -73,7 +73,6 @@ public class PinnedPromotionFragment extends Fragment {
         activity = (BaseActivity) getActivity();
         getPinnedTripDelegate = new GetPinnedTripDelegate(activity);
 
-
         // Load pinned promotion
         loadPinnedPromotion();
 

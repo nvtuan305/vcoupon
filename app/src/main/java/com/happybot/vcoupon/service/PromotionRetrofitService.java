@@ -54,7 +54,7 @@ public class PromotionRetrofitService extends VCouponRetrofitService {
 
         return mService;
     }
-
+  
     /**
      * Get promotion by category
      *

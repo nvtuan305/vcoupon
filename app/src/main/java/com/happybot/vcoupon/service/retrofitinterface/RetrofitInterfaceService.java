@@ -6,5 +6,5 @@ public interface RetrofitInterfaceService {
      * Another retrofit api interface implement from RetrofitInterfaceService
      * @return
      */
-     RetrofitInterfaceService getService();
+    RetrofitInterfaceService getService();
 }

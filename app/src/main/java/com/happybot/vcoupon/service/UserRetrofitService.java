@@ -5,9 +5,14 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
-import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.User;
+import com.happybot.vcoupon.model.UserRequestBody;
+import com.happybot.vcoupon.model.retrofit.PromotionResponse;
+import com.happybot.vcoupon.model.retrofit.UserResponse;
+import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
+import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
@@ -21,6 +26,7 @@ import java.util.Vector;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.http.Body;
 
 public class UserRetrofitService extends VCouponRetrofitService {
 
@@ -101,112 +107,169 @@ public class UserRetrofitService extends VCouponRetrofitService {
     }
 
     /**
-     * Follow promotion
+     * Pin promotion
      *
      * @param userId
-     * @param subscribeBody
-     * @param callback
-     */
-
-    public void followPromotion(@NonNull String userId, @NonNull SubscribeBody subscribeBody,
-                                final RetrofitServiceCallback<ResponseObject> callback) {
-
-        Call<ResponseObject> followPromotionResponseCall
-                = ((UserInterfaceService) getService()).followPromotion(userId, subscribeBody);
-
-        callback.setCall(followPromotionResponseCall);
-
-        // Show progress dialog
-        callback.onPreExecute();
-
-        // Make asynchronous request
-        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
-            @Override
-            public void onFinish(Call<ResponseObject> call,
-                                 ResponseObject responseObject,
-                                 BaseException exception) {
-                super.onFinish(call, responseObject, exception);
-                if (exception == null && responseObject != null) {
-                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
-                    callback.onPostExecute(responseObject, exception);
-                } else {
-                    callback.onPostExecute(null, exception);
-                }
-            }
-        });
-    }
-
-    /**
-     * Unfollow promotion
-     *
-     * @param userId
-     * @param publisherId
-     * @param callback
-     */
-
-    public void unfollowPromotion(@NonNull String userId, @NonNull String publisherId,
-                                  final RetrofitServiceCallback<ResponseObject> callback) {
-
-        Call<ResponseObject> followPromotionResponseCall
-                = ((UserInterfaceService) getService()).unfollowPromotion(userId, publisherId);
-
-        callback.setCall(followPromotionResponseCall);
-
-        // Show progress dialog
-        callback.onPreExecute();
-
-        // Make asynchronous request
-        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
-            @Override
-            public void onFinish(Call<ResponseObject> call,
-                                 ResponseObject responseObject,
-                                 BaseException exception) {
-                super.onFinish(call, responseObject, exception);
-                if (exception == null && responseObject != null) {
-                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
-                    callback.onPostExecute(responseObject, exception);
-                } else {
-                    callback.onPostExecute(null, exception);
-                }
-            }
-        });
-    }
-
-    /**
-     * Get search provider
-     *
-     * @param searchQuery
      * @param page
+     * @param promotionRequestBody
      * @param callback
      */
+    public void pinPromotion(@NonNull String userId,
+                             @NonNull int page,
+                             @Body PromotionRequestBody promotionRequestBody,
+                             final RetrofitServiceCallback<ResponseObject> callback) {
 
-    public void getSearchProvider(@NonNull String searchQuery,
-                                   @NonNull int page,
-                                   final RetrofitServiceCallback<List<User>> callback) {
+        Call<ResponseObject> objectResponseCall
+                = ((UserInterfaceService) getService()).pinPromotion(userId, page, promotionRequestBody);
 
-        Call<UserListResponse> userListResponseCall
-                = ((UserInterfaceService) getService()).getSearchProvider(searchQuery, page);
-
-        callback.setCall(userListResponseCall);
+        callback.setCall(objectResponseCall);
 
         // Show progress dialog
         callback.onPreExecute();
 
         // Make asynchronous request
-        userListResponseCall.enqueue(new TranslateRetrofitCallback<UserListResponse>() {
+
+        objectResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+
             @Override
-            public void onFinish(Call<UserListResponse> call,
-                                 UserListResponse responseObject,
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
                                  BaseException exception) {
                 super.onFinish(call, responseObject, exception);
 
                 if (exception == null && responseObject != null) {
                     LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
 
-                    if (responseObject.getUsers() == null) {
-                        callback.onPostExecute(new Vector<User>(), exception);
+                    if (responseObject.isSuccess() == false) {
+                        callback.onPostExecute(new ResponseObject(), exception);
                     } else {
-                        callback.onPostExecute(responseObject.getUsers(), exception);
+                        callback.onPostExecute(responseObject, exception);
+                    }
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Unpin promotion
+     *
+     * @param userId
+     * @param page
+     * @param promotionRequestBody
+     * @param callback
+     */
+    public void unpinPromotion(@NonNull String userId,
+                               @NonNull int page,
+                               @Body PromotionRequestBody promotionRequestBody,
+                               final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> objectResponseCall
+                = ((UserInterfaceService) getService()).unpinPromotion(userId, page, promotionRequestBody);
+
+        callback.setCall(objectResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        objectResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.isSuccess() == false) {
+                        callback.onPostExecute(new ResponseObject(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject, exception);
+                    }
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get user info
+     *
+     * @param userId
+     * @param callback
+     */
+    public void getUserInfo(@NonNull String userId,
+                            final RetrofitServiceCallback<User> callback){
+        Call<UserResponse> userInfoResponseCall
+                = ((UserInterfaceService) getService()).getUserInfo(userId);
+
+        callback.setCall(userInfoResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        userInfoResponseCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call,
+                                 UserResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Update user info
+     *
+     * @param userId
+     * @param userRequestBody
+     * @param callback
+     */
+    public void updateUserInfo(@NonNull String userId,
+                               @Body UserRequestBody userRequestBody,
+                                  final RetrofitServiceCallback<User> callback) {
+        Call<UserResponse> userInfoResponseCall
+                = ((UserInterfaceService) getService()).updateUserInfo(userId, userRequestBody);
+
+        callback.setCall(userInfoResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        userInfoResponseCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call,
+                                 UserResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.updateUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.updateUser(), exception);
                     }
 
                 } else {

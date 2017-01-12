@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.fragment.EditProfileFragment;
 import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
 import com.happybot.vcoupon.fragment.ProfileFragment;
@@ -182,7 +183,7 @@ public class HomeActivity extends BaseActivity {
                         fragment = new NotificationFragment();
                         break;
                     case 4:
-                        fragment = new ProviderProfileFragment();
+                        fragment = new EditProfileFragment();
                         break;
                 }
                 clearBackStack();

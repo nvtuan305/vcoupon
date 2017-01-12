@@ -38,6 +38,8 @@ public class User {
     private int rating;
     private String accessToken;
 
+    public User() {}
+  
     public User(String phoneNumber, String password) {
         this.phoneNumber = phoneNumber;
         this.password = password;

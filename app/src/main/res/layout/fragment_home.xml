@@ -223,7 +223,7 @@
                         android:layout_height="match_parent"
                         card_view:cardCornerRadius="7dp"
                         card_view:cardElevation="0dp">
-
+                      
                         <RelativeLayout
                             android:id="@+id/home_technology"
                             android:layout_width="match_parent"

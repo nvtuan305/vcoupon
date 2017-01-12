@@ -63,6 +63,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
                 .load(provider.getAvatar())
                 .fit()
                 .centerCrop()
+                .error(R.drawable.avatar_error)
                 .into(holder.provider_small_item_avatar);
         holder.provider_small_item_name.setText(provider.getName());
         holder.provider_small_item_address.setText(provider.getAddress());

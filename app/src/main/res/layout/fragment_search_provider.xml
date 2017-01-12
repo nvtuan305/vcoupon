@@ -15,8 +15,7 @@
             android:id="@+id/rcvSearchProvider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/margin_8dp"
-            android:paddingTop="@dimen/margin_8dp" />
+            />
 
         <LinearLayout
             android:id="@+id/lnSearchProviderEmptyLayout"

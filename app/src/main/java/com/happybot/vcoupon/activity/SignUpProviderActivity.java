@@ -73,7 +73,7 @@ public class SignUpProviderActivity extends BaseActivity {
 
                         UserInterfaceService retrofitService = SignInSignUpRetrofitService.getClient(defaultLogging).create(UserInterfaceService.class);
 
-                        userResponseCall = retrofitService.createUser(user);
+                        //userResponseCall = retrofitService.createUser(user);
 
                         getSignupDelegate = new GetSignupDelegate(SignUpProviderActivity.this);
 

@@ -38,6 +38,19 @@ public class User {
     private int rating;
     private String accessToken;
 
+    public User() {
+        this.name = "VCoupon";
+        this.gender = "";
+        this.email = "";
+        this.phoneNumber = "";
+        this.address = "";
+        this.website = "";
+        this.fanpage = "";
+        this.password = "";
+        this.role = "NORMAL";
+        this.provider = "vcoupon";
+    }
+
     public User(String phoneNumber, String password) {
         this.phoneNumber = phoneNumber;
         this.password = password;

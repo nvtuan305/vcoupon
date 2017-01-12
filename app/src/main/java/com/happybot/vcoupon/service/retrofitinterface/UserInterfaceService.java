@@ -2,6 +2,7 @@ package com.happybot.vcoupon.service.retrofitinterface;
 
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
+import com.happybot.vcoupon.model.retrofit.LoginBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
@@ -29,13 +30,23 @@ public interface UserInterfaceService {
     Call<PromotionListResponse> getPinnedPromotion(@Path("userId") String userId,
                                                    @Query("page") int page);
 
-    @Headers("Content-Type:application/json")
+    /**
+     * Sign up new user account
+     *
+     * @param user: User info
+     * @return UserResponse
+     */
     @POST("users")
-    Call<UserResponse> createUser(@Body User user);
+    Call<UserResponse> signUp(@Body User user);
 
-    @Headers("Content-Type:application/json")
+    /**
+     * Sign in account
+     *
+     * @param loginBody: Phone number and password to login
+     * @return UserResponse
+     */
     @POST("users/sign-in")
-    Call<UserResponse> getUser(@Body User user);
+    Call<UserResponse> signIn(@Body LoginBody loginBody);
 
     @Headers("Content-Type:application/json")
     @POST("users/{userId}/follows")

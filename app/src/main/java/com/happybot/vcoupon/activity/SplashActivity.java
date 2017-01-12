@@ -1,7 +1,6 @@
 package com.happybot.vcoupon.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -50,7 +49,7 @@ public class SplashActivity extends FragmentActivity {
         mPagerAdapter = new SplashAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-        btnSignup = (Button) findViewById(R.id.btnSignup);
+        btnSignup = (Button) findViewById(R.id.btnSignUp);
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +58,7 @@ public class SplashActivity extends FragmentActivity {
             }
         });
 
-        btnSignin = (Button) findViewById(R.id.btnSignin);
+        btnSignin = (Button) findViewById(R.id.btnSignIn);
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

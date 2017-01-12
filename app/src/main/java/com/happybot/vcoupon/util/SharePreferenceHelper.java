@@ -18,18 +18,8 @@ public class SharePreferenceHelper {
     }
 
     public void initializeSampleAuth() {
-        // Normal
-        //saveUserId("5867d9c050fb07001111397b");
-        //saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODY3ZDljMDUwZmIwNzAwMTExMTM5N2IiLCJwaG9uZU51bWJlciI6IjE5OSIsImlhdCI6MTQ4MzI1NjE3NiwiZXhwIjoxNDkxODk2MTc2fQ.ZtupyQcoUApFF3foGegT1l_CtPZX81vFJZYD5qZT3kw");
-
-        // Normal
-        saveUserId("58525876b10aa019d8d66742");
-        saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODUyNTg3NmIxMGFhMDE5ZDhkNjY3NDIiLCJwaG9uZU51bWJlciI6IjA5Njg3MzAxODQiLCJpYXQiOjE0ODE3OTE2MDYsImV4cCI6MTQ5MDQzMTYwNn0.u1dUojW4l1iW-9red1nlhJphVtlskIyEnc3VYIgSJ7I");
-
-        // Provider
-        //saveUserId("585256f1b10aa019d8d66740");
-        //saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODUyNTZmMWIxMGFhMDE5ZDhkNjY3NDAiLCJwaG9uZU51bWJlciI6IjE4MDA4MDk5IiwiaWF0IjoxNDgxNzk4MDM0LCJleHAiOjE0OTA0MzgwMzR9.K2Iej37lysf3ddW5H6W2-O4AXOHhC6qO6VrojW-bvIg");
-
+        saveUserId("5867d9c050fb07001111397b");
+        saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODY3ZDljMDUwZmIwNzAwMTExMTM5N2IiLCJwaG9uZU51bWJlciI6IjE5OSIsImlhdCI6MTQ4MzI1NjE3NiwiZXhwIjoxNDkxODk2MTc2fQ.ZtupyQcoUApFF3foGegT1l_CtPZX81vFJZYD5qZT3kw");
     }
 
     public void saveAccessToken(String accessToken) {

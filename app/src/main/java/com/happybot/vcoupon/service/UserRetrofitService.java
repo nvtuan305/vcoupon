@@ -9,11 +9,13 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.UserRequestBody;
-import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.PromotionResponse;
-import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
+import com.happybot.vcoupon.model.SubscribeBody;
+import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
+import com.happybot.vcoupon.model.retrofit.UserListResponse;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -126,7 +128,9 @@ public class UserRetrofitService extends VCouponRetrofitService {
         callback.onPreExecute();
 
         // Make asynchronous request
+
         objectResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+
             @Override
             public void onFinish(Call<ResponseObject> call,
                                  ResponseObject responseObject,
@@ -171,6 +175,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
 
         // Make asynchronous request
         objectResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+
             @Override
             public void onFinish(Call<ResponseObject> call,
                                  ResponseObject responseObject,
@@ -185,7 +190,6 @@ public class UserRetrofitService extends VCouponRetrofitService {
                     } else {
                         callback.onPostExecute(responseObject, exception);
                     }
-
                 } else {
                     callback.onPostExecute(null, exception);
                 }

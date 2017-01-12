@@ -45,7 +45,8 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:text="Đăng nhập ngay"/>
+            android:text="Đăng nhập ngay"
+            android:id="@+id/btnSignin" />
 
         <Button
             android:id="@+id/btnSignup"

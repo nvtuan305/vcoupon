@@ -38,6 +38,7 @@ public class SplashActivity extends FragmentActivity {
     private PagerAdapter mPagerAdapter;
 
     Button btnSignup;
+    Button btnSignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,16 @@ public class SplashActivity extends FragmentActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //showRegisterSplashDialog();
-              startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                showRegisterSplashDialog();
+              //startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+            }
+        });
+
+        btnSignin = (Button) findViewById(R.id.btnSignin);
+        btnSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
             }
         });
     }

@@ -13,5 +13,4 @@ public class UserResponse extends ResponseObject {
     public User updateUser() {
         return user;
     }
-
 }

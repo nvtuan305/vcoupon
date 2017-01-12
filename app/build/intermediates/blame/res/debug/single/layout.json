@@ -1,0 +1,430 @@
+[
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\leak_canary_leak_row.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.5\\res\\layout\\leak_canary_leak_row.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\leak_canary_heap_dump_toast.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.5\\res\\layout\\leak_canary_heap_dump_toast.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_splash_second.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_splash_second.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_large.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_blue_large.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_received.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_received.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_custom.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_activity_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\com_facebook_activity_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_device_auth_dialog_fragment.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\com_facebook_device_auth_dialog_fragment.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\leak_canary_ref_row.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.5\\res\\layout\\leak_canary_ref_row.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_voucher_detail.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_voucher_detail.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_provider_detail.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_provider_detail.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_nearby.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_nearby.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sign_up_normal_user.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\activity_sign_up_normal_user.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_pinned.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_pinned.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_facebook.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_facebook.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sign_up_provider.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\activity_sign_up_provider.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_voucher.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_voucher.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_splash_zero.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_splash_zero.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_notification.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\item_notification.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_large.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_white_large.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_progress_dialog.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\dialog_progress_dialog.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notification.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_notification.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_tooltip_bubble.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\com_facebook_tooltip_bubble.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_search.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_search.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\leak_canary_display_leak.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.5\\res\\layout\\leak_canary_display_leak.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_smart_device_dialog_fragment.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\com_facebook_smart_device_dialog_fragment.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_category.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_category.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_splash_first.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_splash_first.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_item_promotion.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\layout_item_promotion.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_abc.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_abc.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_food.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_food.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_clothes.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_clothes.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coupon_received_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\coupon_received_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_small.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_white_small.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_round.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_blue_round.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\swipe_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\swipe_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bottom_navigation_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.aurelhubert\\ahbottomnavigation\\2.0.2\\res\\layout\\bottom_navigation_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_fragment.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\com_facebook_login_fragment.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\leak_canary_ref_top_row.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.5\\res\\layout\\leak_canary_ref_top_row.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_round.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_white_round.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\follow_category_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\follow_category_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_splash_register.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\dialog_splash_register.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_technology.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_technology.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_profile.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sign_in.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bottom_navigation_small_item.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.aurelhubert\\ahbottomnavigation\\2.0.2\\res\\layout\\bottom_navigation_small_item.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_small.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\layout\\messenger_button_send_blue_small.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_part_chronometer.xml"
+    }
+]

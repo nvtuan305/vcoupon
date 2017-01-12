@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="23"
+    density="xhdpi"
+    format="8"
+    plugin-version="2.2.3"
+    timestamp="4897904936718"
+    token="4328222253214997394"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="3669" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="95" />
+    <task
+        name="verifier"
+        duration="3" />
+
+    <artifact
+        location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="4897904936718"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

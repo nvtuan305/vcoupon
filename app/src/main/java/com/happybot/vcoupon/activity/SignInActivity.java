@@ -140,7 +140,9 @@ public class SignInActivity extends BaseActivity {
                     String userID = response.body().getUser().getId();
                     activity.saveAuthenticationInfo(token, userID);
 
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+                    homeActivity.putExtra("user_role",response.body().getUser().getRole().toString());
+                    startActivity(homeActivity);
                 }
             }
         }

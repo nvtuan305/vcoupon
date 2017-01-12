@@ -20,4 +20,15 @@ public interface PromotionInterfaceService {
     Call<PromotionListResponse> getPromotionByCategory(@Path("categoryId") String categoryId,
                                                    @Query("page") int page);
 
+    /**
+     * Get promotion by search query page by page
+     * default page size is 15 promotion
+     * @param searchQuery: searchQuery
+     * @param page: promotion page
+     * @return PromotionListResponse
+     */
+    @GET("promotions")
+    Call<PromotionListResponse> getPromotionBySearch(@Query("search") String searchQuery,
+                                                       @Query("page") int page);
+
 }

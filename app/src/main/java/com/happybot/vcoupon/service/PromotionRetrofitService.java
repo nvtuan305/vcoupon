@@ -99,5 +99,47 @@ public class PromotionRetrofitService extends VCouponRetrofitService {
         });
     }
 
-    // TODO Cài đặt hàm gọi api tại đây
+    /**
+     * Get promotion by search
+     *
+     * @param searchQuery
+     * @param page
+     * @param callback
+     */
+
+    public void getPromotionBySearch(@NonNull String searchQuery,
+                                       @NonNull int page,
+                                       final RetrofitServiceCallback<List<Promotion>> callback) {
+
+        Call<PromotionListResponse> promotionListResponseCall
+                = ((PromotionInterfaceService) getService()).getPromotionBySearch(searchQuery, page);
+
+        callback.setCall(promotionListResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        promotionListResponseCall.enqueue(new TranslateRetrofitCallback<PromotionListResponse>() {
+            @Override
+            public void onFinish(Call<PromotionListResponse> call,
+                                 PromotionListResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getPromotions() == null) {
+                        callback.onPostExecute(new Vector<Promotion>(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getPromotions(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
 }

@@ -7,8 +7,10 @@ import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
+import com.happybot.vcoupon.model.retrofit.UserListResponse;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -163,6 +165,50 @@ public class UserRetrofitService extends VCouponRetrofitService {
                 if (exception == null && responseObject != null) {
                     LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
                     callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get search provider
+     *
+     * @param searchQuery
+     * @param page
+     * @param callback
+     */
+
+    public void getSearchProvider(@NonNull String searchQuery,
+                                   @NonNull int page,
+                                   final RetrofitServiceCallback<List<User>> callback) {
+
+        Call<UserListResponse> userListResponseCall
+                = ((UserInterfaceService) getService()).getSearchProvider(searchQuery, page);
+
+        callback.setCall(userListResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        userListResponseCall.enqueue(new TranslateRetrofitCallback<UserListResponse>() {
+            @Override
+            public void onFinish(Call<UserListResponse> call,
+                                 UserListResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUsers() == null) {
+                        callback.onPostExecute(new Vector<User>(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUsers(), exception);
+                    }
+
                 } else {
                     callback.onPostExecute(null, exception);
                 }

@@ -127,8 +127,6 @@ public class EditProfileFragment extends Fragment {
     public void updateUserInfo() {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        helper.initializeSampleAuth();
-
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
         userRetrofitService.updateUserInfo(helper.getUserId(), userRequestBody, updateUserInfoDelegate);
     }
@@ -162,8 +160,6 @@ public class EditProfileFragment extends Fragment {
     public void pinPromotion() {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        helper.initializeSampleAuth();
-
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
         userRetrofitService.pinPromotion(helper.getUserId(), 1, promotionRequestBody, pinPromotionDelegate);
     }
@@ -197,8 +193,6 @@ public class EditProfileFragment extends Fragment {
     public void unpinPromotion() {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        helper.initializeSampleAuth();
-
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
         userRetrofitService.unpinPromotion(helper.getUserId(), 1, promotionRequestBody, unpinPromotionDelegate);
     }

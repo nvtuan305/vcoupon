@@ -24,6 +24,7 @@ import com.happybot.vcoupon.fragment.ProviderProfileFragment;
 import com.happybot.vcoupon.fragment.SearchFragment;
 import com.happybot.vcoupon.fragment.VoucherDetailFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 public class HomeActivity extends BaseActivity {
 
@@ -31,17 +32,17 @@ public class HomeActivity extends BaseActivity {
     private Fragment fragment;
     private FragmentManager fragmentManager;
     private String userRole = null;
+    private SharePreferenceHelper spHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //get user role
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            userRole = extras.getString("user_role");
-        }
+        // get user role
+        spHelper = new SharePreferenceHelper(this);
+        userRole = spHelper.getUserRole();
+
         //set up toolbar
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);

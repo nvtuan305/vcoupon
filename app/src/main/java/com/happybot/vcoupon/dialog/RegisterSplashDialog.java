@@ -10,13 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.happybot.vcoupon.R;
-import com.happybot.vcoupon.activity.SignInActivity;
 import com.happybot.vcoupon.activity.SignUpNormalUserActivity;
-import com.happybot.vcoupon.activity.SignUpProviderActivity;
 
-/**
- * Created by Admin on 12/15/2016.
- */
 public class RegisterSplashDialog extends DialogFragment {
 
     @Override
@@ -27,24 +22,29 @@ public class RegisterSplashDialog extends DialogFragment {
 
         View v = inflater.inflate(R.layout.dialog_splash_register, null);
 
-        Button btnProvider = (Button)v.findViewById(R.id.btnProvider);
+        Button btnProvider = (Button) v.findViewById(R.id.btnProvider);
         btnProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity().getApplicationContext(),SignUpProviderActivity.class));
+                goToSignUp();
             }
         });
 
-        Button btnNormalUser = (Button)v.findViewById(R.id.btnNormalUser);
+        Button btnNormalUser = (Button) v.findViewById(R.id.btnNormalUser);
         btnNormalUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity().getApplicationContext(),SignUpNormalUserActivity.class));
+                goToSignUp();
             }
         });
 
         builder.setView(v);
         return builder.create();
+    }
+
+    public void goToSignUp() {
+        Intent intent = new Intent(this.getActivity(), SignUpNormalUserActivity.class);
+        startActivity(intent);
     }
 }
 

@@ -14,12 +14,10 @@ import android.widget.Toast;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
-import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.UserRetrofitService;
-import com.happybot.vcoupon.util.DateTimeConverter;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 import com.squareup.picasso.Picasso;
 
@@ -98,11 +96,13 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
         providers.addAll(providerList);
         notifyDataSetChanged();
     }
+
     public class SubscribeDelegate extends ForegroundTaskDelegate<ResponseObject> {
 
         ProviderViewHolder holderSubscribe;
         int positionSubscribe;
         AppCompatActivity activitySubscribe;
+
         SubscribeDelegate(BaseActivity activity, ProviderViewHolder holder, int position) {
             super(activity);
             this.holderSubscribe = holder;

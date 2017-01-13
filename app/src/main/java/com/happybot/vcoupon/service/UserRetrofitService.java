@@ -278,4 +278,120 @@ public class UserRetrofitService extends VCouponRetrofitService {
             }
         });
     }
+
+    /**
+     * Follow promotion
+     *
+     * @param userId
+     * @param subscribeBody
+     * @param callback
+     */
+
+    public void followPromotion(@NonNull String userId, @NonNull SubscribeBody subscribeBody,
+                                final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).followPromotion(userId, subscribeBody);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Unfollow promotion
+     *
+     * @param userId
+     * @param publisherId
+     * @param callback
+     */
+
+    public void unfollowPromotion(@NonNull String userId, @NonNull String publisherId,
+                                  final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> followPromotionResponseCall
+                = ((UserInterfaceService) getService()).unfollowPromotion(userId, publisherId);
+
+        callback.setCall(followPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        followPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get search provider
+     *
+     * @param searchQuery
+     * @param page
+     * @param callback
+     */
+
+    public void getSearchProvider(@NonNull String searchQuery,
+                                  @NonNull int page,
+                                  final RetrofitServiceCallback<List<User>> callback) {
+
+        Call<UserListResponse> userListResponseCall
+                = ((UserInterfaceService) getService()).getSearchProvider(searchQuery, page);
+
+        callback.setCall(userListResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        userListResponseCall.enqueue(new TranslateRetrofitCallback<UserListResponse>() {
+            @Override
+            public void onFinish(Call<UserListResponse> call,
+                                 UserListResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUsers() == null) {
+                        callback.onPostExecute(new Vector<User>(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUsers(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
 }

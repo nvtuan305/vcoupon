@@ -21,7 +21,10 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_margin="@dimen/margin_10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_16dp"
                 android:orientation="horizontal"
                 card_view:cardCornerRadius="@dimen/card_corner_radius_primary"
                 card_view:cardElevation="7dp">
@@ -30,13 +33,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="@dimen/margin_10dp"
+                    android:paddingBottom="@dimen/padding_16dp"
+                    android:paddingLeft="@dimen/margin_10dp"
+                    android:paddingRight="@dimen/margin_10dp"
+                    android:paddingTop="@dimen/margin_16dp"
                     android:weightSum="10">
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
+                        android:padding="6dp"
+                        android:scaleType="centerInside"
                         android:src="@drawable/ic_follow_category_clothes" />
 
                     <LinearLayout
@@ -58,14 +66,16 @@
 
                         <Button
                             android:id="@+id/btnFollowClothesCategory"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:background="@drawable/selector_follow_category_button"
                             android:clickable="true"
                             android:drawableLeft="@drawable/ic_follow"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
+                            android:drawablePadding="2dp"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="18dp"
                             android:text="@string/follow_title"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -104,6 +114,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/empty_promotion"
                         android:textSize="18sp" />

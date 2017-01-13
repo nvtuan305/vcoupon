@@ -14,9 +14,9 @@ import android.widget.Button;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.dialog.RegisterSplashDialog;
-import com.happybot.vcoupon.fragment.FirstSplashFragment;
-import com.happybot.vcoupon.fragment.SecondSplashFragment;
-import com.happybot.vcoupon.fragment.ZeroSplashFragment;
+import com.happybot.vcoupon.fragment.intro.FirstSplashFragment;
+import com.happybot.vcoupon.fragment.intro.SecondSplashFragment;
+import com.happybot.vcoupon.fragment.intro.ZeroSplashFragment;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 public class IntroActivity extends FragmentActivity {

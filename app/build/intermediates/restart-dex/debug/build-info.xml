@@ -5,33 +5,40 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="90858757352733"
+    timestamp="102501019128929"
     token="4328222253214997394"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="6761" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="217" />
+        duration="0" />
     <task
         name="verifier"
-        duration="14" />
+        duration="0" />
 
     <artifact
-        location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
-        timestamp="90858757352733"
+        timestamp="102392171554437"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="102501019128929"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Dropbox\Study\HCMUS\KY 7\LTDDNC\Final project\Source\front-end\vcoupon\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

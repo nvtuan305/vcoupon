@@ -1,14 +1,14 @@
 package com.happybot.vcoupon.activity;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -20,9 +20,7 @@ import com.happybot.vcoupon.fragment.ProfileFragment;
 import com.happybot.vcoupon.fragment.ProviderAddVoucherFragment;
 import com.happybot.vcoupon.fragment.ProviderHomeFragment;
 import com.happybot.vcoupon.fragment.ProviderManagerVoucherFragment;
-import com.happybot.vcoupon.fragment.ProviderProfileFragment;
-import com.happybot.vcoupon.fragment.SearchFragment;
-import com.happybot.vcoupon.fragment.VoucherDetailFragment;
+import com.happybot.vcoupon.fragment.search.SearchFragment;
 import com.happybot.vcoupon.fragment.VoucherFragment;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
@@ -33,6 +31,7 @@ public class HomeActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private String userRole = null;
     private SharePreferenceHelper spHelper = null;
+    private TextView titleBar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,9 @@ public class HomeActivity extends BaseActivity {
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        titleBar = (TextView) mainToolbar.findViewById(R.id.titleBar);
+        setUpFontTitleBar();
 
         //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 
@@ -66,6 +68,13 @@ public class HomeActivity extends BaseActivity {
         } else {
             // initialize BottomNavigation For Normal User
             initializeBottomNavigationForNormalUser();
+        }
+    }
+
+    private void setUpFontTitleBar() {
+        if (titleBar != null) {
+            Typeface type = Typeface.createFromAsset(getAssets(), "fonts/font_axis_extra_bold.otf");
+            titleBar.setTypeface(type);
         }
     }
 

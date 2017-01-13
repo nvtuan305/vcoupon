@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.fragment.promotion.PinnedPromotionFragment;
+import com.happybot.vcoupon.fragment.promotion.ReceivedPromotionFragment;
 
 import java.util.ArrayList;
 import java.util.List;

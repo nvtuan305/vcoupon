@@ -7,11 +7,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.RelativeLayout;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.adapter.CustomSwipeAdapter;
+import com.happybot.vcoupon.fragment.category.CategoryFragment;
 
 import me.relex.circleindicator.CircleIndicator;
 

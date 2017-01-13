@@ -1,7 +1,0 @@
-#Sat Jan 14 02:11:13 ICT 2017
-base.0=E\:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_e9f9e27247bb2fd31c37198b6878c4195e729fde
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=E\:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fb37a1ff0ef2bd0249b2b4c3770ef947c96dc017\\classes.dex
-base.1=E\:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fb37a1ff0ef2bd0249b2b4c3770ef947c96dc017
-file.0=E\:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_e9f9e27247bb2fd31c37198b6878c4195e729fde\\classes.dex

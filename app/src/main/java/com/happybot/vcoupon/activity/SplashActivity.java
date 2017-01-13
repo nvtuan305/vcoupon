@@ -2,6 +2,7 @@ package com.happybot.vcoupon.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.happybot.vcoupon.R;
@@ -10,7 +11,7 @@ import com.happybot.vcoupon.util.SharePreferenceHelper;
 public class SplashActivity extends AppCompatActivity {
 
     SharePreferenceHelper spHelper = null;
-    Thread thread = null;
+    Handler mHandler = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         spHelper = new SharePreferenceHelper(this);
-        thread = new Thread(new Runnable() {
+
+        mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (spHelper != null) {
@@ -38,10 +41,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
-
-        thread.start();
-        thread.run();
+        }, 3000);
     }
 
     public void goToHome() {
@@ -64,10 +64,13 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (thread != null && thread.isAlive()) {
-            thread.stop();
+
+        // Remove all callback of handler
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
         }
 
+        spHelper = null;
         super.onDestroy();
     }
 }

@@ -152,24 +152,24 @@
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\drawable\\bg_btn_round_stroke_primary_pressed.xml"
     },
     {
-        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_icon.xml",
-        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\drawable\\com_facebook_button_icon.xml"
-    },
-    {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_btn_round_primary.xml",
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\drawable\\bg_btn_round_primary.xml"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_facebook_button_icon.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\drawable\\com_facebook_button_icon.xml"
     },
     {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
-        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_ic_visibility.xml",
-        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_ic_visibility.xml"
-    },
-    {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\banner2.png",
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\drawable\\banner2.png"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_ic_visibility.xml",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_ic_visibility.xml"
     },
     {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",

@@ -4,12 +4,12 @@
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\src\\main\\res\\drawable-xhdpi\\sp_back_1_min.jpg"
     },
     {
-        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\messenger_button_send_round_shadow.png",
-        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\drawable-xhdpi-v4\\messenger_button_send_round_shadow.png"
-    },
-    {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_star_black_36dp.png",
         "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-xhdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\messenger_button_send_round_shadow.png",
+        "source": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.18.0\\res\\drawable-xhdpi-v4\\messenger_button_send_round_shadow.png"
     },
     {
         "merged": "E:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",

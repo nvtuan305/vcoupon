@@ -17,6 +17,7 @@ import com.happybot.vcoupon.dialog.RegisterSplashDialog;
 import com.happybot.vcoupon.fragment.FirstSplashFragment;
 import com.happybot.vcoupon.fragment.SecondSplashFragment;
 import com.happybot.vcoupon.fragment.ZeroSplashFragment;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 public class IntroActivity extends FragmentActivity {
 
@@ -54,7 +55,6 @@ public class IntroActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 showRegisterSplashDialog();
-              //startActivity(new Intent(getApplicationContext(),SignInActivity.class));
             }
         });
 
@@ -62,9 +62,27 @@ public class IntroActivity extends FragmentActivity {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+                SharePreferenceHelper spHelper = new SharePreferenceHelper(getApplicationContext());
+                spHelper.saveShowIntro(true);
+
+                if (spHelper.isLoggedIn())
+                    goToHome();
+                else
+                    goToSignIn();
             }
         });
+    }
+
+    public void goToHome() {
+        Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToSignIn() {
+        Intent intent = new Intent(IntroActivity.this, SignInActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void showRegisterSplashDialog() {

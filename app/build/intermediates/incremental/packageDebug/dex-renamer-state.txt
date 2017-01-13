@@ -1,4 +1,4 @@
-#Fri Jan 13 00:44:44 ICT 2017
+#Fri Jan 13 21:51:44 ICT 2017
 base.0=E\:\\Dropbox\\Study\\HCMUS\\KY 7\\LTDDNC\\Final project\\Source\\front-end\\vcoupon\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_e9f9e27247bb2fd31c37198b6878c4195e729fde
 renamed.1=classes.dex
 renamed.0=classes2.dex

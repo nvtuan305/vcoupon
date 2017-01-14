@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.intro;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,7 @@ public class FirstSplashFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.fragment_splash_first, container, false);
+                R.layout.fragment_splash_page_2, container, false);
 
         return rootView;
     }

@@ -13,9 +13,12 @@ import com.happybot.vcoupon.model.retrofit.PromotionResponse;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.model.SubscribeBody;
+import com.happybot.vcoupon.model.User;
+import com.happybot.vcoupon.model.retrofit.LoginBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
+import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -60,6 +63,47 @@ public class UserRetrofitService extends VCouponRetrofitService {
         }
 
         return mService;
+    }
+
+    /**
+     * Sign in account
+     *
+     * @param phoneNumber: Phone number to login
+     * @param password:    Password to login
+     * @param callback:    Listener for response data
+     */
+    public void signIn(String phoneNumber,
+                       String password,
+                       final RetrofitServiceCallback<User> callback) {
+
+        Call<UserResponse> signInCall = ((UserInterfaceService) getService())
+                .signIn(new LoginBody(phoneNumber, password));
+
+        callback.setCall(signInCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        signInCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call, UserResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
     }
 
     /**

@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">VCoupon</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="main_toolbar_title">VCOUPON</string>
     <string name="category1">Quanh đây</string>
     <string name="category2">Ăn uống</string>
@@ -24,13 +20,20 @@
     <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
     <string name="app_id">225931637863625</string>
     <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="et_phone_number">Số điện thoại</string>
+    <string name="et_password">Mật khẩu</string>
+    <string name="login_now">Đăng nhập ngay</string>
+    <string name="sign_up_now">Đăng ký tài khoản</string>
+    <string name="copyright">Copyright by HappyBot © 2016</string>
     <string name="follow_title">Theo dõi</string>
     <string name="unfollow_title">Bỏ theo dõi</string>
     <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
     <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
     <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
-    <string name="search_title">Tap to Search</string>
+    <string name="sign_in_label">Đăng nhập</string>
+    <string name="sign_up_label">Đăng ký tài khoản</string>
+    <string name="search_title">Nhập để tìm kiếm</string>
     <string name="search_not_found">Không tìm thấy, vui lòng thử từ khóa khác</string>
-    <string name="search_tab_title_1">Provider</string>
-    <string name="search_tab_title_2">Promotion</string>
+    <string name="search_tab_title_1">Nhà khuyến mại</string>
+    <string name="search_tab_title_2">Khuyến mại</string>
 </resources>

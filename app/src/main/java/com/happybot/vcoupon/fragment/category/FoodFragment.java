@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.category;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -32,13 +32,14 @@ import java.util.List;
  * Created by Nguyễn Phương Tuấn on 08-Dec-16.
  */
 
-public class TechnologyFragment extends Fragment {
-    private static final String TECHNOLOGY_CATEGORY_ID = "5842fbab0f0bc105b77eb750";
+public class FoodFragment extends Fragment {
+
+    private static final String FOOD_CATEGORY_ID = "5842fbab0f0bc105b77eb74e";
     private boolean followedCategory;
 
-    private SwipeRefreshLayout swipeRefreshLayoutTechnology = null;
-    private RecyclerView recyclerViewTechnologyPromotion = null;
-    private LinearLayout emptyLayoutTechnology = null;
+    private SwipeRefreshLayout swipeRefreshLayoutFood = null;
+    private RecyclerView recyclerViewFoodPromotion = null;
+    private LinearLayout emptyLayoutFood = null;
     private View progressDialog = null;
 
     private LinearLayoutManager mLinearLayoutManager = null;
@@ -47,69 +48,73 @@ public class TechnologyFragment extends Fragment {
     private PromotionAdapter adapter = new PromotionAdapter();
 
     // Delegate for api
-    private TechnologyFragment.GetTechnologyPromotionsDelegate getTechnologyPromotionsDelegate = null;
+    private FoodFragment.GetFoodPromotionsDelegate getFoodPromotionsDelegate = null;
     private int currentPage = 1;
 
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
-    private Button btnFollowTechnologyCategory;
 
-    public TechnologyFragment() {
+    private Button btnFollowFoodCategory;
+
+    public FoodFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_technology, container, false);
 
-        swipeRefreshLayoutTechnology = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutTechnology);
-        recyclerViewTechnologyPromotion = (RecyclerView) view.findViewById(R.id.recyclerViewTechnologyPromotion);
-        recyclerViewTechnologyPromotion.setAdapter(adapter);
-        emptyLayoutTechnology = (LinearLayout) view.findViewById(R.id.emptyLayoutTechnology);
+        View view = inflater.inflate(R.layout.fragment_food, container, false);
+
+        swipeRefreshLayoutFood = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutFood);
+        recyclerViewFoodPromotion = (RecyclerView) view.findViewById(R.id.recyclerViewFoodPromotion);
+        recyclerViewFoodPromotion.setNestedScrollingEnabled(false);
+        recyclerViewFoodPromotion.setAdapter(adapter);
+        emptyLayoutFood = (LinearLayout) view.findViewById(R.id.emptyLayoutFood);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();
-        btnFollowTechnologyCategory = (Button) view.findViewById(R.id.btnFollowTechnologyCategory);
+        btnFollowFoodCategory = (Button) view.findViewById(R.id.btnFollowFoodCategory);
         followedCategory = false;
         if (followedCategory) {
-            btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+            btnFollowFoodCategory.setText(R.string.unfollow_title);
         } else {
-            btnFollowTechnologyCategory.setText(R.string.follow_title);
+            btnFollowFoodCategory.setText(R.string.follow_title);
         }
-
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         //Subscribe category
-        btnFollowTechnologyCategory.setOnClickListener(new View.OnClickListener() {
+        btnFollowFoodCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharePreferenceHelper helper = new SharePreferenceHelper(v.getContext());
                 UserRetrofitService userRetrofitService = new UserRetrofitService(v.getContext());
 
                 if (followedCategory) {
-                    userRetrofitService.unfollowPromotion(helper.getUserId(), TECHNOLOGY_CATEGORY_ID, new TechnologyFragment.SubscribeDelegate((BaseActivity) v.getContext()));
+                    userRetrofitService.unfollowPromotion(helper.getUserId(), FOOD_CATEGORY_ID, new SubscribeDelegate((BaseActivity) v.getContext()));
                 } else {
-                    SubscribeBody subscribeBody = new SubscribeBody(TECHNOLOGY_CATEGORY_ID, "CATEGORY");
-                    userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new TechnologyFragment.SubscribeDelegate((BaseActivity) v.getContext()));
+                    SubscribeBody subscribeBody = new SubscribeBody(FOOD_CATEGORY_ID, "CATEGORY");
+                    userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new SubscribeDelegate((BaseActivity) v.getContext()));
                 }
             }
         });
+
         // Initialize recycle view
-        recyclerViewTechnologyPromotion.setHasFixedSize(true);
+        recyclerViewFoodPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
-        recyclerViewTechnologyPromotion.setLayoutManager(mLinearLayoutManager);
+        recyclerViewFoodPromotion.setLayoutManager(mLinearLayoutManager);
 
         activity = (BaseActivity) getActivity();
-        getTechnologyPromotionsDelegate = new GetTechnologyPromotionsDelegate(activity);
+        getFoodPromotionsDelegate = new GetFoodPromotionsDelegate(activity);
 
 
-        // Load Technology promotion
-        loadTechnologyPromotion();
+        // Load food promotion
+        loadFoodPromotion();
 
         // Initialize swipe refresh Layout
-        swipeRefreshLayoutTechnology.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        swipeRefreshLayoutFood.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshData();
@@ -117,7 +122,7 @@ public class TechnologyFragment extends Fragment {
         });
 
         // Listener for load more data
-        recyclerViewTechnologyPromotion.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        recyclerViewFoodPromotion.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 // Scroll down
@@ -130,7 +135,7 @@ public class TechnologyFragment extends Fragment {
                         if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
                             canScroll = false;
                             Log.d("KKKK", "Last Item Wow !");
-                            loadTechnologyPromotion();
+                            loadFoodPromotion();
                         }
                     }
                 }
@@ -144,27 +149,27 @@ public class TechnologyFragment extends Fragment {
         currentPage = 1;
 
         // Refresh data
-        loadTechnologyPromotion();
+        loadFoodPromotion();
     }
 
-    public void loadTechnologyPromotion() {
+    public void loadFoodPromotion() {
 
         PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(mContext);
-        promotionRetrofitService.getPromotionByCategory(TECHNOLOGY_CATEGORY_ID, currentPage, getTechnologyPromotionsDelegate);
+        promotionRetrofitService.getPromotionByCategory(FOOD_CATEGORY_ID, currentPage, getFoodPromotionsDelegate);
 
         // Update next page
         currentPage++;
     }
 
-    private class GetTechnologyPromotionsDelegate extends ForegroundTaskDelegate<List<Promotion>> {
+    private class GetFoodPromotionsDelegate extends ForegroundTaskDelegate<List<Promotion>> {
 
-        GetTechnologyPromotionsDelegate(BaseActivity activity) {
+        GetFoodPromotionsDelegate(BaseActivity activity) {
             super(activity);
         }
 
         @Override
         public void onPreExecute() {
-            if (!swipeRefreshLayoutTechnology.isRefreshing()) {
+            if (!swipeRefreshLayoutFood.isRefreshing()) {
                 progressDialog.setVisibility(View.VISIBLE);
             }
         }
@@ -177,9 +182,9 @@ public class TechnologyFragment extends Fragment {
             if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
 
                 // Reset data when swipe to refresh data
-                if (swipeRefreshLayoutTechnology.isRefreshing()) {
+                if (swipeRefreshLayoutFood.isRefreshing()) {
                     adapter.updateData(promotions);
-                    swipeRefreshLayoutTechnology.setRefreshing(false);
+                    swipeRefreshLayoutFood.setRefreshing(false);
 
                 } else {
                     adapter.addData(promotions);
@@ -203,12 +208,12 @@ public class TechnologyFragment extends Fragment {
     public void showView() {
 
         if (adapter.getItemCount() <= 0) {
-            recyclerViewTechnologyPromotion.setVisibility(View.GONE);
-            emptyLayoutTechnology.setVisibility(View.VISIBLE);
+            recyclerViewFoodPromotion.setVisibility(View.GONE);
+            emptyLayoutFood.setVisibility(View.VISIBLE);
 
         } else {
-            recyclerViewTechnologyPromotion.setVisibility(View.VISIBLE);
-            emptyLayoutTechnology.setVisibility(View.GONE);
+            recyclerViewFoodPromotion.setVisibility(View.VISIBLE);
+            emptyLayoutFood.setVisibility(View.GONE);
         }
     }
 
@@ -228,19 +233,19 @@ public class TechnologyFragment extends Fragment {
             if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
                 Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
-                    btnFollowTechnologyCategory.setText(R.string.follow_title);
+                    btnFollowFoodCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
-                    btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+                    btnFollowFoodCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }
             } else {
                 Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
-                    btnFollowTechnologyCategory.setText(R.string.follow_title);
+                    btnFollowFoodCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
-                    btnFollowTechnologyCategory.setText(R.string.unfollow_title);
+                    btnFollowFoodCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }
             }

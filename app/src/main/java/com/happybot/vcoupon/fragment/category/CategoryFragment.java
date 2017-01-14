@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.category;
 
 import android.graphics.Color;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.search;
 
 import android.content.Context;
 import android.os.Bundle;

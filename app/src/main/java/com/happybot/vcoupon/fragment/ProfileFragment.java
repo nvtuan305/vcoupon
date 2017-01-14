@@ -87,8 +87,6 @@ public class ProfileFragment extends Fragment {
     public void loadUserInfo() {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        helper.initializeSampleAuth();
-
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
         userRetrofitService.getUserInfo(helper.getUserId(), getUserInfoDelegate);
     }

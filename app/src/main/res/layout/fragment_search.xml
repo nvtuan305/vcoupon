@@ -10,42 +10,46 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/main_toolbar_search_view"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-
-            <EditText
-                android:id="@+id/edittext_search"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="8"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/ic_dock_search_whiteout"
-                android:drawablePadding="5dp"
-                android:hint="@string/search_title"
-                android:imeOptions="actionSearch"
-                android:inputType="textFilter"
-                android:maxLines="1"
-                android:paddingLeft="5dp"
-                android:textColorHint="@color/colorPrimaryText"
-                android:textSize="22dp" />
-        </LinearLayout>
-
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:id="@+id/main_toolbar_search_view"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_16dp"
+                android:paddingRight="@dimen/padding_16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_dock_search_whiteout" />
+
+                <EditText
+                    android:id="@+id/edittext_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/search_title"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/search_tabs"
+                style="@style/tabCustomStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabIndicatorColor="@color/colorPrimary"
-                app:tabIndicatorHeight="4dp"
-                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabMinWidth="90dp"
+                app:tabMode="fixed"
                 app:tabTextColor="@color/colorPrimaryText" />
         </android.support.design.widget.AppBarLayout>
 
@@ -53,7 +57,7 @@
             android:id="@+id/search_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

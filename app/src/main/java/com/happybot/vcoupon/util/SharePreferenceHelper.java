@@ -7,6 +7,8 @@ public class SharePreferenceHelper {
     private static final String SPName = "VCouponSharePreference";
     private static final String ACCESS_TOKEN = "access_token";
     private static final String USER_ID = "user_id";
+    private static final String SHOW_INTRO = "show_intro";
+    private static final String USER_ROLE = "user_role";
 
 
     private SharedPreferences sharedPreferences = null;
@@ -15,11 +17,6 @@ public class SharePreferenceHelper {
     public SharePreferenceHelper(Context context) {
         sharedPreferences = context.getSharedPreferences(SPName, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-    }
-
-    public void initializeSampleAuth() {
-        saveUserId("5867d9c050fb07001111397b");
-        saveAccessToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ODY3ZDljMDUwZmIwNzAwMTExMTM5N2IiLCJwaG9uZU51bWJlciI6IjE5OSIsImlhdCI6MTQ4MzI1NjE3NiwiZXhwIjoxNDkxODk2MTc2fQ.ZtupyQcoUApFF3foGegT1l_CtPZX81vFJZYD5qZT3kw");
     }
 
     public void saveAccessToken(String accessToken) {
@@ -48,5 +45,37 @@ public class SharePreferenceHelper {
             return sharedPreferences.getString(USER_ID, "");
         }
         return "";
+    }
+
+    public void saveShowIntro(boolean isShown) {
+        if (editor != null) {
+            editor.putBoolean(SHOW_INTRO, isShown);
+            editor.commit();
+        }
+    }
+
+    public boolean getShowIntro() {
+        return sharedPreferences != null && sharedPreferences.getBoolean(SHOW_INTRO, false);
+    }
+
+    public boolean isLoggedIn() {
+        String accessToken = getAccessToken();
+        String userId = getUserId();
+
+        return !accessToken.equals("") && !userId.equals("");
+    }
+
+    public void saveUserRole(String role) {
+        if (editor != null) {
+            editor.putString(USER_ROLE, role);
+            editor.commit();
+        }
+    }
+
+    public String getUserRole() {
+        if (sharedPreferences != null) {
+            return sharedPreferences.getString(USER_ROLE, USER_ROLE);
+        }
+        return USER_ROLE;
     }
 }

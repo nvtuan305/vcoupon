@@ -1,119 +1,76 @@
 package com.happybot.vcoupon.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.Button;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import com.happybot.vcoupon.R;
-import com.happybot.vcoupon.dialog.RegisterSplashDialog;
-import com.happybot.vcoupon.fragment.FirstSplashFragment;
-import com.happybot.vcoupon.fragment.SecondSplashFragment;
-import com.happybot.vcoupon.fragment.ZeroSplashFragment;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
 
-public class SplashActivity extends FragmentActivity {
+public class SplashActivity extends AppCompatActivity {
 
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
-    private static final int NUM_PAGES = 3;
-
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
-    private ViewPager mPager;
-
-    /**
-     * The pager adapter, which provides the pages to the view pager widget.
-     */
-    private PagerAdapter mPagerAdapter;
-
-    Button btnSignup;
-    Button btnSignin;
+    SharePreferenceHelper spHelper = null;
+    Handler mHandler = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new SplashAdapter(getSupportFragmentManager());
-        mPager.setAdapter(mPagerAdapter);
+        spHelper = new SharePreferenceHelper(this);
 
-        btnSignup = (Button) findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                showRegisterSplashDialog();
-              //startActivity(new Intent(getApplicationContext(),SignInActivity.class));
-            }
-        });
+            public void run() {
+                if (spHelper != null) {
+                    boolean isShownIntro = spHelper.getShowIntro();
 
-        btnSignin = (Button) findViewById(R.id.btnSignin);
-        btnSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+                    // Check show intro
+                    if (isShownIntro) {
+
+                        // Check logged in
+                        if (spHelper.isLoggedIn())
+                            goToHome();
+                        else
+                            goToSignIn();
+
+                    } else {
+                        goToIntro();
+                    }
+                }
             }
-        });
+        }, 3000);
     }
 
-    public void showRegisterSplashDialog() {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment dialog = new RegisterSplashDialog();
-        dialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+    public void goToHome() {
+        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToIntro() {
+        Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToSignIn() {
+        Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
-    public void onBackPressed() {
-        if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-        }
-    }
+    protected void onDestroy() {
 
-    /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
-     * sequence.
-     */
-    private class SplashAdapter extends FragmentStatePagerAdapter {
-        public SplashAdapter(FragmentManager fm) {
-            super(fm);
+        // Remove all callback of handler
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 1: {
-                    return new FirstSplashFragment();
-                }
-                case 2: {
-                    return new SecondSplashFragment();
-                }
-                default: {
-                    return new ZeroSplashFragment();
-                }
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
+        spHelper = null;
+        super.onDestroy();
     }
 }
-

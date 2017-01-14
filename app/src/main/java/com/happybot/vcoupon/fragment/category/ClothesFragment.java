@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.category;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -66,6 +66,7 @@ public class ClothesFragment extends Fragment {
         swipeRefreshLayoutClothes = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayoutClothes);
         recyclerViewClothesPromotion = (RecyclerView) view.findViewById(R.id.recyclerViewClothesPromotion);
         recyclerViewClothesPromotion.setAdapter(adapter);
+        recyclerViewClothesPromotion.setNestedScrollingEnabled(false);
         emptyLayoutClothes = (LinearLayout) view.findViewById(R.id.emptyLayoutClothes);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();

@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.intro;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,14 +11,15 @@ import com.happybot.vcoupon.R;
 /**
  * Created by Admin on 12/15/2016.
  */
-public class SecondSplashFragment extends Fragment {
+public class ZeroSplashFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.fragment_splash_second, container, false);
+                R.layout.fragment_splash_page_1, container, false);
 
         return rootView;
     }
 }
+

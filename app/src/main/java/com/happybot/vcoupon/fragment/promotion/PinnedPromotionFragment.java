@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.promotion;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,54 +12,52 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
-import com.happybot.vcoupon.adapter.ProviderAdapter;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.Promotion;
-import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 import java.util.List;
 
-/**
- * Created by Nguyễn Phương Tuấn on 11-Jan-17.
- */
+public class PinnedPromotionFragment extends Fragment {
 
-public class SearchProviderFragment extends Fragment {
-
-    private SwipeRefreshLayout srSearchProviderParentLayout = null;
-    private RecyclerView rcvSearchProvider = null;
-    private LinearLayout lnSearchProviderEmptyLayout = null;
+    private SwipeRefreshLayout srParentLayout = null;
+    private RecyclerView rcvPinnedPromotion = null;
+    private LinearLayout emptyLayout = null;
     private View progressDialog = null;
 
     private LinearLayoutManager mLinearLayoutManager = null;
     private BaseActivity activity = null;
     private Context mContext = null;
-    private ProviderAdapter adapter = null;
+    private PromotionAdapter adapter = null;
 
     // Delegate for api
-    private GetSearchProviderTripDelegate getSearchProviderTripDelegate = null;
+    private GetPinnedTripDelegate getPinnedTripDelegate = null;
     private int currentPage = 1;
-    private String searchQuery = "";
 
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
-    public SearchProviderFragment() {
+
+    public PinnedPromotionFragment() {
+        // TODO here
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search_provider, container, false);
-        srSearchProviderParentLayout = (SwipeRefreshLayout) view.findViewById(R.id.srSearchProviderParentLayout);
-        rcvSearchProvider = (RecyclerView) view.findViewById(R.id.rcvSearchProvider);
-        lnSearchProviderEmptyLayout = (LinearLayout) view.findViewById(R.id.lnSearchProviderEmptyLayout);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_pinned, container, false);
+        srParentLayout = (SwipeRefreshLayout) view.findViewById(R.id.srParentLayout);
+        rcvPinnedPromotion = (RecyclerView) view.findViewById(R.id.rcvPinnedPromotion);
+        emptyLayout = (LinearLayout) view.findViewById(R.id.lnEmptyLayout);
         progressDialog = view.findViewById(R.id.progressDialog);
         mContext = view.getContext();
+
         return view;
     }
 
@@ -68,19 +66,18 @@ public class SearchProviderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Initialize recycle view
-        rcvSearchProvider.setHasFixedSize(true);
+        rcvPinnedPromotion.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
-        rcvSearchProvider.setLayoutManager(mLinearLayoutManager);
+        rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);
 
         activity = (BaseActivity) getActivity();
-        getSearchProviderTripDelegate = new SearchProviderFragment.GetSearchProviderTripDelegate(activity);
+        getPinnedTripDelegate = new GetPinnedTripDelegate(activity);
 
+        // Load pinned promotion
+        loadPinnedPromotion();
 
-        // Load SearchProvider
-        //loadSearchProvider();
-
-        // Initialize srSearchProviderParentLayout
-        srSearchProviderParentLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        // Initialize srParentLayout
+        srParentLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshData();
@@ -88,7 +85,7 @@ public class SearchProviderFragment extends Fragment {
         });
 
         // Listener for load more data
-        rcvSearchProvider.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rcvPinnedPromotion.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 // Scroll down
@@ -101,7 +98,7 @@ public class SearchProviderFragment extends Fragment {
                         if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
                             canScroll = false;
                             Log.d("KKKK", "Last Item Wow !");
-                            loadSearchProvider();
+                            loadPinnedPromotion();
                         }
                     }
                 }
@@ -117,54 +114,57 @@ public class SearchProviderFragment extends Fragment {
         currentPage = 1;
 
         // Refresh data
-        loadSearchProvider();
+        loadPinnedPromotion();
     }
 
-    public void loadSearchProvider() {
+    public void loadPinnedPromotion() {
+        // Initialize auth info for testing
+        SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
+        //helper.initializeSampleAuth();
 
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
-        userRetrofitService.getSearchProvider(searchQuery, currentPage, getSearchProviderTripDelegate);
+        userRetrofitService.getPinnedPromotion(helper.getUserId(), currentPage, getPinnedTripDelegate);
 
         // Update next page
         currentPage++;
     }
 
-    private class GetSearchProviderTripDelegate extends ForegroundTaskDelegate<List<User>> {
+    private class GetPinnedTripDelegate extends ForegroundTaskDelegate<List<Promotion>> {
 
-        GetSearchProviderTripDelegate(BaseActivity activity) {
+        GetPinnedTripDelegate(BaseActivity activity) {
             super(activity);
         }
 
         @Override
         public void onPreExecute() {
-            if (!srSearchProviderParentLayout.isRefreshing()) {
+            if (!srParentLayout.isRefreshing()) {
                 progressDialog.setVisibility(View.VISIBLE);
             }
         }
 
         @Override
-        public void onPostExecute(List<User> providers, Throwable throwable) {
-            super.onPostExecute(providers, throwable);
+        public void onPostExecute(List<Promotion> promotions, Throwable throwable) {
+            super.onPostExecute(promotions, throwable);
 
             if (adapter == null) {
-                adapter = new ProviderAdapter();
-                rcvSearchProvider.setAdapter(adapter);
+                adapter = new PromotionAdapter();
+                rcvPinnedPromotion.setAdapter(adapter);
             }
 
             // If no error occur, server response data, fragment is not destroyed
-            if (throwable == null && providers != null && shouldHandleResultForActivity()) {
+            if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
 
                 // Reset data when swipe to refresh data
-                if (srSearchProviderParentLayout.isRefreshing()) {
-                    adapter.updateData(providers);
-                    srSearchProviderParentLayout.setRefreshing(false);
+                if (srParentLayout.isRefreshing()) {
+                    adapter.updateData(promotions);
+                    srParentLayout.setRefreshing(false);
 
                 } else {
-                    adapter.addData(providers);
+                    adapter.addData(promotions);
                 }
 
                 // Disable swipe down to load more if has no more promotion
-                canScroll = providers.size() > 0;
+                canScroll = promotions.size() > 0;
             }
 
             // Hide progress dialog
@@ -181,17 +181,12 @@ public class SearchProviderFragment extends Fragment {
     public void showView() {
 
         if (adapter.getItemCount() <= 0) {
-            rcvSearchProvider.setVisibility(View.GONE);
-            lnSearchProviderEmptyLayout.setVisibility(View.VISIBLE);
+            rcvPinnedPromotion.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.VISIBLE);
 
         } else {
-            rcvSearchProvider.setVisibility(View.VISIBLE);
-            lnSearchProviderEmptyLayout.setVisibility(View.GONE);
+            rcvPinnedPromotion.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.GONE);
         }
-    }
-    public void updateSearch(String searchQuery) {
-        currentPage = 1;
-        this.searchQuery = searchQuery;
-        loadSearchProvider();
     }
 }

@@ -17,7 +17,7 @@ public class DateTimeConverter {
      * OR "dd/mm/yyyy" when the future date smaller than now
      */
     public static String getRemainTime(long endTime) {
-        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
         long currentTime = calendar.getTimeInMillis() / 1000;
         long distance = endTime - currentTime;
 
@@ -56,7 +56,7 @@ public class DateTimeConverter {
      * @return long
      */
     public static long getCurrentDateInMillis() {
-        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis() / 1000;
     }
 }

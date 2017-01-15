@@ -1,11 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="ADD VOUCHER"/>
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:weightSum="40">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_select_photo" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:gravity="center|top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/padding_6dp"
+                        android:text="@string/provider_add_promotion_choose_image"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="11">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/provider_add_promotion_title"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/provider_add_promotion_category"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="16sp" />
+
+                        <Spinner
+                            android:id="@+id/provider_add_promotion_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/provider_add_promotion_condition"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_amountLimit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/provider_add_promotion_amountLimit"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_discount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/provider_add_promotion_discount"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_startTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/provider_add_promotion_startTime"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_endTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/provider_add_promotion_endTime"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
+
+                    <Button
+                        android:id="@+id/btn_provider_add_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/button_signin"
+                        android:text="@string/provider_add_promotion"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

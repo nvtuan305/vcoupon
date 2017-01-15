@@ -36,4 +36,21 @@
     <string name="search_not_found">Không tìm thấy, vui lòng thử từ khóa khác</string>
     <string name="search_tab_title_1">Nhà khuyến mại</string>
     <string name="search_tab_title_2">Khuyến mại</string>
+    <string name="provider_add_promotion_choose_image">Chọn ảnh</string>
+    <string name="provider_add_promotion_title">Tiêu đề mã giảm giá</string>
+    <string name="provider_add_promotion_category">Category:</string>
+    <string name="provider_add_promotion_condition">Điều kiện áp dụng</string>
+    <string name="provider_add_promotion_amountLimit">Số lượng tối đa</string>
+    <string name="provider_add_promotion_discount">Mức giảm % hoặc tiền giảm</string>
+    <string name="provider_add_promotion">Đăng mã giảm giá</string>
+    <string name="provider_add_promotion_startTime">Thời gian bắt đầu</string>
+    <string name="provider_add_promotion_endTime">Thời gian kết thúc</string>
+    <string name="provider_add_promotion_choose_image_eror">Bạn chưa chọn ảnh</string>
+    <string name="provider_add_promotion_title_eror">Bạn chưa nhập tiêu đề mã giảm giá</string>
+    <string name="provider_add_promotion_category_eror">Bạn chưa chọn category</string>
+    <string name="provider_add_promotion_condition_eror">Bạn chưa nhập điều kiện áp dụng</string>
+    <string name="provider_add_promotion_amountLimit_eror">Bạn chưa nhập số lượng tối đa</string>
+    <string name="provider_add_promotion_discount_eror">Bạn chưa nhập mức giảm % hoặc tiền giảm</string>
+    <string name="provider_add_promotion_startTime_eror">Bạn chưa nhập thời gian bắt đầu</string>
+    <string name="provider_add_promotion_endTime_eror">Bạn chưa nhập thời gian kết thúc</string>
 </resources>

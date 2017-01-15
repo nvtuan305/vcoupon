@@ -1,10 +1,10 @@
 package com.happybot.vcoupon.model.retrofit;
 
-public class LoginBody {
+public class LoginRequestBody {
     private String phoneNumber;
     private String password;
 
-    public LoginBody(String phoneNumber, String password) {
+    public LoginRequestBody(String phoneNumber, String password) {
         this.phoneNumber = phoneNumber;
         this.password = password;
     }

@@ -3,17 +3,13 @@ package com.happybot.vcoupon.service.retrofitinterface;
 import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.UserRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
-import com.happybot.vcoupon.model.retrofit.PromotionResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
-import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
-import com.happybot.vcoupon.model.retrofit.LoginBody;
-import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
-import com.happybot.vcoupon.model.retrofit.ResponseObject;
+import com.happybot.vcoupon.model.retrofit.LoginRequestBody;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
-import com.happybot.vcoupon.model.retrofit.UserResponse;
+import com.happybot.vcoupon.model.retrofit.VoucherListResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,12 +18,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -109,7 +101,7 @@ public interface UserInterfaceService {
      * @return UserResponse
      */
     @POST("users/sign-in")
-    Call<UserResponse> signIn(@Body LoginBody loginBody);
+    Call<UserResponse> signIn(@Body LoginRequestBody loginBody);
 
     /**
      * Sign in with facebook
@@ -134,6 +126,12 @@ public interface UserInterfaceService {
     @FormUrlEncoded
     @POST("users/{userId}/change-phone-number")
     Call<UserResponse> updatePhoneNumber(@Path("userId") String userId, @Field("phoneNumber") String phoneNumber);
+
+    /**
+     * Get received voucher of user page by page
+     */
+    @GET("users/{userId}/vouchers")
+    Call<VoucherListResponse> getReceivedVoucher(@Path("userId") String userId, @Query("page") int page);
 
     @POST("users/{userId}/follows")
     Call<ResponseObject> followPromotion(@Path("userId") String userId, @Body SubscribeBody subscribeBody);

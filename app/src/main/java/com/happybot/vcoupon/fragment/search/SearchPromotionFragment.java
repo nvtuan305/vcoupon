@@ -78,7 +78,7 @@ public class SearchPromotionFragment extends Fragment {
 
 
         // Load pinned promotion
-        //loadPinnedPromotion();
+        //loadReceivedVoucher();
 
         // Initialize srParentLayout
         srSearchPromotionParentLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

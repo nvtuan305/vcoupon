@@ -58,12 +58,18 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
                 .into(holder.imvCoverPhoto);
 
         holder.tvTitle.setText(promotion.getTitle());
-        holder.tvDiscount.setText("-" + promotion.getDiscount() + promotion.getDiscountType());
         holder.tvCommentCount.setText(promotion.getCommentCount() + "");
         holder.tvPinnedCount.setText(promotion.getPinnedCount() + "");
 
         String remainTime = DateTimeConverter.getRemainTime(promotion.getEndDate());
         holder.tvRemainTime.setText(remainTime);
+
+        // Set discount type
+        String discountType = promotion.getDiscountType();
+        if (discountType.equals("VND"))
+            holder.tvDiscount.setText(promotion.getDiscount() + "k");
+        else
+            holder.tvDiscount.setText("-" + promotion.getDiscount() + discountType);
 
         // Load provider info
         Picasso.with(mContext)
@@ -72,7 +78,7 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
                 .centerCrop()
                 .into(holder.imvProviderAvatar);
         holder.tvProviderName.setText(provider.getName());
-        holder.tvProviderAddress.setText("100 Điện Biên Phủ, P.1, Q.1");
+        holder.tvProviderAddress.setText(provider.getAddress());
 
         // Disable or enabled get voucher button
         if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate()) {

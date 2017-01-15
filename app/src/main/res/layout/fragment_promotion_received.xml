@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/srSearchPromotionParentLayout"
+    android:id="@+id/srParentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundPrimary"
@@ -12,14 +12,14 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcvSearchPromotion"
+            android:id="@+id/rcvReceivedPromotion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/margin_8dp"
-            android:paddingTop="@dimen/margin_8dp" />
+            android:paddingBottom="@dimen/margin_10dp"
+            android:paddingTop="2dp" />
 
         <LinearLayout
-            android:id="@+id/lnSearchPromotionEmptyLayout"
+            android:id="@+id/lnEmptyLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/search_not_found"
+                android:text="@string/empty_received_promotion_message"
                 android:textSize="18sp" />
 
         </LinearLayout>

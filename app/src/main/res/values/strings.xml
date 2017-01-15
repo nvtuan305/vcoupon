@@ -46,4 +46,6 @@
     <string name="login_with_facebook">Đăng nhập bằng Facebook</string>
     <string name="continue_str">Tiếp tục</string>
     <string name="no_phone_number_info">Bạn cần cung câp số điện thoại để sử dụng ứng dụng. Nhập số điện thoại của bạn và nhấn tiếp tục nhé :)</string>
+    <string name="empty_received_promotion_message">Bạn chưa nhận mã khuyến mại nào.</string>
+    <string name="voucher_code">ABCXY</string>
 </resources>

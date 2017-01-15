@@ -16,12 +16,15 @@ public abstract class TranslateRetrofitCallback<T extends ResponseObject> implem
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
+
         // Catch exception for response
         BaseException exception = TranslateRetrofitException.translateServiceException(call, response);
 
         // Finish request
+        if (exception == null)
+            response.body().setStatusCode(response.code());
+
         onFinish(call, response.body(), exception);
-        //response.raw().close();
     }
 
     @Override

@@ -18,9 +18,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        // Initialize SharePreferenceHelper
         spHelper = new SharePreferenceHelper(this);
 
+        // Initialize handler
         mHandler = new Handler();
+
+        // Wait 3 seconds then go to the activity
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -64,7 +68,6 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-
         // Remove all callback of handler
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);

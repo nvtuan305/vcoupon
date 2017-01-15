@@ -1,4 +1,12 @@
 <resources>
+    <!--Facebook development config - start-->
+    <string name="app_id">225931637863625</string>
+    <string name="facebook_app_id">1538906186136114</string>
+    <string name="fb_login_protocol_scheme">fb1538906186136114</string>
+    <string name="development_key_hash">NEe8GO67D17rgYGuXhgVqPLo1MQ=</string>
+    <!--Hash key: g3PojjvnyScSZnE6ZnvuSdIVYDM=-->
+    <!--Facebook development config - end-->
+
     <string name="app_name">VCoupon</string>
     <string name="main_toolbar_title">VCOUPON</string>
     <string name="category1">Quanh đây</string>
@@ -18,7 +26,6 @@
     <string name="promotion_title">Day la tieu de cua mot chuong trinh khuyen mai</string>
     <string name="btn_get_promotion_title">Nhận mã</string>
     <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
-    <string name="app_id">225931637863625</string>
     <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
     <string name="et_phone_number">Số điện thoại</string>
     <string name="et_password">Mật khẩu</string>
@@ -36,4 +43,7 @@
     <string name="search_not_found">Không tìm thấy, vui lòng thử từ khóa khác</string>
     <string name="search_tab_title_1">Nhà khuyến mại</string>
     <string name="search_tab_title_2">Khuyến mại</string>
+    <string name="login_with_facebook">Đăng nhập bằng Facebook</string>
+    <string name="continue_str">Tiếp tục</string>
+    <string name="no_phone_number_info">Bạn cần cung câp số điện thoại để sử dụng ứng dụng. Nhập số điện thoại của bạn và nhấn tiếp tục nhé :)</string>
 </resources>

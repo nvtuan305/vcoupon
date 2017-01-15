@@ -91,7 +91,7 @@ public class VCouponRetrofitService {
         String token = spHelper.getAccessToken();
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new AddHeaderInterceptor(spHelper.getUserId(), spHelper.getAccessToken()))
+                .addNetworkInterceptor(new AddHeaderInterceptor(spHelper.getAccessToken()))
                 .addInterceptor(defaultLogging)
                 .addInterceptor(new RetryInterceptor())
                 .readTimeout(readTimeOut, TimeUnit.SECONDS)

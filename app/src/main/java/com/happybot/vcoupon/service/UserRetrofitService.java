@@ -107,6 +107,80 @@ public class UserRetrofitService extends VCouponRetrofitService {
     }
 
     /**
+     * Sign in with facebook
+     * User send user's facebook access token to server, server return user info with status code:
+     * 200 - This user has logged in before
+     * 202 - The first time user login
+     */
+    public void signInWithFacebook(String fbAccessToken,
+                                   final RetrofitServiceCallback<User> callback) {
+
+        Call<UserResponse> signInCall = ((UserInterfaceService) getService())
+                .signInWithFacebook(fbAccessToken);
+
+        callback.setCall(signInCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        signInCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call, UserResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Update user phone number
+     */
+    public void updatePhoneNumber(String userId, String newPhoneNumber,
+                                  final RetrofitServiceCallback<User> callback) {
+
+        Call<UserResponse> signInCall = ((UserInterfaceService) getService())
+                .updatePhoneNumber(userId, newPhoneNumber);
+
+        callback.setCall(signInCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        signInCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call, UserResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
      * Get pinned promotion
      *
      * @param userId
@@ -248,7 +322,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
      * @param callback
      */
     public void getUserInfo(@NonNull String userId,
-                            final RetrofitServiceCallback<User> callback){
+                            final RetrofitServiceCallback<User> callback) {
         Call<UserResponse> userInfoResponseCall
                 = ((UserInterfaceService) getService()).getUserInfo(userId);
 
@@ -290,7 +364,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
      */
     public void updateUserInfo(@NonNull String userId,
                                @Body UserRequestBody userRequestBody,
-                                  final RetrofitServiceCallback<User> callback) {
+                               final RetrofitServiceCallback<User> callback) {
         Call<UserResponse> userInfoResponseCall
                 = ((UserInterfaceService) getService()).updateUserInfo(userId, userRequestBody);
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseObject {
+    // Status code result
+    private int statusCode;
 
     // Call api successfully
     private boolean success;
@@ -15,9 +17,18 @@ public class ResponseObject {
     private List<String> errorMessage;
 
     public ResponseObject() {
+        statusCode = 400;
         success = false;
         resultMessage = "";
         errorMessage = new ArrayList<>();
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public boolean isSuccess() {

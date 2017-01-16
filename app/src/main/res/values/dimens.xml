@@ -5,6 +5,7 @@
     <dimen name="coupon_detail_height">200dp</dimen>
     <dimen name="button_get_coupon_radius">80dp</dimen>
     <dimen name="voucher_detail_rating_radius">7dp</dimen>
+    <dimen name="post_promotion_choose_image_radius">10dp</dimen>
 
     <!--1312666 - Tuan Nguyen - Start-->
     <dimen name="padding_6dp">6dp</dimen>

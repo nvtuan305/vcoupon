@@ -15,10 +15,21 @@ public class PromotionBody {
     private long startDate;
     private long endDate;
     private int amountLimit;
+    private boolean isOneCode;
     private int discount;
+    private String discountType;
+
+    public String getDiscountType() {
+        return discountType;
+    }
+
+    public void setDiscountType(String discountType) {
+        this.discountType = discountType;
+    }
+
     private List<Address> addresses;
 
-    public PromotionBody(String _category, String _provider, String title, String cover, String condition, long startDate, long endDate, int amountLimit, int discount, List<Address> addresses) {
+    public PromotionBody(String _category, String _provider, String title, String cover, String condition, long startDate, long endDate, int amountLimit, boolean isOneCode, int discount, int discountType, List<Address> addresses) {
         this._category = _category;
         this._provider = _provider;
         this.title = title;
@@ -27,8 +38,22 @@ public class PromotionBody {
         this.startDate = startDate;
         this.endDate = endDate;
         this.amountLimit = amountLimit;
+        this.isOneCode = isOneCode;
         this.discount = discount;
         this.addresses = addresses;
+        if ( discountType == 1) {
+            this.discountType = "VND";
+        }
+        else {
+            this.discountType = "%";
+        }
+    }
+    public boolean isOneCode() {
+        return isOneCode;
+    }
+
+    public void setOneCode(boolean oneCode) {
+        isOneCode = oneCode;
     }
 
     public String get_category() {

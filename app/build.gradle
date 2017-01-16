@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.happybot.vcoupon"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -69,7 +69,7 @@ dependencies {
     //Material EditText
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
 
-    //Facebook SDK
+    // Facebook SDK
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     //Firebase Storage

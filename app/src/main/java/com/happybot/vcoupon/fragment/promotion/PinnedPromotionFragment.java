@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class PinnedPromotionFragment extends Fragment {
@@ -37,13 +37,15 @@ public class PinnedPromotionFragment extends Fragment {
 
     // Delegate for api
     private GetPinnedTripDelegate getPinnedTripDelegate = null;
+    private UserRetrofitService userRetrofitService = null;
     private int currentPage = 1;
 
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
 
+    private SharePreferenceHelper helper = null;
+
     public PinnedPromotionFragment() {
-        // TODO here
     }
 
     @Override
@@ -51,7 +53,7 @@ public class PinnedPromotionFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pinned, container, false);
+        View view = inflater.inflate(R.layout.fragment_promotion_pinned, container, false);
         srParentLayout = (SwipeRefreshLayout) view.findViewById(R.id.srParentLayout);
         rcvPinnedPromotion = (RecyclerView) view.findViewById(R.id.rcvPinnedPromotion);
         emptyLayout = (LinearLayout) view.findViewById(R.id.lnEmptyLayout);
@@ -70,8 +72,14 @@ public class PinnedPromotionFragment extends Fragment {
         mLinearLayoutManager = new LinearLayoutManager(view.getContext());
         rcvPinnedPromotion.setLayoutManager(mLinearLayoutManager);
 
+        // Initialize retrofit service
         activity = (BaseActivity) getActivity();
-        getPinnedTripDelegate = new GetPinnedTripDelegate(activity);
+        userRetrofitService = new UserRetrofitService(mContext);
+        getPinnedTripDelegate = new GetPinnedTripDelegate(activity, this);
+        activity.listOfForegroundTaskDelegates.add(getPinnedTripDelegate);
+
+        // Initialize SharePreferenceHelper
+        helper = new SharePreferenceHelper(mContext);
 
         // Load pinned promotion
         loadPinnedPromotion();
@@ -97,7 +105,6 @@ public class PinnedPromotionFragment extends Fragment {
                     if (canScroll) {
                         if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
                             canScroll = false;
-                            Log.d("KKKK", "Last Item Wow !");
                             loadPinnedPromotion();
                         }
                     }
@@ -118,27 +125,38 @@ public class PinnedPromotionFragment extends Fragment {
     }
 
     public void loadPinnedPromotion() {
-        // Initialize auth info for testing
-        SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
-        //helper.initializeSampleAuth();
 
-        UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
-        userRetrofitService.getPinnedPromotion(helper.getUserId(), currentPage, getPinnedTripDelegate);
+        if (helper != null) {
+            // Initialize auth info for testing
+            userRetrofitService.getPinnedPromotion(helper.getUserId(),
+                    currentPage,
+                    getPinnedTripDelegate);
 
-        // Update next page
-        currentPage++;
+            // Update next page
+            currentPage++;
+        }
     }
 
     private class GetPinnedTripDelegate extends ForegroundTaskDelegate<List<Promotion>> {
+
+        WeakReference<PinnedPromotionFragment> fragmentWeakReference = null;
 
         GetPinnedTripDelegate(BaseActivity activity) {
             super(activity);
         }
 
+        GetPinnedTripDelegate(BaseActivity activity, PinnedPromotionFragment fragment) {
+            super(activity);
+            fragmentWeakReference = new WeakReference<>(fragment);
+        }
+
         @Override
         public void onPreExecute() {
-            if (!srParentLayout.isRefreshing()) {
-                progressDialog.setVisibility(View.VISIBLE);
+            PinnedPromotionFragment fragment = fragmentWeakReference.get();
+            if (fragment != null) {
+                if (!srParentLayout.isRefreshing()) {
+                    fragment.progressDialog.setVisibility(View.VISIBLE);
+                }
             }
         }
 
@@ -146,32 +164,36 @@ public class PinnedPromotionFragment extends Fragment {
         public void onPostExecute(List<Promotion> promotions, Throwable throwable) {
             super.onPostExecute(promotions, throwable);
 
-            if (adapter == null) {
-                adapter = new PromotionAdapter();
-                rcvPinnedPromotion.setAdapter(adapter);
-            }
+            PinnedPromotionFragment fragment = fragmentWeakReference.get();
+            if (fragment != null) {
 
-            // If no error occur, server response data, fragment is not destroyed
-            if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
-
-                // Reset data when swipe to refresh data
-                if (srParentLayout.isRefreshing()) {
-                    adapter.updateData(promotions);
-                    srParentLayout.setRefreshing(false);
-
-                } else {
-                    adapter.addData(promotions);
+                if (fragment.adapter == null) {
+                    fragment.adapter = new PromotionAdapter();
+                    fragment.rcvPinnedPromotion.setAdapter(adapter);
                 }
 
-                // Disable swipe down to load more if has no more promotion
-                canScroll = promotions.size() > 0;
+                // If no error occur, server response data, fragment is not destroyed
+                if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
+
+                    // Reset data when swipe to refresh data
+                    if (fragment.srParentLayout.isRefreshing()) {
+                        fragment.adapter.updateData(promotions);
+                        fragment.srParentLayout.setRefreshing(false);
+
+                    } else {
+                        fragment.adapter.addData(promotions);
+                    }
+
+                    // Disable swipe down to load more if has no more promotion
+                    fragment.canScroll = promotions.size() > 0;
+                }
+
+                // Hide progress dialog
+                fragment.progressDialog.setVisibility(View.GONE);
+
+                // Show empty layout without any promotions
+                fragment.showView();
             }
-
-            // Hide progress dialog
-            progressDialog.setVisibility(View.GONE);
-
-            // Show empty layout without any promotions
-            showView();
         }
     }
 
@@ -188,5 +210,13 @@ public class PinnedPromotionFragment extends Fragment {
             rcvPinnedPromotion.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (getPinnedTripDelegate != null)
+            getPinnedTripDelegate.cancel();
+
+        super.onDestroy();
     }
 }

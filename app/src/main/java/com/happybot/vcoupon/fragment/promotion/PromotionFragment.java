@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.promotion;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,32 +12,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.happybot.vcoupon.R;
-import com.happybot.vcoupon.fragment.promotion.PinnedPromotionFragment;
-import com.happybot.vcoupon.fragment.promotion.ReceivedPromotionFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Nguyễn Phương Tuấn on 05-Dec-16.
- */
+public class PromotionFragment extends Fragment {
 
-public class VoucherFragment extends Fragment {
-
-    public VoucherFragment() {
+    public PromotionFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_voucher, container, false);
+        View view = inflater.inflate(R.layout.fragment_promotion, container, false);
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.voucher_viewpager);
+
         setupViewPager(viewPager);
+
         TabLayout tabs = (TabLayout) view.findViewById(R.id.voucher_tabs);
         tabs.setBackgroundColor(Color.WHITE);
         tabs.setupWithViewPager(viewPager);
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(0);
+
         return view;
     }
+
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new ReceivedPromotionFragment(), getString(R.string.voucher_received_text));

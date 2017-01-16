@@ -38,7 +38,7 @@ public class FacebookFragment extends Fragment {
         public void onSuccess(LoginResult loginResult) {
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
-            if (profile != null){
+            if (profile != null) {
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 startActivity(intent);
             }
@@ -77,7 +77,7 @@ public class FacebookFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fb = (Button) view.findViewById(R.id.btnLoginFacebook);
-        final LoginButton loginButton = (LoginButton)view.findViewById(R.id.login_button);
+        final LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
         loginButton.setFragment(this);
         loginButton.registerCallback(callbackManager, callback);

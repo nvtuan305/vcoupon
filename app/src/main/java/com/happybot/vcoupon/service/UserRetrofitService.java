@@ -9,16 +9,14 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.UserRequestBody;
-import com.happybot.vcoupon.model.retrofit.PromotionResponse;
+import com.happybot.vcoupon.model.Voucher;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
-import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.model.SubscribeBody;
-import com.happybot.vcoupon.model.User;
-import com.happybot.vcoupon.model.retrofit.LoginBody;
+import com.happybot.vcoupon.model.retrofit.LoginRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
-import com.happybot.vcoupon.model.retrofit.UserResponse;
+import com.happybot.vcoupon.model.retrofit.VoucherListResponse;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -77,7 +75,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
                        final RetrofitServiceCallback<User> callback) {
 
         Call<UserResponse> signInCall = ((UserInterfaceService) getService())
-                .signIn(new LoginBody(phoneNumber, password));
+                .signIn(new LoginRequestBody(phoneNumber, password));
 
         callback.setCall(signInCall);
 
@@ -99,6 +97,116 @@ public class UserRetrofitService extends VCouponRetrofitService {
                         callback.onPostExecute(responseObject.getUser(), exception);
                     }
 
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Sign in with facebook
+     * User send user's facebook access token to server, server return user info with status code:
+     * 200 - This user has logged in before
+     * 202 - The first time user login
+     */
+    public void signInWithFacebook(String fbAccessToken,
+                                   final RetrofitServiceCallback<User> callback) {
+
+        Call<UserResponse> signInCall = ((UserInterfaceService) getService())
+                .signInWithFacebook(fbAccessToken);
+
+        callback.setCall(signInCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        signInCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call, UserResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Update user phone number
+     */
+    public void updatePhoneNumber(String userId, String newPhoneNumber,
+                                  final RetrofitServiceCallback<User> callback) {
+
+        Call<UserResponse> updatePhoneNumberCall = ((UserInterfaceService) getService())
+                .updatePhoneNumber(userId, newPhoneNumber);
+
+        callback.setCall(updatePhoneNumberCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        updatePhoneNumberCall.enqueue(new TranslateRetrofitCallback<UserResponse>() {
+            @Override
+            public void onFinish(Call<UserResponse> call, UserResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getUser() == null) {
+                        callback.onPostExecute(new User(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getUser(), exception);
+                    }
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get received voucher of user page by page
+     */
+    public void getReceivedVoucher(String userId, int page,
+                                  final RetrofitServiceCallback<List<Voucher>> callback) {
+
+        Call<VoucherListResponse> voucherListResponseCall = ((UserInterfaceService) getService())
+                .getReceivedVoucher(userId, page);
+
+        callback.setCall(voucherListResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        voucherListResponseCall.enqueue(new TranslateRetrofitCallback<VoucherListResponse>() {
+
+            @Override
+            public void onFinish(Call<VoucherListResponse> call, VoucherListResponse responseObject, BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getVouchers() == null) {
+                        callback.onPostExecute(new Vector<Voucher>(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getVouchers(), exception);
+                    }
                 } else {
                     callback.onPostExecute(null, exception);
                 }
@@ -248,7 +356,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
      * @param callback
      */
     public void getUserInfo(@NonNull String userId,
-                            final RetrofitServiceCallback<User> callback){
+                            final RetrofitServiceCallback<User> callback) {
         Call<UserResponse> userInfoResponseCall
                 = ((UserInterfaceService) getService()).getUserInfo(userId);
 
@@ -290,7 +398,7 @@ public class UserRetrofitService extends VCouponRetrofitService {
      */
     public void updateUserInfo(@NonNull String userId,
                                @Body UserRequestBody userRequestBody,
-                                  final RetrofitServiceCallback<User> callback) {
+                               final RetrofitServiceCallback<User> callback) {
         Call<UserResponse> userInfoResponseCall
                 = ((UserInterfaceService) getService()).updateUserInfo(userId, userRequestBody);
 

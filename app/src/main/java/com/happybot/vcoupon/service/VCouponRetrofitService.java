@@ -15,6 +15,7 @@ import com.happybot.vcoupon.util.SharePreferenceHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.ref.WeakReference;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +33,7 @@ public class VCouponRetrofitService {
     // Logger
     protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    private Context mContext;
+    private WeakReference<Context> contextWeakReference = null;
     private final HttpLoggingInterceptor defaultLogging;
     private final Gson defaultGson;
 
@@ -44,8 +45,8 @@ public class VCouponRetrofitService {
     private SharePreferenceHelper spHelper = null;
 
     public VCouponRetrofitService(Context context) {
-        mContext = context;
-        spHelper = new SharePreferenceHelper(mContext);
+        contextWeakReference = new WeakReference<>(context);
+        spHelper = new SharePreferenceHelper(contextWeakReference.get());
 
         defaultLogging = newDefaultLogging();
         defaultGson = newDefaultGson();
@@ -54,7 +55,7 @@ public class VCouponRetrofitService {
     public VCouponRetrofitService(Context context,
                                   HttpLoggingInterceptor loggingInterceptor,
                                   Gson gson) {
-        mContext = context;
+        contextWeakReference = new WeakReference<>(context);
         defaultLogging = loggingInterceptor;
         defaultGson = gson;
     }
@@ -91,7 +92,7 @@ public class VCouponRetrofitService {
         String token = spHelper.getAccessToken();
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new AddHeaderInterceptor(spHelper.getUserId(), spHelper.getAccessToken()))
+                .addNetworkInterceptor(new AddHeaderInterceptor(token))
                 .addInterceptor(defaultLogging)
                 .addInterceptor(new RetryInterceptor())
                 .readTimeout(readTimeOut, TimeUnit.SECONDS)

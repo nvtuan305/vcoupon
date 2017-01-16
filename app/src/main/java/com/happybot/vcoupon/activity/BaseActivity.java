@@ -31,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected final String TAG_PROGRESS_DIALOG = "VCouponProgressDialog";
 
     // List of foreground task
-    protected List<ForegroundTaskDelegate> listOfForegroundTaskDelegates;
+    public List<ForegroundTaskDelegate> listOfForegroundTaskDelegates;
 
     public final VCouponApplication getVCouponApplication() {
         return (VCouponApplication) getApplication();

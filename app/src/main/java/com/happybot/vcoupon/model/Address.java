@@ -19,14 +19,13 @@ public class Address {
     private String district;
     private String province;
     private String country;
-    private String latitude;
-    private String longitude;
+    private double latitude;
+    private double longitude;
 
     public Address() {
     }
 
-    public Address(String number, String street, String ward, String district, String province,
-                   String country, String latitude, String longitude) {
+    public Address(String number, String street, String ward, String district, String province, String country, double latitude, double longitude) {
         this.number = number;
         this.street = street;
         this.ward = ward;
@@ -34,6 +33,23 @@ public class Address {
         this.province = province;
         this.country = country;
         this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -85,19 +101,4 @@ public class Address {
         this.country = country;
     }
 
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 }

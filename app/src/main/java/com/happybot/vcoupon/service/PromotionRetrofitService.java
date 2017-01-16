@@ -6,7 +6,9 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.PromotionBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
+import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.retrofitinterface.PromotionInterfaceService;
 import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
@@ -136,6 +138,40 @@ public class PromotionRetrofitService extends VCouponRetrofitService {
                         callback.onPostExecute(responseObject.getPromotions(), exception);
                     }
 
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Post promotion
+     * @param promotionBody
+     * @param callback
+     */
+
+    public void postPromotion(@NonNull PromotionBody promotionBody,
+                                       final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> postPromotionResponseCall
+                = ((PromotionInterfaceService) getService()).postPromotion(promotionBody);
+
+        callback.setCall(postPromotionResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        postPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
                 } else {
                     callback.onPostExecute(null, exception);
                 }

@@ -1,6 +1,7 @@
 package com.happybot.vcoupon.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.activity.VoucherDetailActivity;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.util.DateTimeConverter;
@@ -43,7 +45,7 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
 
     @Override
     public void onBindViewHolder(PromotionViewHolder holder, int position) {
-        Promotion promotion = promotions.get(position);
+        final Promotion promotion = promotions.get(position);
         User provider = promotion.getProvider();
 
         // Set promotion id
@@ -86,6 +88,24 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
         } else {
             holder.btnGetVoucher.setEnabled(true);
         }
+
+        // OnItemClickListener for recycle view
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, VoucherDetailActivity.class);
+                intent.putExtra("DetailPromotion", promotion);
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.btnGetVoucher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Get voucher
+                Toast.makeText(v.getContext(), "Get voucher on click", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -133,22 +153,5 @@ class PromotionViewHolder extends RecyclerView.ViewHolder {
         tvPinnedCount = (TextView) itemView.findViewById(R.id.tvPinnedCount);
         tvRemainTime = (TextView) itemView.findViewById(R.id.tvRemainTime);
         btnGetVoucher = (Button) itemView.findViewById(R.id.btnGetVoucher);
-
-        // OnItemClickListener for recycle view
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Open promotion detail
-                Toast.makeText(v.getContext(), "On item click listener", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnGetVoucher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Get voucher
-                Toast.makeText(v.getContext(), "Get voucher on click", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

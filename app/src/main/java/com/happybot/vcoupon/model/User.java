@@ -1,6 +1,9 @@
 package com.happybot.vcoupon.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
     /*
    "_id": "5867d9c050fb07001111397b",
     "email": "nvtuan@vcoupon.vn",
@@ -68,6 +71,64 @@ public class User {
         this.password = password;
         this.role = role;
         this.provider = provider;
+    }
+
+    public User (Parcel in){
+        _id = in.readString();
+        name = in.readString();
+        avatar = in.readString();
+        gender = in.readString();
+        email = in.readString();
+        phoneNumber = in.readString();
+        password = in.readString();
+        address = in.readString();
+        website = in.readString();
+        fanpage = in.readString();
+        role = in.readString();
+        provider = in.readString();
+        promotionCount = in.readInt();
+        followedCount = in.readInt();
+        followingCount = in.readInt();
+        rating = in.readInt();
+        accessToken = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel parcel) {
+            return new User(parcel);
+        }
+
+        @Override
+        public User[] newArray(int i) {
+            return new User[i];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(name);
+        parcel.writeString(avatar);
+        parcel.writeString(gender);
+        parcel.writeString(email);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(password);
+        parcel.writeString(address);
+        parcel.writeString(website);
+        parcel.writeString(fanpage);
+        parcel.writeString(role);
+        parcel.writeString(provider);
+        parcel.writeInt(promotionCount);
+        parcel.writeInt(followedCount);
+        parcel.writeInt(followingCount);
+        parcel.writeInt(rating);
+        parcel.writeString(accessToken);
     }
 
     public String getName() {

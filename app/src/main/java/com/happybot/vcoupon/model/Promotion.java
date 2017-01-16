@@ -1,9 +1,13 @@
 package com.happybot.vcoupon.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Promotion {
+public class Promotion implements Parcelable {
     private String _id;
     private String _category;
     private User _provider;
@@ -16,7 +20,7 @@ public class Promotion {
     private int amountRegistered;
     private int discount;
     private String discountType;
-    private List<Address> addresses;
+    private List<Address> addresses = new ArrayList<>();
     private int commentCount;
     private int pinnedCount;
     private Date createdAt;
@@ -85,6 +89,62 @@ public class Promotion {
         this.discount = discount;
         this.discountType = discountType;
         this.addresses = addresses;
+    }
+
+    public Promotion (Parcel in){
+        _id = in.readString();
+        _category = in.readString();
+        _provider = in.readParcelable(User.class.getClassLoader());
+        title = in.readString();
+        cover = in.readString();
+        condition = in.readString();
+        startDate = in.readLong();
+        endDate = in.readLong();
+        amountLimit = in.readInt();
+        amountRegistered = in.readInt();
+        discount = in.readInt();
+        discountType = in.readString();
+        in.readTypedList(addresses, Address.CREATOR);
+        commentCount = in.readInt();
+        pinnedCount = in.readInt();
+        createdAt = (Date) in.readSerializable();
+    }
+
+    public static final Creator<Promotion> CREATOR = new Creator<Promotion>() {
+        @Override
+        public Promotion createFromParcel(Parcel parcel) {
+            return new Promotion(parcel);
+        }
+
+        @Override
+        public Promotion[] newArray(int i) {
+            return new Promotion[i];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(_category);
+        parcel.writeParcelable(_provider, i);
+        parcel.writeString(title);
+        parcel.writeString(cover);
+        parcel.writeString(condition);
+        parcel.writeLong(startDate);
+        parcel.writeLong(endDate);
+        parcel.writeInt(amountLimit);
+        parcel.writeInt(amountRegistered);
+        parcel.writeInt(discount);
+        parcel.writeString(discountType);
+        parcel.writeTypedList(addresses);
+        parcel.writeInt(commentCount);
+        parcel.writeInt(pinnedCount);
+        parcel.writeSerializable(createdAt);
     }
 
     public String getId() {

@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
+import com.happybot.vcoupon.model.AddressRequestBody;
 import com.happybot.vcoupon.model.Promotion;
+import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.service.retrofitinterface.PromotionInterfaceService;
 import com.happybot.vcoupon.service.retrofitinterface.RetrofitInterfaceService;
@@ -19,6 +21,7 @@ import java.util.Vector;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.http.Body;
 
 
 public class PromotionRetrofitService extends VCouponRetrofitService {
@@ -118,6 +121,46 @@ public class PromotionRetrofitService extends VCouponRetrofitService {
 
         // Show progress dialog
         callback.onPreExecute();
+
+        // Make asynchronous request
+        promotionListResponseCall.enqueue(new TranslateRetrofitCallback<PromotionListResponse>() {
+            @Override
+            public void onFinish(Call<PromotionListResponse> call,
+                                 PromotionListResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getPromotions() == null) {
+                        callback.onPostExecute(new Vector<Promotion>(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getPromotions(), exception);
+                    }
+
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get promotion by search
+     *
+     * @param addressRequestBody
+     * @param callback
+     */
+
+    public void getNearByPromotion(@Body AddressRequestBody addressRequestBody,
+                                   final RetrofitServiceCallback<List<Promotion>> callback) {
+        Call<PromotionListResponse> promotionListResponseCall
+                = ((PromotionInterfaceService) getService()).getNearByPromotion(addressRequestBody);
+
+        callback.setCall(promotionListResponseCall);
+
+        // Show progress dialog
 
         // Make asynchronous request
         promotionListResponseCall.enqueue(new TranslateRetrofitCallback<PromotionListResponse>() {

@@ -2,6 +2,7 @@
     <!--Facebook development config - start-->
     <string name="app_id">225931637863625</string>
     <string name="facebook_app_id">1538906186136114</string>
+    <string name="google_map_api">AIzaSyBrPHr_0U1qVO1ZpEb2d8CjZaccoWxaxz4</string>
     <string name="fb_login_protocol_scheme">fb1538906186136114</string>
     <string name="development_key_hash">NEe8GO67D17rgYGuXhgVqPLo1MQ=</string>
     <!--Hash key: g3PojjvnyScSZnE6ZnvuSdIVYDM=-->

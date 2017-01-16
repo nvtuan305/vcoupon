@@ -100,4 +100,8 @@ public class Address {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+    public String toString() {
+        return number + " " + street + ", " + ward + ", " + district;
+    }
 }

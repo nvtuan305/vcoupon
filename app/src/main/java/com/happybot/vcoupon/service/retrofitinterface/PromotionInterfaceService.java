@@ -1,9 +1,13 @@
 package com.happybot.vcoupon.service.retrofitinterface;
 
+import com.happybot.vcoupon.model.AddressRequestBody;
+import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -30,5 +34,13 @@ public interface PromotionInterfaceService {
     @GET("promotions")
     Call<PromotionListResponse> getPromotionBySearch(@Query("search") String searchQuery,
                                                        @Query("page") int page);
+
+    /**
+     * Get nearby Promotion
+     * @param addressRequestBody: Address Request Body
+     * @return PromotionListResponse
+     */
+    @POST("promotions/near-promotion")
+    Call<PromotionListResponse> getNearByPromotion(@Body AddressRequestBody addressRequestBody);
 
 }

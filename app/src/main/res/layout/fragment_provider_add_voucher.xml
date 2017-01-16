@@ -250,7 +250,7 @@
                         android:ems="10"
                         android:focusable="false"
                         android:hint="@string/provider_add_promotion_address"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:paddingTop="@dimen/padding_6dp"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp"

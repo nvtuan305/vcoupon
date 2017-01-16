@@ -71,9 +71,6 @@ import static android.app.Activity.RESULT_OK;
 public class ProviderAddVoucherFragment extends Fragment {
 
     private static final String FIREBASE_STORAGE = "gs://vcoupon-1275f.appspot.com/";
-    private static final String FOOD_CATEGORY_ID = "5842fbab0f0bc105b77eb74e";
-    private static final String CLOTHES_CATEGORY_ID = "5842fbab0f0bc105b77eb74f";
-    private static final String TECHNOLOGY_CATEGORY_ID = "5842fbab0f0bc105b77eb750";
     Spinner provider_add_promotion_category, provider_add_promotion_discount_type;
     Button btn_provider_add_promotion;
     LinearLayout provider_add_promotion_choose_image;

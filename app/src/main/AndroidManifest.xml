@@ -3,9 +3,10 @@
     package="com.happybot.vcoupon">
 
     <!-- Permission declaration -->
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".application.VCouponApplication"
@@ -64,8 +65,7 @@
         <activity
             android:name=".activity.SignUpNormalUserActivity"
             android:label="@string/sign_up_label" />
-        <activity android:name=".activity.ProvidePhoneNumberActivity"></activity>
-
+      
         <!--Firebase Notification-->
         <service
             android:name=".service.MyFirebaseMessagingService">
@@ -74,7 +74,9 @@
             </intent-filter>
         </service>
         <!--End Firebase Notification-->
-
+      
+        <activity android:name=".activity.ProvidePhoneNumberActivity" />
+        <activity android:name=".activity.VoucherDetailActivity"></activity>
     </application>
 
 </manifest>

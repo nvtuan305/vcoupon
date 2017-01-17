@@ -1,6 +1,9 @@
 package com.happybot.vcoupon.model;
 
-public class Address {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Address implements Parcelable{
     /*
     "number": "227",
     "street": "Nguyễn Văn Cừ",
@@ -39,6 +42,46 @@ public class Address {
     public double getLatitude() {
 
         return latitude;
+    }
+
+    public Address(Parcel in){
+        number = in.readString();
+        street = in.readString();
+        ward = in.readString();
+        district = in.readString();
+        province = in.readString();
+        country = in.readString();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+    }
+
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel parcel) {
+            return new Address(parcel);
+        }
+
+        @Override
+        public Address[] newArray(int i) {
+            return new Address[i];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(number);
+        parcel.writeString(street);
+        parcel.writeString(ward);
+        parcel.writeString(district);
+        parcel.writeString(province);
+        parcel.writeString(country);
+        parcel.writeDouble(latitude);
+        parcel.writeDouble(longitude);
     }
 
     public void setLatitude(double latitude) {

@@ -14,27 +14,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.NearByPromotionAdapter;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
-import com.happybot.vcoupon.model.Address;
 import com.happybot.vcoupon.model.AddressRequestBody;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.util.BitmapHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -85,8 +82,6 @@ public class NearByFragment extends Fragment {
                         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
                         if (location != null)
                         {
-                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 13));
-
                             CameraPosition cameraPosition = new CameraPosition.Builder()
                                     .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
                                     .zoom(14)                   // Sets the zoom
@@ -96,6 +91,8 @@ public class NearByFragment extends Fragment {
                             PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(context);
                             promotionRetrofitService.getNearByPromotion(new AddressRequestBody(location.getLongitude(), location.getLatitude(), "Việt Nam", "Thành phố Hồ Chí Minh"), getNearByPromotionDelegate);
                         }
+
+
                     }
                 }
             });
@@ -119,7 +116,7 @@ public class NearByFragment extends Fragment {
         }
 
         @Override
-        public void onPostExecute(List<Promotion> promotions, Throwable throwable) {
+        public void onPostExecute(final List<Promotion> promotions, Throwable throwable) {
             super.onPostExecute(promotions, throwable);
 
             // If no error occur, server response data, fragment is not destroyed
@@ -134,16 +131,41 @@ public class NearByFragment extends Fragment {
                         Bitmap icon = BitmapHelper.getBitmapFromXmlLayout(getContext(), R.drawable.ic_location_pink);
 
                         MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng))
-                                .title(promotions.get(i).getAddresses().get(j).toString())
+                                .title(promotions.get(i).getProvider().getName())
+                                .snippet(promotions.get(i).getAddresses().get(j).toString())
                                 .icon(BitmapDescriptorFactory.fromBitmap(icon));
 
                         googleMap.addMarker(marker);
                     }
                 }
+
+                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        LatLng latLng = marker.getPosition();
+
+                        marker.showInfoWindow();
+                        CameraPosition cameraPosition = new CameraPosition.Builder()
+                                .target(latLng)
+                                .zoom(googleMap.getCameraPosition().zoom)
+                                .build();
+                        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
+                        for (int i = 0; i < promotions.size(); i++) {
+                            for (int j = 0; j < promotions.get(i).getAddresses().size(); j++) {
+                                double lat = Double.parseDouble(promotions.get(i).getAddresses().get(j).getLatitude());
+                                double lng = Double.parseDouble(promotions.get(i).getAddresses().get(j).getLongitude());
+                                if (latLng.latitude == lat && latLng.longitude == lng) {
+                                    vpPromotions.setCurrentItem(i);
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
+                });
             }
-
-            // Show empty layout without any promotions
-
         }
     }
 }

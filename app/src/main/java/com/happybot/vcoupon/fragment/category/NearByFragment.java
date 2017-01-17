@@ -2,7 +2,9 @@ package com.happybot.vcoupon.fragment.category;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -32,6 +35,7 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.util.BitmapHelper;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -88,8 +92,18 @@ public class NearByFragment extends Fragment {
                                     .build();                   // Creates a CameraPosition from the builder
                             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-                            PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(context);
-                            promotionRetrofitService.getNearByPromotion(new AddressRequestBody(location.getLongitude(), location.getLatitude(), "Việt Nam", "Thành phố Hồ Chí Minh"), getNearByPromotionDelegate);
+                            Geocoder gCoder = new Geocoder(context);
+                            List<Address> addresses = null;
+                            try {
+                                addresses = gCoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            if (addresses != null && addresses.size() > 0) {
+                                PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(context);
+                                promotionRetrofitService.getNearByPromotion(new AddressRequestBody(location.getLongitude(), location.getLatitude(),
+                                        addresses.get(0).getCountryName(), addresses.get(0).getAdminArea()), getNearByPromotionDelegate);
+                            }
                         }
 
 

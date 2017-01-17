@@ -17,10 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Facebook config for manifest - start -->
+        <!--Google Place API-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDzhG23Z0DafU3mQHnnMMOBnZGZDUi0q_8" />
+            android:value="AIzaSyDzhG23Z0DafU3mQHnnMMOBnZGZDUi0q_8"/>
+
+        <!-- Facebook config for manifest - start -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -63,6 +65,16 @@
         <activity
             android:name=".activity.SignUpNormalUserActivity"
             android:label="@string/sign_up_label" />
+      
+        <!--Firebase Notification-->
+        <service
+            android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <!--End Firebase Notification-->
+      
         <activity android:name=".activity.ProvidePhoneNumberActivity" />
         <activity android:name=".activity.VoucherDetailActivity"></activity>
     </application>

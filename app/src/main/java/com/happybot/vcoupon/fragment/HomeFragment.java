@@ -4,16 +4,28 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.CustomSwipeAdapter;
+import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.fragment.category.CategoryFragment;
+import com.happybot.vcoupon.model.SubscribingTopic;
+import com.happybot.vcoupon.service.UserRetrofitService;
+import com.happybot.vcoupon.util.SharePreferenceHelper;
+
+import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -32,6 +44,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //Getting registration token
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        //Displaying token on logcat
+        Log.d("FIREBASE ", "Refreshed token: " + refreshedToken);
+        //Subscribe FCM Topic
+        SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
+        UserRetrofitService userRetrofitService = new UserRetrofitService(getActivity());
+        userRetrofitService.getSubscribingTopic(helper.getUserId(), new SubscribingTopicDelegate((BaseActivity) getActivity()));
 
         //set up slide show
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
@@ -103,5 +124,27 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+    class SubscribingTopicDelegate extends ForegroundTaskDelegate<List<SubscribingTopic>> {
 
+        SubscribingTopicDelegate(BaseActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        public void onPostExecute(List<SubscribingTopic> subscribingTopics, Throwable throwable) {
+            super.onPostExecute(subscribingTopics, throwable);
+            // If no error occur, server response data, fragment is not destroyed
+            if (throwable == null && subscribingTopics != null && shouldHandleResultForActivity()) {
+                //Subscribe FCM Topic
+                for (SubscribingTopic subscribingTopic :subscribingTopics) {
+                    FirebaseMessaging.getInstance().subscribeToTopic(subscribingTopic.getSubscribeType() + "_" + subscribingTopic.get_publisherId());
+                }
+            }
+        }
+    }
 }

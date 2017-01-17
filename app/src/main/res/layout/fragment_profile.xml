@@ -15,6 +15,21 @@
             android:layout_height="200dp"
             android:background="@drawable/cover_profile_background_min">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/selector_update_profile_choose_image"
+                    android:layout_gravity="right|bottom"/>
+
+            </FrameLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -64,39 +79,36 @@
                 android:layout_weight="0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="14dp"
-                android:text="0\n theo dõi"
-                android:textAlignment="center" />
+                android:text="0\n theo dõi" />
 
             <TextView
                 android:id="@+id/tvPromotion"
                 android:layout_weight="0.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="14dp"
-                android:text="0\nvoucher"
-                android:textAlignment="center" />
+                android:text="0\nvoucher" />
 
             <TextView
                 android:id="@+id/tvFollowing"
                 android:layout_weight="0.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="14dp"
-                android:text="0\nđang theo dõi"
-                android:textAlignment="center" />
+                android:text="0\nđang theo dõi" />
 
         </LinearLayout>
 
@@ -151,6 +163,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -178,6 +191,7 @@
                         android:id="@+id/loAddress"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -205,6 +219,7 @@
                         android:id="@+id/loWebsite"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -232,6 +247,7 @@
                         android:id="@+id/loFacebook"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -303,6 +319,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -328,6 +345,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -353,6 +371,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
 
@@ -378,6 +397,17 @@
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:text="Đăng xuất" />
 
         </LinearLayout>
 

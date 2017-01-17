@@ -17,6 +17,7 @@ import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
 import com.happybot.vcoupon.model.retrofit.VoucherListResponse;
+import com.happybot.vcoupon.model.retrofit.VoucherResponse;
 import com.happybot.vcoupon.service.retrofitinterface.UserInterfaceService;
 import com.happybot.vcoupon.service.retrofitutil.RetrofitServiceCallback;
 import com.happybot.vcoupon.service.retrofitutil.TranslateRetrofitCallback;
@@ -342,6 +343,46 @@ public class UserRetrofitService extends VCouponRetrofitService {
                     } else {
                         callback.onPostExecute(responseObject, exception);
                     }
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * receive voucher
+     *
+     * @param promotionId
+     * @param callback
+     */
+    public void receiveVoucher(@NonNull String promotionId,
+                               final RetrofitServiceCallback<Voucher> callback) {
+        Call<VoucherResponse> voucherResponseCall
+                = ((UserInterfaceService) getService()).receiveVoucher(promotionId);
+
+        callback.setCall(voucherResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        voucherResponseCall.enqueue(new TranslateRetrofitCallback<VoucherResponse>() {
+            @Override
+            public void onFinish(Call<VoucherResponse> call,
+                                 VoucherResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+
+                    if (responseObject.getVoucher() == null) {
+                        callback.onPostExecute(new Voucher(), exception);
+                    } else {
+                        callback.onPostExecute(responseObject.getVoucher(), exception);
+                    }
+
                 } else {
                     callback.onPostExecute(null, exception);
                 }

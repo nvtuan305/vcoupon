@@ -19,7 +19,7 @@
         <!-- Facebook config for manifest - start -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDzhG23Z0DafU3mQHnnMMOBnZGZDUi0q_8"/>
+            android:value="AIzaSyDzhG23Z0DafU3mQHnnMMOBnZGZDUi0q_8" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -62,7 +62,9 @@
         <activity
             android:name=".activity.SignUpNormalUserActivity"
             android:label="@string/sign_up_label" />
-        <activity android:name=".activity.ProvidePhoneNumberActivity"></activity>
+        <activity android:name=".activity.ProvidePhoneNumberActivity" />
+        <activity android:name=".activity.EditProfileActivity" />
+        <activity android:name=".activity.EditProviderProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.retrofit.LoginRequestBody;
 import com.happybot.vcoupon.model.retrofit.UserListResponse;
 import com.happybot.vcoupon.model.retrofit.VoucherListResponse;
+import com.happybot.vcoupon.model.retrofit.VoucherResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -64,6 +65,15 @@ public interface UserInterfaceService {
     Call<ResponseObject> unpinPromotion(@Path("userId") String userId,
                                         @Query("page") int page,
                                         @Body PromotionRequestBody promotionRequestBody);
+
+    /**
+     *
+     * @param promotionId
+     * @return
+     */
+    @POST("promotions/{promotionId}/vouchers")
+    Call<VoucherResponse> receiveVoucher(@Path("promotionId") String promotionId);
+
 
 
     /**

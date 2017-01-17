@@ -9,6 +9,8 @@ public class Voucher {
     private boolean isChecked;
     private long registeredDate;
 
+    public Voucher() {}
+
     public String getId() {
         return _id;
     }

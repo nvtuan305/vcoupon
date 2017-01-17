@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:padding="12dp"
-            android:textSize="16dp"
+            android:textSize="12dp"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:text="●"/>

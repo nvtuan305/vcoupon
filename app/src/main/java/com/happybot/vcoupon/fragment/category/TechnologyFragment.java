@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
@@ -229,18 +230,22 @@ public class TechnologyFragment extends Fragment {
             if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
                 Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("CATEGORY_" + TECHNOLOGY_CATEGORY_ID);
                     btnFollowTechnologyCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("CATEGORY_" + TECHNOLOGY_CATEGORY_ID);
                     btnFollowTechnologyCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }
             } else {
                 Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("CATEGORY_" + TECHNOLOGY_CATEGORY_ID);
                     btnFollowTechnologyCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("CATEGORY_" + TECHNOLOGY_CATEGORY_ID);
                     btnFollowTechnologyCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }

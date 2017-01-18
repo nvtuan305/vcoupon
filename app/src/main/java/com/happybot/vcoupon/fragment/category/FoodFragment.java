@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.adapter.PromotionAdapter;
@@ -24,6 +25,7 @@ import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.service.UserRetrofitService;
+import com.happybot.vcoupon.util.FCMNotification;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 import java.util.List;
@@ -230,21 +232,26 @@ public class FoodFragment extends Fragment {
         @Override
         public void onPostExecute(ResponseObject responseObject, Throwable throwable) {
             super.onPostExecute(responseObject, throwable);
+            //fcmNotification.updateSubscribeFCMTopic();
             if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
                 Toast.makeText(getContext(), responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("CATEGORY_" + FOOD_CATEGORY_ID);
                     btnFollowFoodCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("CATEGORY_" + FOOD_CATEGORY_ID);
                     btnFollowFoodCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }
             } else {
                 Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
                 if (followedCategory) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("CATEGORY_" + FOOD_CATEGORY_ID);
                     btnFollowFoodCategory.setText(R.string.follow_title);
                     followedCategory = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("CATEGORY_" + FOOD_CATEGORY_ID);
                     btnFollowFoodCategory.setText(R.string.unfollow_title);
                     followedCategory = true;
                 }

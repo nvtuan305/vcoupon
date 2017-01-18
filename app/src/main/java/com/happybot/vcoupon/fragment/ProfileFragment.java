@@ -1,6 +1,7 @@
 package com.happybot.vcoupon.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,18 +11,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
+import com.happybot.vcoupon.activity.EditProfileActivity;
+import com.happybot.vcoupon.activity.EditProviderProfileActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,13 +56,18 @@ public class ProfileFragment extends Fragment {
     private TextView tvWebsite;
     private TextView tvFacebook;
 
+    private ImageButton btnEditProfile;
+
+    private Bundle extras = null;
 
     private GetUserInfoDelegate getUserInfoDelegate = null;
 
     private Context mContext = null;
 
+    private String user_role = "";
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
@@ -75,13 +87,38 @@ public class ProfileFragment extends Fragment {
         loWebsite = (LinearLayout) view.findViewById(R.id.loWebsite);
         loFacebook = (LinearLayout) view.findViewById(R.id.loFacebook);
 
+        btnEditProfile = (ImageButton) view.findViewById(R.id.btnEditProfile);
+
         getUserInfoDelegate = new GetUserInfoDelegate((BaseActivity) getActivity());
 
         mContext = view.getContext();
 
         loadUserInfo();
 
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (user_role.equals("PROVIDER")) {
+                    Intent intent = new Intent(getContext(), EditProviderProfileActivity.class);
+                    intent.putExtras(extras);
+                    getContext().startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                    intent.putExtras(extras);
+                    getContext().startActivity(intent);
+                }
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        loadUserInfo();
     }
 
     public void loadUserInfo() {
@@ -113,6 +150,8 @@ public class ProfileFragment extends Fragment {
 
             // Show empty layout without any promotions
             showView(user);
+
+
         }
     }
 
@@ -124,7 +163,17 @@ public class ProfileFragment extends Fragment {
         if (user == null)
             return;
 
-        new DownloadImageTask(civAvatar).execute(user.getAvatar());
+        user_role = user.getRole();
+
+        extras = new Bundle();
+        extras.putString("name", user.getName());
+        extras.putString("avatar", user.getAvatar());
+        extras.putString("email", user.getEmail());
+        extras.putString("address", user.getAddress());
+        extras.putString("website", user.getWebsite());
+        extras.putString("fanpage", user.getFanpage());
+
+        Picasso.with(mContext).load(user.getAvatar()).into(civAvatar);
         tvName.setText(user.getName());
         tvPromotion.setText(String.valueOf(user.getPromotionCount()) + "\nvoucher");
         tvFollowing.setText(String.valueOf(user.getFollowingCount()) + "\nđang theo dõi");
@@ -164,31 +213,6 @@ public class ProfileFragment extends Fragment {
             paramsTv = (LinearLayout.LayoutParams)tvFollowing.getLayoutParams();
             paramsTv.weight = 0.33f;
             tvFollowing.setLayoutParams(paramsTv);
-        }
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        CircleImageView bmImage;
-
-        public DownloadImageTask(CircleImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
         }
     }
 }

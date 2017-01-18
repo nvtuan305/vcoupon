@@ -10,7 +10,6 @@ public class SharePreferenceHelper {
     private static final String SHOW_INTRO = "show_intro";
     private static final String USER_ROLE = "user_role";
 
-
     private SharedPreferences sharedPreferences = null;
     private SharedPreferences.Editor editor = null;
 

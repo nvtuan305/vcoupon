@@ -197,7 +197,7 @@ public class HomeActivity extends BaseActivity {
                         fragment = new NotificationFragment();
                         break;
                     case 4:
-                        fragment = new EditProfileFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 clearBackStack();

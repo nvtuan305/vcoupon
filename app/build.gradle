@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -76,6 +76,8 @@ dependencies {
     //Firebase Storage
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-storage:10.0.1'
+
+    compile 'com.android.support:multidex:1.0.0'
 
     //Firebase Notification
     compile 'com.google.firebase:firebase-messaging:10.0.1'

@@ -117,7 +117,7 @@ public class HomeActivity extends BaseActivity {
                         getSupportActionBar().show();
                         break;
                     case 4:
-                        fragment = new EditProfileFragment();
+                        fragment = new ProfileFragment();
                         getSupportActionBar().show();
                         break;
                 }

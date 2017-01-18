@@ -4,6 +4,8 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionBody;
 import com.happybot.vcoupon.model.AddressRequestBody;
 import com.happybot.vcoupon.model.PromotionRequestBody;
+import com.happybot.vcoupon.model.retrofit.CommentBody;
+import com.happybot.vcoupon.model.retrofit.CommentListResponse;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 
@@ -54,4 +56,22 @@ public interface PromotionInterfaceService {
     @POST("promotions/near-promotion")
     Call<PromotionListResponse> getNearByPromotion(@Body AddressRequestBody addressRequestBody);
 
+    /**
+     * Get comment page by page
+     * default page size is 15 promotion
+     * @param promotionId: Id of category
+     * @return ResponseObject
+     */
+    @GET("promotions/{promotionId}/comments")
+    Call<CommentListResponse> getPromotionComment(@Path("promotionId") String promotionId);
+
+    /**
+     * Post comment
+     * default page size is 15 promotion
+     * @param promotionId: Id of category
+     * @param commentBody: message
+     * @return ResponseObject
+     */
+    @POST("promotions/{promotionId}/comments")
+    Call<ResponseObject> postComment(@Path("promotionId") String promotionId, @Body CommentBody commentBody);
 }

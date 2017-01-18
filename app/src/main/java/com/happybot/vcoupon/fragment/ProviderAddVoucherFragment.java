@@ -422,7 +422,7 @@ public class ProviderAddVoucherFragment extends Fragment {
 
     private void clearView() {
         //clear all view for next promotion
-        provider_add_promotion_chosen_image.setImageResource(R.drawable.cover_profile_background_min);
+        provider_add_promotion_chosen_image.setImageResource(R.drawable.bg_image_primary);
         provider_add_promotion_image_url.setText("");
         provider_add_promotion_title.setText("");
         provider_add_promotion_condition.setText("");

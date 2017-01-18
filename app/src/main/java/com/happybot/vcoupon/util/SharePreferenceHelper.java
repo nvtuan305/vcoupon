@@ -77,4 +77,8 @@ public class SharePreferenceHelper {
         }
         return USER_ROLE;
     }
+    public void clearSharedPreferences(){
+        editor.clear();
+        editor.commit();
+    }
 }

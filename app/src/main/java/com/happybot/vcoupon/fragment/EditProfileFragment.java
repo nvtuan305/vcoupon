@@ -168,7 +168,7 @@ public class EditProfileFragment extends Fragment {
         btnUnpin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unpinPromotion();
+                unpinPromotion("");
             }
         });
 
@@ -258,11 +258,11 @@ public class EditProfileFragment extends Fragment {
     }
 
     // UNPIN
-    public void unpinPromotion() {
+    public void unpinPromotion(String promotionId) {
         // Initialize auth info for testing
         SharePreferenceHelper helper = new SharePreferenceHelper(mContext);
         UserRetrofitService userRetrofitService = new UserRetrofitService(mContext);
-        userRetrofitService.unpinPromotion(helper.getUserId(), 1, promotionRequestBody, unpinPromotionDelegate);
+        userRetrofitService.unpinPromotion(helper.getUserId(), promotionId, promotionRequestBody, unpinPromotionDelegate);
     }
 
     private class UnpinPromotionDelegate extends ForegroundTaskDelegate<ResponseObject> {

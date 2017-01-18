@@ -110,6 +110,16 @@ public class SearchPromotionFragment extends Fragment {
         });
     }
 
+    private boolean flag = false;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        flag = true;
+        refreshData();
+    }
+
     /**
      * Refresh data when swipe down
      */
@@ -155,13 +165,19 @@ public class SearchPromotionFragment extends Fragment {
             // If no error occur, server response data, fragment is not destroyed
             if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
 
-                // Reset data when swipe to refresh data
-                if (srSearchPromotionParentLayout.isRefreshing()) {
+                if (flag == false) {
+                    // Reset data when swipe to refresh data
+                    if (srSearchPromotionParentLayout.isRefreshing()) {
+                        adapter.updateData(promotions);
+                        srSearchPromotionParentLayout.setRefreshing(false);
+
+                    } else {
+                        adapter.addData(promotions);
+                    }
+                } else {
+                    flag = false;
                     adapter.updateData(promotions);
                     srSearchPromotionParentLayout.setRefreshing(false);
-
-                } else {
-                    adapter.addData(promotions);
                 }
 
                 // Disable swipe down to load more if has no more promotion

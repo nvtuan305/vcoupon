@@ -58,13 +58,13 @@ public interface UserInterfaceService {
      * default page size is 15 promotion
      *
      * @param userId:               Id of user
-     * @param page:                 Pinned promotion page
+     * @param promotionId: Id of promotion
      * @param promotionRequestBody: Promotion Request Body
      * @return PromotionResponse
      */
-    @HTTP(method = "DELETE", path = "users/{userId}/pinned-promotion", hasBody = true)
+    @HTTP(method = "DELETE", path = "users/{userId}/pinned-promotion/{promotionId}", hasBody = true)
     Call<ResponseObject> unpinPromotion(@Path("userId") String userId,
-                                        @Query("page") int page,
+                                        @Path("promotionId") String promotionId,
                                         @Body PromotionRequestBody promotionRequestBody);
 
     /**

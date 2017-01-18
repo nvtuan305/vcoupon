@@ -1,6 +1,5 @@
 package com.happybot.vcoupon.util;
 
-import android.app.Activity;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -11,8 +10,6 @@ import com.happybot.vcoupon.model.SubscribingTopic;
 import com.happybot.vcoupon.service.UserRetrofitService;
 
 import java.util.List;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by Nguyễn Phương Tuấn on 18-Jan-17.
@@ -31,13 +28,13 @@ public class FCMNotification {
     }
 
     public void updateSubscribeFCMTopic() {
-        SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
+        SharePreferenceHelper helper = new SharePreferenceHelper(activity);
         UserRetrofitService userRetrofitService = new UserRetrofitService(activity);
         userRetrofitService.getSubscribingTopic(helper.getUserId(), new SubscribingTopicDelegate(activity));
     }
 
     public void unsubscribeFCMTopic() {
-        SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
+        SharePreferenceHelper helper = new SharePreferenceHelper(activity);
         UserRetrofitService userRetrofitService = new UserRetrofitService(activity);
         userRetrofitService.getSubscribingTopic(helper.getUserId(), new UnsubscribingTopicDelegate(activity));
     }
@@ -59,7 +56,7 @@ public class FCMNotification {
             // If no error occur, server response data, fragment is not destroyed
             if (throwable == null && subscribingTopics != null && shouldHandleResultForActivity()) {
                 //Subscribe FCM Topic
-                for (SubscribingTopic subscribingTopic :subscribingTopics) {
+                for (SubscribingTopic subscribingTopic : subscribingTopics) {
                     FirebaseMessaging.getInstance().subscribeToTopic(subscribingTopic.getSubscribeType() + "_" + subscribingTopic.get_publisherId());
                 }
             }
@@ -83,7 +80,7 @@ public class FCMNotification {
             // If no error occur, server response data, fragment is not destroyed
             if (throwable == null && subscribingTopics != null && shouldHandleResultForActivity()) {
                 //Subscribe FCM Topic
-                for (SubscribingTopic subscribingTopic :subscribingTopics) {
+                for (SubscribingTopic subscribingTopic : subscribingTopics) {
                     FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribingTopic.getSubscribeType() + "_" + subscribingTopic.get_publisherId());
                 }
             }

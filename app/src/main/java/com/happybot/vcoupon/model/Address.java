@@ -143,5 +143,4 @@ public class Address implements Parcelable{
     public void setCountry(String country) {
         this.country = country;
     }
-
 }

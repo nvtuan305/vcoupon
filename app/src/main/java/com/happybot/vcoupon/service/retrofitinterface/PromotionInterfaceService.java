@@ -2,6 +2,8 @@ package com.happybot.vcoupon.service.retrofitinterface;
 
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionBody;
+import com.happybot.vcoupon.model.AddressRequestBody;
+import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 
@@ -43,5 +45,13 @@ public interface PromotionInterfaceService {
      */
     @POST("promotions")
     Call<ResponseObject> postPromotion(@Body PromotionBody promotionBody);
+
+    /**
+     * Get nearby Promotion
+     * @param addressRequestBody: Address Request Body
+     * @return PromotionListResponse
+     */
+    @POST("promotions/near-promotion")
+    Call<PromotionListResponse> getNearByPromotion(@Body AddressRequestBody addressRequestBody);
 
 }

@@ -25,13 +25,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/cover_profile_background_min" />
+                    android:src="@drawable/bg_image_primary" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha=".4"
-                    android:background="#000000" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,7 +50,6 @@
                             android:id="@+id/provider_add_promotion_choose_image"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:background="@drawable/selector_post_promotion_choose_image"
                             android:clickable="true"
                             android:gravity="center"
                             android:orientation="vertical"
@@ -81,6 +75,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
+
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/provider_add_promotion_image_url"
                 android:layout_width="match_parent"
@@ -93,6 +88,7 @@
                 android:textSize="16sp"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/colorPrimary" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,10 +110,10 @@
                         android:id="@+id/provider_add_promotion_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_6dp"
                         android:ems="10"
                         android:hint="@string/provider_add_promotion_title"
                         android:maxLines="1"
-                        android:paddingTop="@dimen/padding_6dp"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp"
                         app:met_floatingLabel="highlight"
@@ -126,30 +122,40 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/padding_6dp">
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:alpha="0.7"
                             android:text="@string/provider_add_promotion_category"
-                            android:textColor="@color/colorPrimaryText"
+                            android:textColor="@color/colorSecondaryText"
                             android:textSize="16sp" />
 
                         <Spinner
                             android:id="@+id/provider_add_promotion_category"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:paddingRight="@dimen/padding_6dp" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.4"
+                        android:background="@color/colorBorder" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/provider_add_promotion_condition"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_6dp"
                         android:ems="10"
                         android:hint="@string/provider_add_promotion_condition"
                         android:maxLines="2"
-                        android:paddingTop="@dimen/padding_6dp"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="16sp"
                         app:met_floatingLabel="highlight"
@@ -198,7 +204,7 @@
                             android:layout_weight="2"
                             android:ems="10"
                             android:hint="@string/provider_add_promotion_discount"
-                            android:inputType="phone"
+                            android:inputType="number"
                             android:maxLines="1"
                             android:paddingTop="@dimen/padding_6dp"
                             android:textColor="@color/colorPrimaryText"
@@ -242,6 +248,7 @@
                         android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_primaryColor="@color/colorPrimary" />
+
                     <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/provider_add_promotion_address"
                         android:layout_width="match_parent"
@@ -256,6 +263,7 @@
                         android:textSize="16sp"
                         app:met_floatingLabel="highlight"
                         app:met_primaryColor="@color/colorPrimary" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -275,8 +283,13 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                 </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>

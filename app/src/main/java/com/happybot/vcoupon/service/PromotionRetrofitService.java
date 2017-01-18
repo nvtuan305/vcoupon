@@ -6,8 +6,11 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
 import com.happybot.vcoupon.model.AddressRequestBody;
+import com.happybot.vcoupon.model.Comment;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionBody;
+import com.happybot.vcoupon.model.retrofit.CommentBody;
+import com.happybot.vcoupon.model.retrofit.CommentListResponse;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
 import com.happybot.vcoupon.service.retrofitinterface.PromotionInterfaceService;
@@ -204,6 +207,74 @@ public class PromotionRetrofitService extends VCouponRetrofitService {
 
         // Make asynchronous request
         postPromotionResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
+            @Override
+            public void onFinish(Call<ResponseObject> call,
+                                 ResponseObject responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject, exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Post promotion
+     * @param promotionId
+     * @param callback
+     */
+
+    public void getPromotionComment(@NonNull String promotionId,
+                              final RetrofitServiceCallback<List<Comment>> callback) {
+
+        Call<CommentListResponse> getPromotionCommentResponseCall
+                = ((PromotionInterfaceService) getService()).getPromotionComment(promotionId);
+
+        callback.setCall(getPromotionCommentResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        getPromotionCommentResponseCall.enqueue(new TranslateRetrofitCallback<CommentListResponse>() {
+            @Override
+            public void onFinish(Call<CommentListResponse> call,
+                                 CommentListResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject.getComments(), exception);
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Post promotion
+     * @param promotionId
+     * @param commentBody
+     */
+    public void postComment(@NonNull String promotionId,
+                            @NonNull CommentBody commentBody,
+                              final RetrofitServiceCallback<ResponseObject> callback) {
+
+        Call<ResponseObject> postCommentResponseCall
+                = ((PromotionInterfaceService) getService()).postComment(promotionId, commentBody);
+
+        callback.setCall(postCommentResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        postCommentResponseCall.enqueue(new TranslateRetrofitCallback<ResponseObject>() {
             @Override
             public void onFinish(Call<ResponseObject> call,
                                  ResponseObject responseObject,

@@ -150,6 +150,8 @@ public class ProfileFragment extends Fragment {
 
             // Show empty layout without any promotions
             showView(user);
+
+
         }
     }
 

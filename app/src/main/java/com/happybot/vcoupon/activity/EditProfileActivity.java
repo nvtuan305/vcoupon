@@ -103,7 +103,6 @@ public class EditProfileActivity extends BaseActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 //                userRequestBody = new UserRequestBody(etName.getText().toString(), urlAvatar,
 //                                                etEmail.getText().toString(), "", "", "");
 //

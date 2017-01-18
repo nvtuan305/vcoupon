@@ -2,6 +2,7 @@ package com.happybot.vcoupon.fragment.category;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -136,7 +137,8 @@ public class NearByFragment extends Fragment {
                     for (int j = 0; j < promotions.get(i).getAddresses().size(); j++) {
                         double lat = promotions.get(i).getAddresses().get(j).getLatitude();
                         double lng = promotions.get(i).getAddresses().get(j).getLongitude();
-                        Bitmap icon = BitmapHelper.getBitmapFromXmlLayout(getContext(), R.drawable.ic_location_pink);
+
+                        Bitmap icon = BitmapHelper.getBitmapFromXmlLayout(getContext(), R.drawable.ic_location_green);
 
                         MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng))
                                 .title(promotions.get(i).getProvider().getName())

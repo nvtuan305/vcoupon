@@ -143,4 +143,8 @@ public class Address implements Parcelable{
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public String toString() {
+        return number + " " + street + ", " + ward + ", " + district;
+    }
 }

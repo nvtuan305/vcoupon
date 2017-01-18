@@ -21,9 +21,11 @@ import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.activity.EditProfileActivity;
 import com.happybot.vcoupon.activity.EditProviderProfileActivity;
+import com.happybot.vcoupon.activity.SignInActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.service.UserRetrofitService;
+import com.happybot.vcoupon.util.FCMNotification;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 import com.squareup.picasso.Picasso;
 
@@ -50,7 +52,7 @@ public class ProfileFragment extends Fragment {
 
     private LinearLayout loAddress;
     private LinearLayout loWebsite;
-    private LinearLayout loFacebook;
+    private LinearLayout loFacebook, profile_logout;
 
     private TextView tvAdress;
     private TextView tvWebsite;
@@ -108,6 +110,14 @@ public class ProfileFragment extends Fragment {
                     intent.putExtras(extras);
                     getContext().startActivity(intent);
                 }
+            }
+        });
+
+        profile_logout = (LinearLayout) view.findViewById(R.id.profile_logout);
+        profile_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut(view);
             }
         });
 
@@ -214,6 +224,17 @@ public class ProfileFragment extends Fragment {
             paramsTv.weight = 0.33f;
             tvFollowing.setLayoutParams(paramsTv);
         }
+    }
+    public void logOut(View view) {
+        //unsubscribe FCM Topic
+        FCMNotification fcmNotification = new FCMNotification((BaseActivity) view.getContext());
+        fcmNotification.unsubscribeFCMTopic();
+        //clear SharedPreferences
+        SharePreferenceHelper helper = new SharePreferenceHelper(view.getContext());
+        helper.clearSharedPreferences();
+        //go back sign in screen
+        Intent intent = new Intent((BaseActivity) view.getContext(), SignInActivity.class);
+        startActivity(intent);
     }
 }
 

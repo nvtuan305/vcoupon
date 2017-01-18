@@ -88,6 +88,7 @@ public class ProvidePhoneNumberActivity extends BaseActivity {
 
     private void goToHome() {
         Intent intent = new Intent(ProvidePhoneNumberActivity.this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }

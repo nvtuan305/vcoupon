@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
@@ -120,18 +121,22 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
             if (throwable == null && responseObject != null && shouldHandleResultForActivity()) {
                 Toast.makeText((Context) activitySubscribe, responseObject.getResultMessage(), Toast.LENGTH_LONG).show();
                 if (followedProvider[positionSubscribe]) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("PROVIDER_" + providers.get(positionSubscribe).getId());
                     holderSubscribe.provider_small_item_follow.setText(R.string.follow_title);
                     followedProvider[positionSubscribe] = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("PROVIDER_" + providers.get(positionSubscribe).getId());
                     holderSubscribe.provider_small_item_follow.setText(R.string.unfollow_title);
                     followedProvider[positionSubscribe] = true;
                 }
             } else {
                 Toast.makeText((Context) activitySubscribe, throwable.getMessage(), Toast.LENGTH_LONG).show();
                 if (followedProvider[positionSubscribe]) {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("PROVIDER_" + providers.get(positionSubscribe).getId());
                     holderSubscribe.provider_small_item_follow.setText(R.string.follow_title);
                     followedProvider[positionSubscribe] = false;
                 } else {
+                    FirebaseMessaging.getInstance().subscribeToTopic("PROVIDER_" + providers.get(positionSubscribe).getId());
                     holderSubscribe.provider_small_item_follow.setText(R.string.unfollow_title);
                     followedProvider[positionSubscribe] = true;
                 }

@@ -22,6 +22,7 @@ import com.happybot.vcoupon.fragment.ProviderHomeFragment;
 import com.happybot.vcoupon.fragment.ProviderManagerVoucherFragment;
 import com.happybot.vcoupon.fragment.search.SearchFragment;
 import com.happybot.vcoupon.fragment.promotion.PromotionFragment;
+import com.happybot.vcoupon.util.FCMNotification;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
 public class HomeActivity extends BaseActivity {
@@ -37,6 +38,9 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        FCMNotification fcmNotification = new FCMNotification(this);
+        fcmNotification.updateSubscribeFCMTopic();
 
         // get user role
         spHelper = new SharePreferenceHelper(this);

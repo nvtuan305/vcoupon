@@ -4,6 +4,7 @@ import com.happybot.vcoupon.model.PromotionRequestBody;
 import com.happybot.vcoupon.model.UserRequestBody;
 import com.happybot.vcoupon.model.retrofit.PromotionListResponse;
 import com.happybot.vcoupon.model.retrofit.ResponseObject;
+import com.happybot.vcoupon.model.retrofit.SubscribingTopicResponse;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
@@ -151,4 +152,7 @@ public interface UserInterfaceService {
 
     @GET("users/providers")
     Call<UserListResponse> getSearchProvider(@Query("searchText") String searchQuery, @Query("page") int page);
+
+    @GET("users/{userId}/follows")
+    Call<SubscribingTopicResponse> getSubscribingTopic(@Path("userId") String userId);
 }

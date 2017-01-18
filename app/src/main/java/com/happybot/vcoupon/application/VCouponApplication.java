@@ -1,6 +1,9 @@
 package com.happybot.vcoupon.application;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.happybot.vcoupon.BuildConfig;
 import com.squareup.leakcanary.LeakCanary;
@@ -10,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Level;
 
-public class VCouponApplication extends Application {
+public class VCouponApplication extends MultiDexApplication {
     // Logger for set log level
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -25,6 +28,11 @@ public class VCouponApplication extends Application {
         setupLogLevel();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     public static Boolean isInDebugMode() {
         return BuildConfig.DEBUG;

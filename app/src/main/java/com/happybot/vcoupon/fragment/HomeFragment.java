@@ -15,7 +15,6 @@ import com.happybot.vcoupon.fragment.category.CategoryFragment;
 
 import me.relex.circleindicator.CircleIndicator;
 
-
 /**
  * Created by Nguyễn Phương Tuấn on 05-Dec-16.
  */
@@ -24,7 +23,7 @@ public class HomeFragment extends Fragment {
 
     ViewPager viewPager;
     CustomSwipeAdapter adapter;
-    RelativeLayout near_by, food, clothes,technology;
+    RelativeLayout near_by, food, clothes, technology;
 
     public HomeFragment() {
     }
@@ -48,7 +47,7 @@ public class HomeFragment extends Fragment {
         near_by.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "0");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -62,7 +61,7 @@ public class HomeFragment extends Fragment {
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "1");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -76,7 +75,7 @@ public class HomeFragment extends Fragment {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "2");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -90,7 +89,7 @@ public class HomeFragment extends Fragment {
         technology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "3");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -103,5 +102,4 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-
 }

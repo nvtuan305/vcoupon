@@ -7,9 +7,11 @@ import com.google.gson.Gson;
 import com.happybot.vcoupon.exception.BaseException;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionRequestBody;
+import com.happybot.vcoupon.model.SubscribingTopic;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.model.UserRequestBody;
 import com.happybot.vcoupon.model.Voucher;
+import com.happybot.vcoupon.model.retrofit.SubscribingTopicResponse;
 import com.happybot.vcoupon.model.retrofit.UserResponse;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.retrofit.LoginRequestBody;
@@ -581,6 +583,41 @@ public class UserRetrofitService extends VCouponRetrofitService {
                         callback.onPostExecute(responseObject.getUsers(), exception);
                     }
 
+                } else {
+                    callback.onPostExecute(null, exception);
+                }
+            }
+        });
+    }
+
+    /**
+     * Get user SubscribingTopic
+     *
+     * @param userId
+     * @param callback
+     */
+
+    public void getSubscribingTopic(@NonNull String userId,
+                                  final RetrofitServiceCallback<List<SubscribingTopic>> callback) {
+
+        Call<SubscribingTopicResponse> subscribingTopicResponseCall
+                = ((UserInterfaceService) getService()).getSubscribingTopic(userId);
+
+        callback.setCall(subscribingTopicResponseCall);
+
+        // Show progress dialog
+        callback.onPreExecute();
+
+        // Make asynchronous request
+        subscribingTopicResponseCall.enqueue(new TranslateRetrofitCallback<SubscribingTopicResponse>() {
+            @Override
+            public void onFinish(Call<SubscribingTopicResponse> call,
+                                 SubscribingTopicResponse responseObject,
+                                 BaseException exception) {
+                super.onFinish(call, responseObject, exception);
+                if (exception == null && responseObject != null) {
+                    LOG.debug("RESPONSE MESSAGE ==> " + responseObject.getResultMessage());
+                    callback.onPostExecute(responseObject.getSubscribingTopic(), exception);
                 } else {
                     callback.onPostExecute(null, exception);
                 }

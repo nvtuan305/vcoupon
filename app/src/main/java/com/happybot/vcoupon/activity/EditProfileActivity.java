@@ -103,14 +103,16 @@ public class EditProfileActivity extends BaseActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                userRequestBody = new UserRequestBody(etName.getText().toString(), urlAvatar,
-//                                                etEmail.getText().toString(), "", "", "");
-//
-//                updateUserInfo();
+                userRequestBody = new UserRequestBody(etName.getText().toString(), urlAvatar,
+                                                etEmail.getText().toString(), "", "", "");
+
+                updateUserInfo();
+
+                finish();
 
                 // TEST RECEIVE
-                receiveVoucher();
-                showReceiveVoucherCodeDialog();
+                //receiveVoucher();
+                //showReceiveVoucherCodeDialog();
 
             }
         });

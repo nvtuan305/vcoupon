@@ -237,7 +237,6 @@ public class SignInActivity extends BaseActivity {
                     activity.goToHome();
                 }
             } else {
-
                 if (activity != null)
                     Toast.makeText(activity.getApplicationContext(),
                             "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_LONG).show();

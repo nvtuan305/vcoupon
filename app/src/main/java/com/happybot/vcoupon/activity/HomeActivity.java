@@ -175,6 +175,10 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void changeFragment(Fragment fragment, String tag) {
+        if (fragment != null) {
+            fragment.onDestroy();
+        }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right);
@@ -205,8 +209,6 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-
-
         super.onDestroy();
         finish();
     }

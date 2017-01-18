@@ -178,7 +178,7 @@ public class HomeActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right);
-        transaction.replace(R.id.main_container, fragment, tag);
+        transaction.replace(R.id.main_container, fragment);
         //transaction.addToBackStack(tag);
         transaction.commit();
     }

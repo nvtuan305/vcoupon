@@ -1,14 +1,20 @@
 package com.happybot.vcoupon.activity;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -25,6 +31,8 @@ import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.Constants;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class SignInActivity extends BaseActivity {
@@ -138,8 +146,27 @@ public class SignInActivity extends BaseActivity {
             @Override
             public void onError(FacebookException error) {
                 LOG.error("ERROR: Login with facebook failed - " + error.toString());
+                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //getHashKey();
+    }
+
+    private void getHashKey() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.happybot.vcoupon",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
     }
 
     @Override
@@ -166,9 +193,13 @@ public class SignInActivity extends BaseActivity {
             SignInActivity activity = (SignInActivity) activityWeakReference.get();
 
             // If no error occur, server response data, fragment is not destroyed
-            if (throwable == null && user != null && shouldHandleResultForActivity()) {
+            if (throwable == null && user != null && shouldHandleResultForActivity() && activity != null) {
                 activity.saveAuthenticationInfo(user);
                 activity.goToHome();
+            } else {
+                if (activity != null)
+                    Toast.makeText(activity.getApplicationContext(),
+                            "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -188,15 +219,16 @@ public class SignInActivity extends BaseActivity {
         public void onPostExecute(User user, Throwable throwable) {
             super.onPostExecute(user, throwable);
 
+            SignInActivity activity = (SignInActivity) activityWeakReference.get();
+
             // If no error occur, server response data, fragment is not destroyed
-            if (throwable == null && user != null && shouldHandleResultForActivity()) {
-                SignInActivity activity = (SignInActivity) activityWeakReference.get();
+            if (throwable == null && user != null
+                    && shouldHandleResultForActivity() && activity != null) {
                 String phoneNumber = user.getPhoneNumber();
 
                 // The first time login
                 if (phoneNumber.equals(Constants.USER_NO_PHONE_NUMBER)) {
-                    LOG.debug("USER_NO_PHONE_NUMBER");
-                    SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
+                    SharePreferenceHelper helper = new SharePreferenceHelper(activity.getApplicationContext());
                     helper.saveAccessToken(user.getAccessToken());
                     activity.goToProvidePhoneNumberActivity(user.getId());
 
@@ -204,6 +236,11 @@ public class SignInActivity extends BaseActivity {
                     activity.saveAuthenticationInfo(user);
                     activity.goToHome();
                 }
+            } else {
+
+                if (activity != null)
+                    Toast.makeText(activity.getApplicationContext(),
+                            "Có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_LONG).show();
             }
         }
     }

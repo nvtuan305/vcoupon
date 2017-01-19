@@ -13,7 +13,7 @@ public class AddressRequestBody {
     public AddressRequestBody() {
     }
 
-    public AddressRequestBody(double longitude, double latitude, String country, String province) {
+    public AddressRequestBody(double latitude, double longitude, String country, String province) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.country = country;

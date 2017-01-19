@@ -83,15 +83,18 @@ public class HomeActivity extends BaseActivity {
     private void initializeBottomNavigation() {
         // Create normal_items
         AHBottomNavigationItem normal_item1 = new AHBottomNavigationItem("Home", R.drawable.ic_dock_home_whiteout, R.color.colorUnSelected);
-        AHBottomNavigationItem normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_search_whiteout, R.color.colorUnSelected);
         AHBottomNavigationItem normal_item4 = new AHBottomNavigationItem("Notification", R.drawable.ic_tab_bar_notification, R.color.colorUnSelected);
         AHBottomNavigationItem normal_item5 = new AHBottomNavigationItem("Profile", R.drawable.ic_dock_profile_whiteout, R.color.colorUnSelected);
 
         AHBottomNavigationItem normal_item2 = null;
+        AHBottomNavigationItem normal_item3 = null;
+
         if (userRole.equals(USER_ROLE_PROVIDER)) {
             normal_item2 = new AHBottomNavigationItem("Manager", R.drawable.ic_dock_provider_qr, R.color.colorUnSelected);
+            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_provider_add, R.color.colorUnSelected);
         } else {
             normal_item2 = new AHBottomNavigationItem("Voucher", R.drawable.ic_dock_store_whiteout, R.color.colorUnSelected);
+            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_search_whiteout, R.color.colorUnSelected);
         }
 
         //add normal_items

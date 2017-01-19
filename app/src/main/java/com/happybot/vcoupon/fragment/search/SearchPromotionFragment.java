@@ -22,6 +22,7 @@ import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.service.UserRetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class SearchPromotionFragment extends Fragment {
 
-    private String searchQuery = "Tap to Search";
+    private String searchQuery = "";
     private SwipeRefreshLayout srSearchPromotionParentLayout = null;
     private RecyclerView rcvSearchPromotion = null;
     private LinearLayout lnSearchPromotionEmptyLayout = null;
@@ -110,16 +111,6 @@ public class SearchPromotionFragment extends Fragment {
         });
     }
 
-    private boolean flag = false;
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        flag = true;
-        refreshData();
-    }
-
     /**
      * Refresh data when swipe down
      */
@@ -165,7 +156,6 @@ public class SearchPromotionFragment extends Fragment {
             // If no error occur, server response data, fragment is not destroyed
             if (throwable == null && promotions != null && shouldHandleResultForActivity()) {
 
-                if (flag == false) {
                     // Reset data when swipe to refresh data
                     if (srSearchPromotionParentLayout.isRefreshing()) {
                         adapter.updateData(promotions);
@@ -174,11 +164,6 @@ public class SearchPromotionFragment extends Fragment {
                     } else {
                         adapter.addData(promotions);
                     }
-                } else {
-                    flag = false;
-                    adapter.updateData(promotions);
-                    srSearchPromotionParentLayout.setRefreshing(false);
-                }
 
                 // Disable swipe down to load more if has no more promotion
                 canScroll = promotions.size() > 0;
@@ -210,6 +195,9 @@ public class SearchPromotionFragment extends Fragment {
     public void updateSearch(String searchQuery) {
         currentPage = 1;
         this.searchQuery = searchQuery;
+        if (adapter != null) {
+            adapter.clearData();
+        }
         loadSearchPromotion();
     }
 }

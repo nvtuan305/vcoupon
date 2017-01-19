@@ -118,6 +118,12 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
         notifyDataSetChanged();
     }
 
+
+    public void clearData() {
+        promotions.clear();
+        notifyDataSetChanged();
+    }
+
     public void updateData(List<Promotion> promotionList) {
         promotions.clear();
         promotions.addAll(promotionList);

@@ -20,22 +20,22 @@ import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
 import com.squareup.picasso.Picasso;
 
-public class ProviderDetailActivity extends BaseActivity {
+public class DetailProviderActivity extends BaseActivity {
 
     private User provider;
     public static boolean followedProvider = false;
     public static int position;
     private Button btnFollowProvider;
     private Context mContext;
-    private SubscribeProviderDetailDelegate subscribeDelegate;
+    private SubscribeDelegate subscribeDelegate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider_detail);
+        setContentView(R.layout.activity_detail_provider);
 
         mContext = getApplicationContext();
-        subscribeDelegate = new SubscribeProviderDetailDelegate((BaseActivity) this);
+        subscribeDelegate = new SubscribeDelegate((BaseActivity) this);
 
         Intent intent = getIntent();
         provider = intent.getParcelableExtra("DetailProvider");
@@ -53,6 +53,11 @@ public class ProviderDetailActivity extends BaseActivity {
         Picasso.with(getApplicationContext())
                 .load(provider.getAvatar())
                 .into(provider_detail_avatar);
+
+        ImageView provider_detail_background = (ImageView)findViewById(R.id.provider_detail_background);
+        Picasso.with(getApplicationContext())
+                .load(provider.getAvatar())
+                .into(provider_detail_background);
 
         TextView provider_detail_name = (TextView)findViewById(R.id.provider_detail_name);
         provider_detail_name.setText(provider.getName());
@@ -97,11 +102,11 @@ public class ProviderDetailActivity extends BaseActivity {
         });
     }
 
-    public class SubscribeProviderDetailDelegate extends ForegroundTaskDelegate<ResponseObject> {
+    public class SubscribeDelegate extends ForegroundTaskDelegate<ResponseObject> {
 
         //AppCompatActivity activitySubscribe;
 
-        SubscribeProviderDetailDelegate(BaseActivity activity){
+        SubscribeDelegate(BaseActivity activity){
             super(activity);
             //this.activitySubscribe = activity;
         }

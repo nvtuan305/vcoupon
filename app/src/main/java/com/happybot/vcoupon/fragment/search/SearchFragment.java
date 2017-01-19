@@ -16,8 +16,10 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.util.NormalizeString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,7 @@ public class SearchFragment extends Fragment {
         //view pager
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.search_viewpager);
         viewPager.setAdapter(adapter);
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.search_tabs);
+        final TabLayout tabs = (TabLayout) view.findViewById(R.id.search_tabs);
         tabs.setBackgroundColor(Color.WHITE);
         tabs.setupWithViewPager(viewPager);
 
@@ -61,9 +63,18 @@ public class SearchFragment extends Fragment {
                     InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputManager.hideSoftInputFromWindow(edittext_search.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //update query
-                    searchProviderFragment.updateSearch(v.getText().toString());
-                    searchPromotionFragment.updateSearch(v.getText().toString());
-                    adapter.notifyDataSetChanged();
+
+                    String searchText = v.getText().toString();
+                    searchText = NormalizeString.removeAccent(searchText);
+                    searchText = searchText.toLowerCase().trim();
+
+                    if (searchText.equals(""))
+                        return true;
+
+                    if (tabs.getSelectedTabPosition() == 0)
+                        searchProviderFragment.updateSearch(searchText);
+                    else
+                        searchPromotionFragment.updateSearch(searchText);
                     return true;
                 }
                 return false;

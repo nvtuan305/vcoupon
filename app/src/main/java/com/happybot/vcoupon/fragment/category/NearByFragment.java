@@ -4,11 +4,11 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,10 +16,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,6 +41,7 @@ import com.happybot.vcoupon.model.AddressRequestBody;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.service.PromotionRetrofitService;
 import com.happybot.vcoupon.util.BitmapHelper;
+import com.happybot.vcoupon.util.Constants;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +55,6 @@ public class NearByFragment extends Fragment {
     ViewPager vpPromotions;
     Context context;
 
-    static final int RC_HANDLE_ALL_PERM = 1;
     static boolean RS_PERM = false;
 
     //Google map
@@ -71,53 +74,30 @@ public class NearByFragment extends Fragment {
         locationManager = (LocationManager) this.getContext().getSystemService(Context.LOCATION_SERVICE);
         criteria = new Criteria();
 
-        RS_PERM = checkPermissions();
+        //RS_PERM = checkPermissions();
+        RS_PERM = Constants.RS_PERM;
+        Log.e("CheckPermission", "Granted = " + RS_PERM);
 
-        if (RS_PERM) {
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            mSupportMapFragment = SupportMapFragment.newInstance();
-            fragmentTransaction.replace(R.id.map, mSupportMapFragment).commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        mSupportMapFragment = SupportMapFragment.newInstance();
+        fragmentTransaction.replace(R.id.map, mSupportMapFragment).commit();
 
+        if (mSupportMapFragment != null) {
+            mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(GoogleMap map) {
+                    googleMap = map;
 
-            if (mSupportMapFragment != null) {
-                mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                    @Override
-                    public void onMapReady(GoogleMap map) {
-                        googleMap = map;
-                        if (googleMap != null) {
-                            googleMap.getUiSettings().setAllGesturesEnabled(true);
+                    if (googleMap != null) {
+                        googleMap.getUiSettings().setAllGesturesEnabled(true);
+                        moveToPositionOnMap(googleMap, 10.7627688, 106.6814343);
 
-                            // For showing a move to my location button
-                            googleMap.setMyLocationEnabled(true);
-
-                            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-                            if (location != null) {
-                                CameraPosition cameraPosition = new CameraPosition.Builder()
-                                        .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
-                                        .zoom(14)                   // Sets the zoom
-                                        .build();                   // Creates a CameraPosition from the builder
-                                map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-                                Geocoder gCoder = new Geocoder(context);
-                                List<Address> addresses = null;
-                                try {
-                                    addresses = gCoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                if (addresses != null && addresses.size() > 0) {
-                                    PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(context);
-                                    promotionRetrofitService.getNearByPromotion(new AddressRequestBody(location.getLongitude(), location.getLatitude(),
-                                            addresses.get(0).getCountryName(), addresses.get(0).getAdminArea()), getNearByPromotionDelegate);
-                                }
-                            }
-
-
-                        }
+                        if (RS_PERM)
+                            showNearbyPromotion(googleMap);
                     }
-                });
-            }
+                }
+            });
         }
 
         vpPromotions = (ViewPager) view.findViewById(R.id.vpPromotions);
@@ -126,55 +106,44 @@ public class NearByFragment extends Fragment {
         return view;
     }
 
-    // Check all permission
-    public boolean checkPermissions() {
-        String[] requestPermission = new String[]{
-                Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.CHANGE_NETWORK_STATE,
-                Manifest.permission.CHANGE_WIFI_STATE,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.WRITE_SETTINGS};
+    private void showNearbyPromotion(GoogleMap map) {
+        if (map == null)
+            return;
 
-        List<String> permissionNeedRequest = new ArrayList<>();
-        int rs;
+        // For showing a move to my location button
+        googleMap.setMyLocationEnabled(true);
 
-        for (String permission : requestPermission) {
-            rs = ActivityCompat.checkSelfPermission(this.getContext(), permission);
-            if (rs != PackageManager.PERMISSION_GRANTED)
-                permissionNeedRequest.add(permission);
+        //Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        //if (location != null) {
+        Toast.makeText(this.getContext(), "Đang lấy các khuyến mại quanh đây", Toast.LENGTH_LONG).show();
+        moveToPositionOnMap(map, 10.7628989, 106.6800439);
+
+        Geocoder gCoder = new Geocoder(context);
+        List<Address> addresses = null;
+
+        try {
+            addresses = gCoder.getFromLocation(10.7628989, 106.6800439, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        if (!permissionNeedRequest.isEmpty()) {
-            ActivityCompat.requestPermissions(
-                    this.getActivity(),
-                    permissionNeedRequest.toArray(new String[permissionNeedRequest.size()]),
-                    RC_HANDLE_ALL_PERM);
-            return false;
-        }
-
-        return true;
+        getNearbyPromotion(10.7628989, 106.6800439, addresses);
+        //}
     }
 
-    // Handle result of permission request
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    private void moveToPositionOnMap(GoogleMap map, double lat, double lng) {
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(lat, lng))      // Sets the center of the map to location user
+                .zoom(14)                   // Sets the zoom
+                .build();                   // Creates a CameraPosition from the builder
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
-        switch (requestCode) {
-            case RC_HANDLE_ALL_PERM:
-                if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    RS_PERM = true;
-                else
-                    RS_PERM = false;
-
-                break;
-
-            default:
-                break;
+    private void getNearbyPromotion(double lat, double lng, List<Address> addresses) {
+        if (addresses != null && addresses.size() > 0) {
+            PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(context);
+            promotionRetrofitService.getNearByPromotion(new AddressRequestBody(lat, lng,
+                    addresses.get(0).getCountryName(), addresses.get(0).getAdminArea()), getNearByPromotionDelegate);
         }
     }
 

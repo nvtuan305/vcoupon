@@ -1,4 +1,4 @@
-package com.happybot.vcoupon.fragment;
+package com.happybot.vcoupon.fragment.profile;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

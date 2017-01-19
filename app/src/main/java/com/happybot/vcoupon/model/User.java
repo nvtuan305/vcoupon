@@ -40,6 +40,7 @@ public class User implements Parcelable {
     private int followingCount;
     private int rating;
     private String accessToken;
+    private boolean isFollowing;
 
     public User() {
         this.name = "VCoupon";
@@ -73,6 +74,21 @@ public class User implements Parcelable {
         this.provider = provider;
     }
 
+    public User(String name, String gender, String email, String phoneNumber, String address,
+                String website, String fanpage, String password, String role, String provider, boolean isFollowing) {
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.website = website;
+        this.fanpage = fanpage;
+        this.password = password;
+        this.role = role;
+        this.provider = provider;
+        this.isFollowing = isFollowing;
+    }
+
     public User (Parcel in){
         _id = in.readString();
         name = in.readString();
@@ -91,6 +107,7 @@ public class User implements Parcelable {
         followingCount = in.readInt();
         rating = in.readInt();
         accessToken = in.readString();
+        isFollowing = in.readByte() != 0;
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -129,6 +146,7 @@ public class User implements Parcelable {
         parcel.writeInt(followingCount);
         parcel.writeInt(rating);
         parcel.writeString(accessToken);
+        parcel.writeByte((byte) (isFollowing ? 1 : 0));
     }
 
     public String getName() {
@@ -241,5 +259,13 @@ public class User implements Parcelable {
 
     public int getRating() {
         return rating;
+    }
+
+    public boolean isFollowing() {
+        return isFollowing;
+    }
+
+    public void setFollowing(boolean following) {
+        isFollowing = following;
     }
 }

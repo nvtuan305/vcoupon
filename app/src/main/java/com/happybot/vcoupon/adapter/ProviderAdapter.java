@@ -84,6 +84,13 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
             }
         });
 
+        // Disable or enabled get voucher button
+        if (provider.isFollowing()) {
+            holder.provider_small_item_follow.setText(R.string.unfollow_title);
+        } else {
+            holder.provider_small_item_follow.setText(R.string.follow_title);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

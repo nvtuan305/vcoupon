@@ -1,13 +1,19 @@
 package com.happybot.vcoupon.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -15,13 +21,17 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.fragment.HomeFragment;
 import com.happybot.vcoupon.fragment.NotificationFragment;
-import com.happybot.vcoupon.fragment.ProfileFragment;
+import com.happybot.vcoupon.fragment.profile.ProfileFragment;
 import com.happybot.vcoupon.fragment.ProviderAddVoucherFragment;
 import com.happybot.vcoupon.fragment.ProviderManagerVoucherFragment;
 import com.happybot.vcoupon.fragment.promotion.PromotionFragment;
 import com.happybot.vcoupon.fragment.search.SearchFragment;
+import com.happybot.vcoupon.util.Constants;
 import com.happybot.vcoupon.util.FCMNotification;
 import com.happybot.vcoupon.util.SharePreferenceHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends BaseActivity {
 
@@ -60,6 +70,8 @@ public class HomeActivity extends BaseActivity {
         initHomeFragment();
 
         initializeBottomNavigation();
+
+        Constants.RS_PERM = checkPermissions();
     }
 
     private void initHomeFragment() {
@@ -91,7 +103,7 @@ public class HomeActivity extends BaseActivity {
 
         if (userRole.equals(USER_ROLE_PROVIDER)) {
             normal_item2 = new AHBottomNavigationItem("Manager", R.drawable.ic_dock_provider_qr, R.color.colorUnSelected);
-            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_provider_add, R.color.colorUnSelected);
+            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_add_green, R.color.colorUnSelected);
         } else {
             normal_item2 = new AHBottomNavigationItem("Voucher", R.drawable.ic_dock_store_whiteout, R.color.colorUnSelected);
             normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_search_whiteout, R.color.colorUnSelected);
@@ -178,16 +190,61 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void changeFragment(Fragment fragment, String tag) {
-//        if (fragment != null) {
-//            fragment.onDestroy();
-//        }
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right);
         transaction.replace(R.id.main_container, fragment);
         //transaction.addToBackStack(tag);
         transaction.commit();
+    }
+
+    // Check all permission
+    public boolean checkPermissions() {
+        String[] requestPermission = new String[]{
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CHANGE_NETWORK_STATE,
+                Manifest.permission.CHANGE_WIFI_STATE,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE};
+
+        List<String> permissionNeedRequest = new ArrayList<>();
+        int rs;
+
+        for (String permission : requestPermission) {
+            Log.d("CheckPermission", "Granted = " + false);
+            rs = ContextCompat.checkSelfPermission(this, permission);
+            if (rs != PackageManager.PERMISSION_GRANTED)
+                permissionNeedRequest.add(permission);
+        }
+
+        if (!permissionNeedRequest.isEmpty()) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    permissionNeedRequest.toArray(new String[permissionNeedRequest.size()]),
+                    Constants.RC_HANDLE_ALL_PERM);
+            return false;
+        }
+
+        return true;
+    }
+
+    // Handle result of permission request
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+        switch (requestCode) {
+            case Constants.RC_HANDLE_ALL_PERM:
+                Constants.RS_PERM = grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+
+            default:
+                break;
+        }
     }
 
     @Override

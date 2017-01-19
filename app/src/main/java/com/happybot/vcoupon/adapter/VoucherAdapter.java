@@ -56,7 +56,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherViewHolder> {
                 .load(provider.getAvatar())
                 .fit()
                 .centerCrop()
-                .error(R.drawable.avatar_error)
+                .error(R.drawable.ic_avatar_default)
                 .into(holder.imvProviderAvatar);
 
         // Set title

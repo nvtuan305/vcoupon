@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
     ViewPager viewPager;
     CustomSwipeAdapter adapter;
     RelativeLayout near_by, food, clothes, technology;
+    public CategoryFragment nearbyFragment = null;
 
     public HomeFragment() {
     }
@@ -49,10 +50,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("position", "0");
-                CategoryFragment categoryFragment = new CategoryFragment();
-                categoryFragment.setArguments(bundle);
+                nearbyFragment = new CategoryFragment();
+                nearbyFragment.setArguments(bundle);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.main_container, categoryFragment, "home");
+                ft.replace(R.id.main_container, nearbyFragment, "home");
                 ft.addToBackStack("home");
                 ft.commit();
             }

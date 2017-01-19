@@ -4,7 +4,9 @@ import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class DateTimeConverter {
@@ -58,5 +60,10 @@ public class DateTimeConverter {
     public static long getCurrentDateInMillis() {
         Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis() / 1000;
+    }
+
+    public static String getDate(long milis) {
+        Date date = new Date(milis * 1000);
+        return new SimpleDateFormat("dd/MM/yyyy").format(date);
     }
 }

@@ -34,7 +34,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 
     @Override
     public CommentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_item, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_comment_item, null);
         mContext = layoutView.getContext();
         CommentViewHolder holder = new CommentViewHolder(layoutView);
         return holder;
@@ -47,7 +47,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
                 .load(comment.get_user().getAvatar())
                 .fit()
                 .centerCrop()
-                .error(R.drawable.avatar_error)
+                .error(R.drawable.ic_avatar_default)
                 .into(holder.comment_item_avatar);
         holder.comment_item_name.setText(comment.get_user().getName());
         holder.comment_item_message.setText(comment.getMessage());

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     android:paddingBottom="60dp">
 
@@ -86,6 +87,7 @@
                 android:paddingTop="@dimen/padding_6dp"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="16sp"
+                android:visibility="gone"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/colorPrimary" />
 
@@ -161,35 +163,18 @@
                         app:met_floatingLabel="highlight"
                         app:met_primaryColor="@color/colorPrimary" />
 
-                    <LinearLayout
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/provider_add_promotion_amountLimit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <com.rengwuxian.materialedittext.MaterialEditText
-                            android:id="@+id/provider_add_promotion_amountLimit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="@string/provider_add_promotion_amountLimit"
-                            android:inputType="phone"
-                            android:maxLines="1"
-                            android:paddingTop="@dimen/padding_6dp"
-                            android:textColor="@color/colorPrimaryText"
-                            android:textSize="16sp"
-                            app:met_floatingLabel="highlight"
-                            app:met_primaryColor="@color/colorPrimary" />
-
-                        <CheckBox
-                            android:id="@+id/provider_add_promotion_isOneCode"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/provider_add_promotion_isOneCode"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                        android:ems="10"
+                        android:hint="@string/provider_add_promotion_amountLimit"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorPrimary" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -216,7 +201,8 @@
                             android:id="@+id/provider_add_promotion_discount_type"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:gravity="end" />
                     </LinearLayout>
 
                     <com.rengwuxian.materialedittext.MaterialEditText
@@ -264,17 +250,27 @@
                         app:met_floatingLabel="highlight"
                         app:met_primaryColor="@color/colorPrimary" />
 
+                    <CheckBox
+                        android:id="@+id/provider_add_promotion_isOneCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:text="@string/provider_add_promotion_isOneCode"
+                        android:textSize="16sp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/padding_16dp"
+                        android:layout_marginTop="@dimen/padding_16dp"
                         android:gravity="center"
-                        android:weightSum="3">
+                        android:weightSum="4">
 
                         <Button
                             android:id="@+id/btn_provider_add_promotion"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
+                            android:layout_weight="3"
                             android:background="@drawable/button_signin"
                             android:paddingTop="@dimen/padding_6dp"
                             android:text="@string/provider_add_promotion"

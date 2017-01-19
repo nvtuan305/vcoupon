@@ -195,6 +195,7 @@ public class ProviderAddVoucherFragment extends Fragment {
 
     public void postPromotion(View view) {
         SharePreferenceHelper sharePreferenceHelper = new SharePreferenceHelper(view.getContext());
+
         PromotionBody promotionBody = new PromotionBody(getCategoryID(),                    //categoryID
                 sharePreferenceHelper.getUserId(),                                          //providerID
                 provider_add_promotion_title.getText().toString(),                          //title
@@ -207,6 +208,7 @@ public class ProviderAddVoucherFragment extends Fragment {
                 Integer.parseInt(provider_add_promotion_discount.getText().toString()),     //discount
                 getDiscountType(),                                                          //discountType
                 addressList);                                                               //addresses
+
         PromotionRetrofitService promotionRetrofitService = new PromotionRetrofitService(view.getContext());
         promotionRetrofitService.postPromotion(promotionBody, new PostPromotionsDelegate((BaseActivity) view.getContext()));
     }
@@ -236,7 +238,7 @@ public class ProviderAddVoucherFragment extends Fragment {
     public boolean checkInfo() {
         // Check data input
         if (provider_add_promotion_image_url.getText().toString().equals("")) {
-            provider_add_promotion_image_url.setError(getString(R.string.provider_add_promotion_choose_image_error));
+            Toast.makeText(this.getContext(), "Bạn chưa chọn ảnh mô tả cho chương trình khuyến mại", Toast.LENGTH_LONG).show();
             return false;
         }
         if (provider_add_promotion_title.getText().toString().equals("")) {
@@ -328,8 +330,7 @@ public class ProviderAddVoucherFragment extends Fragment {
 
                 try {
                     addressListParse = geocoder.getFromLocation(place.getLatLng().latitude, place.getLatLng().longitude, 1);
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -341,14 +342,12 @@ public class ProviderAddVoucherFragment extends Fragment {
                 address.setDistrict(addressListParse.get(0).getSubAdminArea());
                 if (addressListParse.get(0).getLocality() != null) {
                     address.setProvince(addressListParse.get(0).getLocality());
-                }
-                else {
+                } else {
                     address.setProvince("Ho Chi Minh City");
                 }
                 if (addressListParse.get(0).getCountryName() != null) {
                     address.setCountry(addressListParse.get(0).getCountryName());
-                }
-                else {
+                } else {
                     address.setCountry("Vietnam");
                 }
                 address.setLatitude(addressListParse.get(0).getLatitude());
@@ -357,7 +356,7 @@ public class ProviderAddVoucherFragment extends Fragment {
                 //add to addressList
                 addressList.add(address);
 
-                Log.i("Place: " , place.getName().toString());
+                Log.i("Place: ", place.getName().toString());
                 //updateUI
                 String strAddress = provider_add_promotion_address.getText().toString();
                 strAddress = strAddress + address.getStreet() + "; ";

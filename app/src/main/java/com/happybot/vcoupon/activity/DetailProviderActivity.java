@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class DetailProviderActivity extends BaseActivity {
     public static boolean followedProvider = false;
     public static int position;
     private Button btnFollowProvider;
+    private ImageButton btnBack;
     private Context mContext;
     private SubscribeDelegate subscribeDelegate;
 
@@ -43,6 +45,7 @@ public class DetailProviderActivity extends BaseActivity {
         position = intent.getExtras().getInt("Position");
 
         btnFollowProvider = (Button)findViewById(R.id.btnFollowProvider);
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
 
         if (!followedProvider)
             btnFollowProvider.setText(R.string.follow_title);
@@ -98,6 +101,13 @@ public class DetailProviderActivity extends BaseActivity {
                     SubscribeBody subscribeBody = new SubscribeBody(provider.getId(), "PROVIDER");
                     userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, subscribeDelegate);
                 }
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

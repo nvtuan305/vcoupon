@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.SignUpNormalUserActivity;
+import com.happybot.vcoupon.activity.SignUpProviderActivity;
 
 public class RegisterSplashDialog extends DialogFragment {
 
@@ -26,7 +27,7 @@ public class RegisterSplashDialog extends DialogFragment {
         btnProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToSignUp();
+                goToSignUpProvider();
             }
         });
 
@@ -44,6 +45,11 @@ public class RegisterSplashDialog extends DialogFragment {
 
     public void goToSignUp() {
         Intent intent = new Intent(this.getActivity(), SignUpNormalUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSignUpProvider() {
+        Intent intent = new Intent(this.getActivity(), SignUpProviderActivity.class);
         startActivity(intent);
     }
 }

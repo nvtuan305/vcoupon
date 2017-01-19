@@ -1,203 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="50dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="4"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:clickable="true">
-
-                <LinearLayout
-                    android:id="@+id/btnChooseAvatar"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/selector_update_profile_choose_image"
-                    android:orientation="horizontal"/>
-
-            </LinearLayout>
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/civAvatar"
-                android:layout_width="0dp"
+                android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_weight="2"
-                android:src="@drawable/avt"/>
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_avatar_default" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btnChooseAvatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_update_profile_choose_image"
+                android:orientation="horizontal" />
+
+        </RelativeLayout>
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
-            android:id="@+id/etName"
             android:hint="Họ và tên"
-            android:textAllCaps="false"
             android:inputType="textPersonName"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_username"
-            app:met_iconPadding="0dp"/>
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_width="match_parent"
-            android:ems="10"
             android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:ems="10"
             android:hint="Mật khẩu"
-            android:textAllCaps="false"
             android:inputType="textPassword"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_password"
-            app:met_iconPadding="0dp"
-            android:layout_height="wrap_content" />
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_width="match_parent"
-            android:ems="10"
             android:id="@+id/etRePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:ems="10"
             android:hint="Nhập lại mật khẩu"
-            android:textAllCaps="false"
             android:inputType="textPassword"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_password"
-            app:met_iconPadding="0dp"
-            android:layout_height="wrap_content" />
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:ems="10"
             android:id="@+id/etEmail"
-            android:hint="Địa chỉ Email"
-            android:textSize="16sp"
-            android:layout_height="wrap_content"
-            app:met_iconLeft="@drawable/profile_glyph_email"
-            app:met_iconPadding="0dp"/>
-
-        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
+            android:hint="Địa chỉ Email"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            app:met_iconLeft="@drawable/profile_glyph_email"
+            app:met_iconPadding="0dp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
+            android:ems="10"
             android:hint="Số điện thoại"
-            android:textAllCaps="false"
             android:inputType="number"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_phone"
-            app:met_iconPadding="0dp"/>
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
-            android:id="@+id/etAddress"
             android:hint="Địa chỉ"
-            android:textAllCaps="false"
             android:inputType="text"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_address"
-            app:met_iconPadding="0dp"/>
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etWebsite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
-            android:id="@+id/etWebsite"
             android:hint="Website"
-            android:textAllCaps="false"
             android:inputType="text"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_website"
-            app:met_iconPadding="0dp"/>
+            app:met_iconPadding="0dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etFanpage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:ems="10"
-            android:id="@+id/etFanpage"
             android:hint="Facebook"
-            android:textAllCaps="false"
             android:inputType="text"
+            android:textAllCaps="false"
             android:textSize="16sp"
             app:met_iconLeft="@drawable/profile_glyph_facebook"
-            app:met_iconPadding="0dp"/>
+            app:met_iconPadding="0dp" />
 
         <Button
-            android:text="Lưu thay đổi"
-            android:layout_width="match_parent"
             android:id="@+id/btnSave"
-            android:background="@drawable/border"
-            android:textColor="@android:color/background_light"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Lưu thay đổi"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" />
 
         <Button
-            android:text="Lưu voucher"
-            android:layout_width="match_parent"
             android:id="@+id/btnPin"
-            android:background="@drawable/border"
-            android:textColor="@android:color/background_light"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Lưu voucher"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" />
 
         <Button
-            android:text="Hủy voucher"
-            android:layout_width="match_parent"
             android:id="@+id/btnUnpin"
-            android:background="@drawable/border"
-            android:textColor="@android:color/background_light"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Hủy voucher"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" />
 
         <Button
-            android:text="Nhận mã voucher"
-            android:layout_width="match_parent"
             android:id="@+id/btnGetVoucher"
-            android:background="@drawable/border"
-            android:textColor="@android:color/background_light"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp" />
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Nhận mã voucher"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

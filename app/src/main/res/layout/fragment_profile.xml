@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/colorBackgroundPrimary">
+        android:background="@color/colorBackgroundPrimary"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/cover_profile_background_min">
+            android:background="@drawable/bg_image_primary">
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#4C000000" />-->
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -21,19 +27,14 @@
 
                 <ImageButton
                     android:id="@+id/btnEditProfile"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="right|bottom"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/selector_update_profile_choose_image"
-                    android:layout_gravity="right|bottom"/>
+                    android:background="@drawable/ic_edit_profile" />
 
             </FrameLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#4C000000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,25 +44,25 @@
                 android:orientation="vertical"
                 android:weightSum="1">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/civAvatar"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.7"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/avatar_error"/>
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_avatar_default"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="3dp" />
 
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.3"
                     android:layout_alignParentBottom="true"
-                    android:textSize="22dp"
+                    android:layout_weight="0.3"
+                    android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:text="User Name"
-                    android:textAlignment="center" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -70,92 +71,93 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal"
             android:background="#fff"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <TextView
                 android:id="@+id/tvFollowed"
-                android:layout_weight="0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14dp"
-                android:text="0\n theo dõi" />
+                android:paddingTop="10dp"
+                android:text="0\n theo dõi"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tvPromotion"
-                android:layout_weight="0.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14dp"
-                android:text="0\nvoucher" />
+                android:paddingTop="10dp"
+                android:text="0\nvoucher"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tvFollowing"
-                android:layout_weight="0.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14dp"
-                android:text="0\nđang theo dõi" />
+                android:paddingTop="10dp"
+                android:text="0\nđang theo dõi"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="14dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
+            android:orientation="vertical"
             android:paddingBottom="50dp"
-            android:orientation="vertical">
+            android:paddingTop="10dp">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="5dp"
-                android:background="#fff">
+                android:background="#fff"
+                android:elevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/profile_glyph_email1"/>
+                            android:src="@drawable/profile_glyph_email1" />
 
                         <TextView
                             android:id="@+id/tvEmail"
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text=""
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -163,26 +165,27 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/profile_glyph_phone"/>
+                            android:src="@drawable/profile_glyph_phone" />
 
                         <TextView
                             android:id="@+id/tvPhoneNumber"
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text=""
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -191,26 +194,27 @@
                         android:id="@+id/loAddress"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/profile_glyph_address"/>
+                            android:src="@drawable/profile_glyph_address" />
 
                         <TextView
                             android:id="@+id/tvAddress"
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="110 Điện Biên Phủ, P.15, Q.1"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -219,26 +223,27 @@
                         android:id="@+id/loWebsite"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/profile_glyph_website"/>
+                            android:src="@drawable/profile_glyph_website" />
 
                         <TextView
                             android:id="@+id/tvWebsite"
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Fassiveshop.com"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -247,26 +252,27 @@
                         android:id="@+id/loFacebook"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/profile_glyph_facebook"/>
+                            android:src="@drawable/profile_glyph_facebook" />
 
                         <TextView
                             android:id="@+id/tvFacebook"
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Facebook.com/fassiveshop"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -278,43 +284,44 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="20dp"
+                android:background="#fff"
                 android:elevation="5dp"
-                android:background="#fff">
+                android:padding="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:orientation="vertical"
                     android:paddingBottom="20dp"
-                    android:paddingRight="10dp"
                     android:paddingLeft="10dp"
-                    android:orientation="vertical">
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_notification"/>
+                            android:src="@drawable/ic_notification" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Tự động thông báo"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -322,25 +329,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_share"/>
+                            android:src="@drawable/ic_share" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Giới thiệu bạn bè"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -348,25 +356,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_report"/>
+                            android:src="@drawable/ic_report" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Báo cáo lỗi"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -374,53 +383,55 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_vcoupon"/>
+                            android:src="@drawable/ic_vcoupon" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Vcoupon V1.0"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/profile_logout"
-                        android:clickable="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:weightSum="1">
 
                         <ImageView
                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="0.1"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_dock_profile_whiteout"/>
+                            android:src="@drawable/ic_dock_profile_whiteout" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="0.9"
                             android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
+                            android:layout_weight="0.9"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
                             android:text="Đăng xuất"
+                            android:textColor="@color/colorPrimaryText"
                             android:textSize="14dp" />
 
                     </LinearLayout>

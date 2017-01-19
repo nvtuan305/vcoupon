@@ -35,7 +35,7 @@ public class NotifyRecyclerAdapter extends
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View itemView = inflater.inflate(R.layout.item_notification, viewGroup, false);
+        View itemView = inflater.inflate(R.layout.layout_item_notification, viewGroup, false);
         return new RecyclerViewHolder(itemView);
     }
 

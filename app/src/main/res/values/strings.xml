@@ -49,7 +49,7 @@
     <string name="provider_add_promotion_category">Thể loại:</string>
     <string name="provider_add_promotion_condition">Điều kiện áp dụng</string>
     <string name="provider_add_promotion_amountLimit">Số lượng tối đa</string>
-    <string name="provider_add_promotion_isOneCode">Mã dùng chung</string>
+    <string name="provider_add_promotion_isOneCode">Sử dụng chung một mã khuyến mại</string>
     <string name="provider_add_promotion_discount">Mức giảm % hoặc tiền giảm</string>
     <string name="provider_add_promotion">Đăng mã giảm giá</string>
     <string name="provider_add_promotion_startTime">Thời gian bắt đầu</string>

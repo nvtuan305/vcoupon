@@ -57,9 +57,9 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
         final View view = inflater.inflate(R.layout.dialog_receive_voucher_code, null);
 
         imgVoucherCode = (ImageView) view.findViewById(R.id.imgVoucherCode);
-        tvNameVoucher  = (TextView) view.findViewById(R.id.tvNameVoucher);
-        tvAddress      = (TextView) view.findViewById(R.id.tvAddress);
-        tvDate         = (TextView) view.findViewById(R.id.tvDate);
+        tvNameVoucher = (TextView) view.findViewById(R.id.tvNameVoucher);
+        tvAddress = (TextView) view.findViewById(R.id.tvAddress);
+        tvDate = (TextView) view.findViewById(R.id.tvDate);
         btnSaveVoucher = (Button) view.findViewById(R.id.btnSaveVoucher);
 
         Picasso.with(getContext()).load(getArguments().getString("qrCode")).into(imgVoucherCode);
@@ -72,9 +72,6 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
         btnSaveVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
-
                 btnSaveVoucher.setVisibility(View.INVISIBLE);
 
                 loReceiveVoucher.setDrawingCacheEnabled(true);
@@ -83,7 +80,6 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
                 btnSaveVoucher.setVisibility(View.VISIBLE);
 
                 saveImage(bitmap, tvNameVoucher.getText().toString());
-
             }
         });
 
@@ -96,15 +92,20 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
         String root = Environment.getExternalStorageDirectory().toString();
         File myDir = new File(root);
         myDir.mkdirs();
-        String fname = "Image-" + image_name+ ".jpg";
+        String fname = "Image-" + image_name + ".jpg";
         File file = new File(myDir, fname);
+
         if (file.exists()) file.delete();
+
         Log.i("LOAD", root + fname);
+
         try {
             FileOutputStream out = new FileOutputStream(file);
             finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
+
+            Toast.makeText(getContext(), "Đã lưu mã khuyến mại vào máy", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

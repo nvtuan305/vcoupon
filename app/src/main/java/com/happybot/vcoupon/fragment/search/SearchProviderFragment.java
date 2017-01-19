@@ -20,6 +20,7 @@ import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.service.UserRetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -188,6 +189,7 @@ public class SearchProviderFragment extends Fragment {
     public void updateSearch(String searchQuery) {
         currentPage = 1;
         this.searchQuery = searchQuery;
+        adapter.updateData(new ArrayList<User>());
         loadSearchProvider();
     }
 }

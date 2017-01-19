@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:state_enabled="false"
-        android:drawable="@drawable/ic_select_photo_dark">
+    <item android:drawable="@drawable/ic_select_photo_dark" android:state_enabled="false">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/post_promotion_choose_image_radius" />
-            <stroke android:color="@color/colorBorder" android:width="7px"/>
+            <stroke android:width="7px" android:color="@color/colorBorder" />
         </shape>
     </item>
 
-    <item
-        android:state_pressed="true"
-        android:drawable="@drawable/ic_select_photo_green">
+    <item android:drawable="@drawable/ic_select_photo_green" android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/post_promotion_choose_image_radius" />
             <solid android:color="@color/colorPrimary" />

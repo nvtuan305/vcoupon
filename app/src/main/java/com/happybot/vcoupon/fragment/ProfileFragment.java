@@ -146,7 +146,7 @@ public class ProfileFragment extends Fragment {
 
         @Override
         public void onPreExecute() {
-            super.onPreExecute();
+            //super.onPreExecute();
         }
 
         @Override
@@ -160,8 +160,6 @@ public class ProfileFragment extends Fragment {
 
             // Show empty layout without any promotions
             showView(user);
-
-
         }
     }
 
@@ -170,70 +168,78 @@ public class ProfileFragment extends Fragment {
      */
     public void showView(User user) {
 
-        if (user == null)
-            return;
+        try {
+            if (user == null)
+                return;
 
-        user_role = user.getRole();
+            user_role = user.getRole();
 
-        extras = new Bundle();
-        extras.putString("name", user.getName());
-        extras.putString("avatar", user.getAvatar());
-        extras.putString("email", user.getEmail());
-        extras.putString("address", user.getAddress());
-        extras.putString("website", user.getWebsite());
-        extras.putString("fanpage", user.getFanpage());
+            extras = new Bundle();
+            extras.putString("name", user.getName());
+            extras.putString("avatar", user.getAvatar());
+            extras.putString("email", user.getEmail());
+            extras.putString("address", user.getAddress());
+            extras.putString("website", user.getWebsite());
+            extras.putString("fanpage", user.getFanpage());
 
-        Picasso.with(mContext).load(user.getAvatar()).into(civAvatar);
-        tvName.setText(user.getName());
-        tvPromotion.setText(String.valueOf(user.getPromotionCount()) + "\nvoucher");
-        tvFollowing.setText(String.valueOf(user.getFollowingCount()) + "\nđang theo dõi");
-        tvEmail.setText(user.getEmail());
-        tvPhoneNumber.setText(user.getPhoneNumber());
+            Picasso.with(mContext).load(user.getAvatar()).into(civAvatar);
+            tvName.setText(user.getName());
+            tvPromotion.setText(String.valueOf(user.getPromotionCount()) + "\nvoucher");
+            tvFollowing.setText(String.valueOf(user.getFollowingCount()) + "\nđang theo dõi");
+            tvEmail.setText(user.getEmail());
+            tvPhoneNumber.setText(user.getPhoneNumber());
 
-        if (user.getRole().equals("PROVIDER")) {
-            Toast.makeText(mContext, user.getRole(), Toast.LENGTH_LONG).show();
-            ViewGroup.LayoutParams params;
+            if (user.getRole().equals("PROVIDER")) {
+                Toast.makeText(mContext, user.getRole(), Toast.LENGTH_LONG).show();
+                ViewGroup.LayoutParams params;
 
-            params = loAddress.getLayoutParams();
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            loAddress.setLayoutParams(params);
-            tvAdress.setText(user.getAddress());
+                params = loAddress.getLayoutParams();
+                params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                loAddress.setLayoutParams(params);
+                tvAdress.setText(user.getAddress());
 
-            params = loWebsite.getLayoutParams();
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            loWebsite.setLayoutParams(params);
-            tvWebsite.setText(user.getWebsite());
+                params = loWebsite.getLayoutParams();
+                params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                loWebsite.setLayoutParams(params);
+                tvWebsite.setText(user.getWebsite());
 
-            params = loFacebook.getLayoutParams();
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            loFacebook.setLayoutParams(params);
-            tvFacebook.setText(user.getFanpage());
+                params = loFacebook.getLayoutParams();
+                params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                loFacebook.setLayoutParams(params);
+                tvFacebook.setText(user.getFanpage());
 
-            LinearLayout.LayoutParams paramsTv;
+                LinearLayout.LayoutParams paramsTv;
 
-            paramsTv = (LinearLayout.LayoutParams)tvFollowed.getLayoutParams();
-            paramsTv.weight = 0.33f;
-            tvFollowed.setLayoutParams(paramsTv);
-            tvFollowed.setText(String.valueOf(user.getFollowedCount()) + "\ntheo dõi");
+                paramsTv = (LinearLayout.LayoutParams) tvFollowed.getLayoutParams();
+                paramsTv.weight = 0.33f;
+                tvFollowed.setLayoutParams(paramsTv);
+                tvFollowed.setText(String.valueOf(user.getFollowedCount()) + "\ntheo dõi");
 
-            paramsTv = (LinearLayout.LayoutParams)tvPromotion.getLayoutParams();
-            paramsTv.weight = 0.34f;
-            tvPromotion.setLayoutParams(paramsTv);
+                paramsTv = (LinearLayout.LayoutParams) tvPromotion.getLayoutParams();
+                paramsTv.weight = 0.34f;
+                tvPromotion.setLayoutParams(paramsTv);
 
-            paramsTv = (LinearLayout.LayoutParams)tvFollowing.getLayoutParams();
-            paramsTv.weight = 0.33f;
-            tvFollowing.setLayoutParams(paramsTv);
+                paramsTv = (LinearLayout.LayoutParams) tvFollowing.getLayoutParams();
+                paramsTv.weight = 0.33f;
+                tvFollowing.setLayoutParams(paramsTv);
+            }
+        } catch (Exception e) {
+            Log.e("PROFILE", e.getMessage());
         }
     }
+
     public void logOut(View view) {
         //unsubscribe FCM Topic
         FCMNotification fcmNotification = new FCMNotification((BaseActivity) view.getContext());
         fcmNotification.unsubscribeFCMTopic();
+
         //clear SharedPreferences
         SharePreferenceHelper helper = new SharePreferenceHelper(view.getContext());
         helper.clearSharedPreferences();
+
         //go back sign in screen
         Intent intent = new Intent((BaseActivity) view.getContext(), SignInActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }

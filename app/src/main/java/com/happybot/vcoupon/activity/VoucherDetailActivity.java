@@ -117,19 +117,13 @@ public class VoucherDetailActivity extends BaseActivity {
         btnGetVoucher = (LinearLayout) findViewById(R.id.btnGetVoucher);
 
         if (promotion.isPinned()) {
-            //Toast.makeText(getApplicationContext(), "Pinned", Toast.LENGTH_SHORT).show();
             setViewUnpin();
         } else {
-            //Toast.makeText(getApplicationContext(), "No pinned", Toast.LENGTH_SHORT).show();
             setViewPin();
         }
 
-        if (promotion.isRegistered()) {
-            //Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
-            btnGetVoucher.setBackgroundResource(R.drawable.selector_get_coupon_button);
-            btnGetVoucher.setClickable(false);
-            btnGetVoucher.setEnabled(false);
-        }
+        if (promotion.isRegistered())
+            setViewDisableRegister();
 
         pinPromotionDelegate = new PinPromotionDelegate((BaseActivity) this);
         unpinPromotionDelegate = new UnpinPromotionDelegate((BaseActivity) this);
@@ -234,6 +228,11 @@ public class VoucherDetailActivity extends BaseActivity {
         paramsTv.leftMargin = Math.round(pxFromDp(getApplicationContext(), 10));
         paramsTv.rightMargin = Math.round(pxFromDp(getApplicationContext(), 5));
         btnPinVoucher.setLayoutParams(paramsTv);
+    }
+
+    private void setViewDisableRegister() {
+        btnGetVoucher.setClickable(false);
+        btnGetVoucher.setBackground(getResources().getDrawable(R.drawable.unselector_get_coupon_button));
     }
 
     public float pxFromDp(final Context context, final float dp) {
@@ -385,11 +384,9 @@ public class VoucherDetailActivity extends BaseActivity {
 
             // If no error occur, server response data, fragment is not destroyed
             if (throwable == null && voucher != null && shouldHandleResultForActivity()) {
-                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
                 voucherPromotion = voucher;
 
-                btnGetVoucher.setBackgroundResource(R.drawable.selector_get_coupon_button);
-                btnGetVoucher.setClickable(false);
+                setViewDisableRegister();
 
                 Bundle args = new Bundle();
                 args.putString("nameVoucher", voucherPromotion.getVoucherCode());

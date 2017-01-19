@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment {
         //view pager
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.search_viewpager);
         viewPager.setAdapter(adapter);
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.search_tabs);
+        final TabLayout tabs = (TabLayout) view.findViewById(R.id.search_tabs);
         tabs.setBackgroundColor(Color.WHITE);
         tabs.setupWithViewPager(viewPager);
 
@@ -61,9 +61,11 @@ public class SearchFragment extends Fragment {
                     InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputManager.hideSoftInputFromWindow(edittext_search.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //update query
-                    searchProviderFragment.updateSearch(v.getText().toString());
-                    searchPromotionFragment.updateSearch(v.getText().toString());
-                    adapter.notifyDataSetChanged();
+
+                    if (tabs.getSelectedTabPosition() == 0)
+                        searchProviderFragment.updateSearch(v.getText().toString());
+                    else
+                        searchPromotionFragment.updateSearch(v.getText().toString());
                     return true;
                 }
                 return false;

@@ -20,6 +20,7 @@ import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.User;
 import com.happybot.vcoupon.service.UserRetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +46,7 @@ public class SearchProviderFragment extends Fragment {
 
     private boolean canScroll = true;
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
+
     public SearchProviderFragment() {
     }
 
@@ -69,7 +71,7 @@ public class SearchProviderFragment extends Fragment {
         rcvSearchProvider.setLayoutManager(mLinearLayoutManager);
 
         activity = (BaseActivity) getActivity();
-        getSearchProviderTripDelegate = new SearchProviderFragment.GetSearchProviderTripDelegate(activity);
+        getSearchProviderTripDelegate = new GetSearchProviderTripDelegate(activity);
 
 
         // Load SearchProvider
@@ -175,7 +177,6 @@ public class SearchProviderFragment extends Fragment {
      * Show empty layout if server response empty data
      */
     public void showView() {
-
         if (adapter.getItemCount() <= 0) {
             rcvSearchProvider.setVisibility(View.GONE);
             lnSearchProviderEmptyLayout.setVisibility(View.VISIBLE);
@@ -185,9 +186,13 @@ public class SearchProviderFragment extends Fragment {
             lnSearchProviderEmptyLayout.setVisibility(View.GONE);
         }
     }
+
     public void updateSearch(String searchQuery) {
         currentPage = 1;
         this.searchQuery = searchQuery;
+        if (adapter != null) {
+            adapter.clearData();
+        }
         loadSearchProvider();
     }
 }

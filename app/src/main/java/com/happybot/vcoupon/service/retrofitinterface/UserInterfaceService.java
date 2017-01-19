@@ -151,7 +151,7 @@ public interface UserInterfaceService {
     Call<ResponseObject> unfollowPromotion(@Path("userId") String userId, @Path("publisherId") String publisherId);
 
     @GET("users/providers")
-    Call<UserListResponse> getSearchProvider(@Query("searchText") String searchQuery, @Query("page") int page);
+    Call<UserListResponse> getSearchProvider(@Query("search") String searchQuery, @Query("page") int page);
 
     @GET("users/{userId}/follows")
     Call<SubscribingTopicResponse> getSubscribingTopic(@Path("userId") String userId);

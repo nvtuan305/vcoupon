@@ -92,6 +92,11 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void clearData() {
+        providers.clear();
+        notifyDataSetChanged();
+    }
+
     public void updateData(List<User> providerList) {
         providers.clear();
         providers.addAll(providerList);

@@ -16,8 +16,10 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.util.NormalizeString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +64,17 @@ public class SearchFragment extends Fragment {
                     inputManager.hideSoftInputFromWindow(edittext_search.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //update query
 
+                    String searchText = v.getText().toString();
+                    searchText = NormalizeString.removeAccent(searchText);
+                    searchText = searchText.toLowerCase().trim();
+
+                    if (searchText.equals(""))
+                        return true;
+
                     if (tabs.getSelectedTabPosition() == 0)
-                        searchProviderFragment.updateSearch(v.getText().toString());
+                        searchProviderFragment.updateSearch(searchText);
                     else
-                        searchPromotionFragment.updateSearch(v.getText().toString());
+                        searchPromotionFragment.updateSearch(searchText);
                     return true;
                 }
                 return false;

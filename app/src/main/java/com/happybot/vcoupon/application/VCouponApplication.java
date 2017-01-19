@@ -22,7 +22,7 @@ public class VCouponApplication extends MultiDexApplication {
         super.onCreate();
 
         // Initialize leak canary
-        initializeLeakCanary();
+        //initializeLeakCanary();
 
         // Set log level
         setupLogLevel();

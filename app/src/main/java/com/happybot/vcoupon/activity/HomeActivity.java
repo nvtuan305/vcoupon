@@ -91,7 +91,7 @@ public class HomeActivity extends BaseActivity {
 
         if (userRole.equals(USER_ROLE_PROVIDER)) {
             normal_item2 = new AHBottomNavigationItem("Manager", R.drawable.ic_dock_provider_qr, R.color.colorUnSelected);
-            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_provider_add, R.color.colorUnSelected);
+            normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_add_green, R.color.colorUnSelected);
         } else {
             normal_item2 = new AHBottomNavigationItem("Voucher", R.drawable.ic_dock_store_whiteout, R.color.colorUnSelected);
             normal_item3 = new AHBottomNavigationItem("Search", R.drawable.ic_dock_search_whiteout, R.color.colorUnSelected);

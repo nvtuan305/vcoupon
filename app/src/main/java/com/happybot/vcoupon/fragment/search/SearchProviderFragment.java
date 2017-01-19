@@ -189,7 +189,6 @@ public class SearchProviderFragment extends Fragment {
     public void updateSearch(String searchQuery) {
         currentPage = 1;
         this.searchQuery = searchQuery;
-        adapter.updateData(new ArrayList<User>());
         loadSearchProvider();
     }
 }

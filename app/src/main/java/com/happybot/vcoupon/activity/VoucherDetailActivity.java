@@ -43,6 +43,7 @@ public class VoucherDetailActivity extends BaseActivity {
     private LinearLayout btnPinVoucher;
     private LinearLayout btnUnpinVoucher;
     private LinearLayout btnGetVoucher;
+    private TextView tvBtnGetVoucher;
 
     private PinPromotionDelegate pinPromotionDelegate = null;
     private UnpinPromotionDelegate unpinPromotionDelegate = null;
@@ -73,7 +74,7 @@ public class VoucherDetailActivity extends BaseActivity {
         voucher_detail_provider_name.setText(promotion.getProvider().getName());
 
         TextView voucher_detail_time = (TextView) findViewById(R.id.voucher_detail_time);
-        voucher_detail_time.setText(" " + DateTimeConverter.getRemainTime(promotion.getStartDate()) + " - " + DateTimeConverter.getRemainTime(promotion.getEndDate()));
+        voucher_detail_time.setText(" " + DateTimeConverter.getDate(promotion.getStartDate()) + " - " + DateTimeConverter.getDate(promotion.getEndDate()));
 
         TextView voucher_detail_sale_percent = (TextView) findViewById(R.id.voucher_detail_sale_percent);
         voucher_detail_sale_percent.setText(" " + promotion.getDiscount() + " " + promotion.getDiscountType());
@@ -115,6 +116,7 @@ public class VoucherDetailActivity extends BaseActivity {
         btnPinVoucher = (LinearLayout) findViewById(R.id.btnPinVoucher);
         btnUnpinVoucher = (LinearLayout) findViewById(R.id.btnUnpinVoucher);
         btnGetVoucher = (LinearLayout) findViewById(R.id.btnGetVoucher);
+        tvBtnGetVoucher = (TextView) findViewById(R.id.tvBtnGetVoucher);
 
         if (promotion.isPinned()) {
             //Toast.makeText(getApplicationContext(), "Pinned", Toast.LENGTH_SHORT).show();
@@ -125,10 +127,14 @@ public class VoucherDetailActivity extends BaseActivity {
         }
 
         if (promotion.isRegistered()) {
-            //Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
-            btnGetVoucher.setBackgroundResource(R.drawable.selector_get_coupon_button);
-            btnGetVoucher.setClickable(false);
+            tvBtnGetVoucher.setText("Đã nhận mã");
             btnGetVoucher.setEnabled(false);
+        } else if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate()) {
+            tvBtnGetVoucher.setText("Đã hết hạn");
+            btnGetVoucher.setEnabled(false);
+        } else {
+            tvBtnGetVoucher.setText("Nhận mã voucher");
+            btnGetVoucher.setEnabled(true);
         }
 
         pinPromotionDelegate = new PinPromotionDelegate((BaseActivity) this);
@@ -395,7 +401,10 @@ public class VoucherDetailActivity extends BaseActivity {
                 args.putString("nameVoucher", voucherPromotion.getVoucherCode());
                 args.putString("qrCode", voucherPromotion.getQrCode());
                 args.putString("address", promotion.getProvider().getAddress());
-                args.putString("date", DateTimeConverter.getRemainTime(promotion.getStartDate()) + " - " + DateTimeConverter.getRemainTime(promotion.getEndDate()));
+                args.putString("date", DateTimeConverter.getDate(promotion.getStartDate())
+                        + " - " + DateTimeConverter.getDate(promotion.getEndDate()));
+
+                btnGetVoucher.setEnabled(false);
                 showReceiveVoucherCodeDialog(args);
             }
 

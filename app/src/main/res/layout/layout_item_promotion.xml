@@ -182,7 +182,7 @@
                         android:layout_width="0dp"
                         android:layout_height="32dp"
                         android:layout_weight="6"
-                        android:background="@drawable/selector_get_coupon_button"
+                        android:background="@drawable/bg_btn_round_primary"
                         android:clickable="true"
                         android:drawableLeft="@drawable/ic_gift"
                         android:paddingLeft="6dp"

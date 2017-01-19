@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ScrollView
@@ -113,7 +113,7 @@
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="24dp"
                                     android:gravity="center"
                                     android:orientation="horizontal">
 
@@ -415,37 +415,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
+            android:layout_height="48dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:gravity="center">
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:weightSum="2">
 
             <LinearLayout
                 android:id="@+id/btnPinVoucher"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="4"
-                android:clickable="true"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/border3"
+                android:clickable="true"
                 android:gravity="center">
-                
+
                 <ImageView
-                    android:layout_width="0dp"
+                    android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="5dp"
                     android:padding="6dp"
-                    android:src="@drawable/ic_pin_1"/>
+                    android:src="@drawable/ic_pin_1" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="Ghim voucher"
                     android:textAllCaps="false"
@@ -457,21 +454,21 @@
                 android:id="@+id/btnUnpinVoucher"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:weightSum="4"
-                android:clickable="true"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
+                android:layout_weight="0"
                 android:background="@drawable/border3"
-                android:gravity="center">
+                android:clickable="true"
+                android:gravity="center"
+                android:weightSum="4">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="32dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:padding="6dp"
-                    android:src="@drawable/ic_pin_1"/>
+                    android:src="@drawable/ic_pin_1" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -487,26 +484,24 @@
             <LinearLayout
                 android:id="@+id/btnGetVoucher"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="4"
-                android:clickable="true"
-                android:layout_marginRight="10dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_round_primary"
+                android:clickable="true"
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="0dp"
+                    android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/ic_gift"/>
+                    android:src="@drawable/ic_gift" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/tvBtnGetVoucher"
+                    android:layout_width="wrap_content"
                     android:layout_height="32dp"
-                    android:layout_weight="3"
                     android:gravity="center|left"
                     android:text="Nhận mã voucher"
                     android:textAllCaps="false"

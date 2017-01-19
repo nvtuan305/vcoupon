@@ -83,7 +83,7 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
         holder.tvProviderAddress.setText(provider.getAddress());
 
         // Disable or enabled get voucher button
-        if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate()) {
+        if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate() || promotion.isRegistered()) {
             holder.btnGetVoucher.setEnabled(false);
         } else {
             holder.btnGetVoucher.setEnabled(true);

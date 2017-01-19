@@ -88,27 +88,12 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
     }
 
     private void saveImage(Bitmap finalBitmap, String image_name) {
-
-        String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root);
-        myDir.mkdirs();
         String fname = "Image-" + image_name + ".jpg";
-        File file = new File(myDir, fname);
-
-        if (file.exists()) file.delete();
-
-        Log.i("LOAD", root + fname);
-
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-
-            Toast.makeText(getContext(), "Đã lưu mã khuyến mại vào máy", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Log.i("LOAD", fname);
+        MediaStore.Images.Media.insertImage(this.getContext().getContentResolver(), finalBitmap, fname , "QRCode" + image_name);
+        btnSaveVoucher.setEnabled(false);
+        btnSaveVoucher.setText("Đã lưu");
+        btnSaveVoucher.setBackground(this.getResources().getDrawable(R.drawable.unselector_get_coupon_button));
     }
 }
 

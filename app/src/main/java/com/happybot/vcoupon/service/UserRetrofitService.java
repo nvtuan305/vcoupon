@@ -1,9 +1,11 @@
 package com.happybot.vcoupon.service;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
+import com.happybot.vcoupon.activity.SignInActivity;
 import com.happybot.vcoupon.exception.BaseException;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.PromotionRequestBody;
@@ -224,7 +226,6 @@ public class UserRetrofitService extends VCouponRetrofitService {
      * @param page
      * @param callback
      */
-
     public void getPinnedPromotion(@NonNull String userId,
                                    @NonNull int page,
                                    final RetrofitServiceCallback<List<Promotion>> callback) {
@@ -311,17 +312,17 @@ public class UserRetrofitService extends VCouponRetrofitService {
      * Unpin promotion
      *
      * @param userId
-     * @param page
+     * @param promotionId
      * @param promotionRequestBody
      * @param callback
      */
     public void unpinPromotion(@NonNull String userId,
-                               @NonNull int page,
+                               @NonNull String promotionId,
                                @Body PromotionRequestBody promotionRequestBody,
                                final RetrofitServiceCallback<ResponseObject> callback) {
 
         Call<ResponseObject> objectResponseCall
-                = ((UserInterfaceService) getService()).unpinPromotion(userId, page, promotionRequestBody);
+                = ((UserInterfaceService) getService()).unpinPromotion(userId, promotionId, promotionRequestBody);
 
         callback.setCall(objectResponseCall);
 
@@ -623,5 +624,14 @@ public class UserRetrofitService extends VCouponRetrofitService {
                 }
             }
         });
+    }
+
+    public void goToLoginScreen() {
+        Context context = super.contextWeakReference.get();
+        if (context != null) {
+            Intent intent = new Intent(context, SignInActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
     }
 }

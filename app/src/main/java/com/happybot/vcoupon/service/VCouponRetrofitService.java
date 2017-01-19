@@ -33,7 +33,7 @@ public class VCouponRetrofitService {
     // Logger
     protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    private WeakReference<Context> contextWeakReference = null;
+    protected WeakReference<Context> contextWeakReference = null;
     private final HttpLoggingInterceptor defaultLogging;
     private final Gson defaultGson;
 

@@ -181,7 +181,7 @@ public class ProviderAddVoucherFragment extends Fragment {
         provider_add_promotion_discount_type = (Spinner) v.findViewById(R.id.provider_add_promotion_discount_type);
         btn_provider_add_promotion = (Button) v.findViewById(R.id.btn_provider_add_promotion);
         provider_add_promotion_choose_image = (LinearLayout) v.findViewById(R.id.provider_add_promotion_choose_image);
-        //provider_add_promotion_chosen_image = (ImageView) v.findViewById(R.id.provider_add_promotion_chosen_image);
+        provider_add_promotion_chosen_image = (ImageView) v.findViewById(R.id.provider_add_promotion_chosen_image);
         provider_add_promotion_image_url = (EditText) v.findViewById(R.id.provider_add_promotion_image_url);
         provider_add_promotion_title = (EditText) v.findViewById(R.id.provider_add_promotion_title);
         provider_add_promotion_condition = (EditText) v.findViewById(R.id.provider_add_promotion_condition);
@@ -422,7 +422,7 @@ public class ProviderAddVoucherFragment extends Fragment {
 
     private void clearView() {
         //clear all view for next promotion
-        provider_add_promotion_chosen_image.setImageResource(R.drawable.cover_profile_background_min);
+        provider_add_promotion_chosen_image.setImageResource(R.drawable.bg_image_primary);
         provider_add_promotion_image_url.setText("");
         provider_add_promotion_title.setText("");
         provider_add_promotion_condition.setText("");

@@ -362,7 +362,6 @@ public class VoucherDetailActivity extends BaseActivity {
     // RECEIVE VOUCHER
     public void receiveVoucher(String promotionId) {
         // Initialize auth info for testing
-        SharePreferenceHelper helper = new SharePreferenceHelper(getApplicationContext());
         UserRetrofitService userRetrofitService = new UserRetrofitService(getApplicationContext());
         userRetrofitService.receiveVoucher(promotionId, receiveVoucherDelegate);
     }

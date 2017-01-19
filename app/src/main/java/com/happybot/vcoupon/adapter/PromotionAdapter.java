@@ -2,6 +2,9 @@ package com.happybot.vcoupon.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
+import com.happybot.vcoupon.activity.BaseActivity;
 import com.happybot.vcoupon.activity.VoucherDetailActivity;
+import com.happybot.vcoupon.dialog.ReceiveVoucherCodeDialog;
+import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.Promotion;
 import com.happybot.vcoupon.model.User;
+import com.happybot.vcoupon.model.Voucher;
+import com.happybot.vcoupon.service.UserRetrofitService;
 import com.happybot.vcoupon.util.DateTimeConverter;
 import com.squareup.picasso.Picasso;
 
@@ -25,6 +33,9 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
 
     private List<Promotion> promotions = new ArrayList<>();
     private Context mContext = null;
+    private Voucher voucherPromotion;
+    private PromotionViewHolder currentHolder;
+    private ReceiveVoucherDelegate receiveVoucherDelegate = null;
 
     public PromotionAdapter() {
         promotions = new ArrayList<>();
@@ -44,12 +55,11 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(PromotionViewHolder holder, int position) {
+    public void onBindViewHolder(final PromotionViewHolder holder, int position) {
         final Promotion promotion = promotions.get(position);
         User provider = promotion.getProvider();
 
-        // Set promotion id
-        holder.promotionId = promotion.getId();
+        holder.promotion = promotion;
 
         // Bind view
         // Load cover photo
@@ -83,10 +93,11 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
         holder.tvProviderAddress.setText(provider.getAddress());
 
         // Disable or enabled get voucher button
-        if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate()) {
-            holder.btnGetVoucher.setEnabled(false);
+        if (DateTimeConverter.getCurrentDateInMillis() >= promotion.getEndDate()
+                || promotion.isRegistered()) {
+            setViewDisableRegister(holder.btnGetVoucher);
         } else {
-            holder.btnGetVoucher.setEnabled(true);
+            setViewRegister(holder.btnGetVoucher);
         }
 
         // OnItemClickListener for recycle view
@@ -99,14 +110,22 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
             }
         });
 
+        receiveVoucherDelegate = new ReceiveVoucherDelegate((BaseActivity) mContext);
         holder.btnGetVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Get voucher
-                Toast.makeText(v.getContext(), "Get voucher on click", Toast.LENGTH_SHORT).show();
+                currentHolder = holder;
+                receiveVoucher(holder.promotion.getId());
             }
         });
     }
+
+    public void receiveVoucher(String promotionId) {
+        // Initialize auth info for testing
+        UserRetrofitService userRetrofitService = new UserRetrofitService(mContext.getApplicationContext());
+        userRetrofitService.receiveVoucher(promotionId, receiveVoucherDelegate);
+    }
+
 
     @Override
     public int getItemCount() {
@@ -129,6 +148,55 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionViewHolder> 
         promotions.addAll(promotionList);
         notifyDataSetChanged();
     }
+
+    void setViewDisableRegister(Button button) {
+        button.setEnabled(false);
+        button.setBackground(mContext.getResources().getDrawable(R.drawable.unselector_get_coupon_button));
+    }
+
+    void setViewRegister(Button button) {
+        button.setEnabled(true);
+        button.setBackground(mContext.getResources().getDrawable(R.drawable.selector_get_coupon_button));
+    }
+
+
+    private class ReceiveVoucherDelegate extends ForegroundTaskDelegate<Voucher> {
+
+        ReceiveVoucherDelegate(BaseActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        public void onPostExecute(Voucher voucher, Throwable throwable) {
+            super.onPostExecute(voucher, throwable);
+
+            // If no error occur, server response data, fragment is not destroyed
+            if (throwable == null && voucher != null && shouldHandleResultForActivity()) {
+                voucherPromotion = voucher;
+
+                setViewDisableRegister(currentHolder.btnGetVoucher);
+
+                Bundle args = new Bundle();
+                args.putString("nameVoucher", voucherPromotion.getVoucherCode());
+                args.putString("qrCode", voucherPromotion.getQrCode());
+                args.putString("address", currentHolder.promotion.getProvider().getAddress());
+                args.putString("date", DateTimeConverter.getRemainTime(currentHolder.promotion.getStartDate()) + " - " + DateTimeConverter.getRemainTime(currentHolder.promotion.getEndDate()));
+                showReceiveVoucherCodeDialog(args);
+            }
+        }
+
+        public void showReceiveVoucherCodeDialog(Bundle args) {
+            DialogFragment dialog = new ReceiveVoucherCodeDialog();
+            // Supply num input as an argument.
+            dialog.setArguments(args);
+            dialog.show(((FragmentActivity)mContext).getSupportFragmentManager(), "NoticeDialogFragment");
+        }
+    }
 }
 
 class PromotionViewHolder extends RecyclerView.ViewHolder {
@@ -144,7 +212,7 @@ class PromotionViewHolder extends RecyclerView.ViewHolder {
     TextView tvRemainTime;
     Button btnGetVoucher;
 
-    String promotionId = null;
+    Promotion promotion = null;
 
     PromotionViewHolder(View itemView) {
         super(itemView);

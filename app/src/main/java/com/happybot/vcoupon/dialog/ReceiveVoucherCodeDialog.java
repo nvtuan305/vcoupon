@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.adapter.SquareImageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,6 +61,11 @@ public class ReceiveVoucherCodeDialog extends DialogFragment {
         tvAddress      = (TextView) view.findViewById(R.id.tvAddress);
         tvDate         = (TextView) view.findViewById(R.id.tvDate);
         btnSaveVoucher = (Button) view.findViewById(R.id.btnSaveVoucher);
+
+        Picasso.with(getContext()).load(getArguments().getString("qrCode")).into(imgVoucherCode);
+        tvNameVoucher.setText(getArguments().getString("nameVoucher"));
+        tvAddress.setText(getArguments().getString("address"));
+        tvDate.setText(getArguments().getString("date"));
 
         loReceiveVoucher = (LinearLayout) view.findViewById(R.id.loReceiveVoucher);
 

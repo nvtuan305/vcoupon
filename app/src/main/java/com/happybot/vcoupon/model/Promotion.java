@@ -24,6 +24,8 @@ public class Promotion implements Parcelable {
     private int commentCount;
     private int pinnedCount;
     private Date createdAt;
+    private boolean isPinned;
+    private boolean isRegistered;
 
     /*
     {
@@ -76,7 +78,7 @@ public class Promotion implements Parcelable {
 
     public Promotion(String _category, User _provider, String title, String cover, String condition,
                      long startDate, long endDate, int amountLimit, int amountRegistered,
-                     int discount, String discountType, List<Address> addresses) {
+                     int discount, String discountType, List<Address> addresses, boolean isPinned, boolean isRegistered) {
         this._category = _category;
         this._provider = _provider;
         this.title = title;
@@ -89,6 +91,8 @@ public class Promotion implements Parcelable {
         this.discount = discount;
         this.discountType = discountType;
         this.addresses = addresses;
+        this.isPinned = isPinned;
+        this.isRegistered = isRegistered;
     }
 
     public Promotion (Parcel in){
@@ -108,6 +112,8 @@ public class Promotion implements Parcelable {
         commentCount = in.readInt();
         pinnedCount = in.readInt();
         createdAt = (Date) in.readSerializable();
+        isPinned = in.readByte() != 0;
+        isRegistered = in.readByte() != 0;
     }
 
     public static final Creator<Promotion> CREATOR = new Creator<Promotion>() {
@@ -145,6 +151,8 @@ public class Promotion implements Parcelable {
         parcel.writeInt(commentCount);
         parcel.writeInt(pinnedCount);
         parcel.writeSerializable(createdAt);
+        parcel.writeByte((byte) (isPinned ? 1 : 0));
+        parcel.writeByte((byte) (isRegistered ? 1 : 0));
     }
 
     public String getId() {
@@ -249,5 +257,21 @@ public class Promotion implements Parcelable {
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+
+    public boolean isPinned() {
+        return isPinned;
+    }
+
+    public void setIsPinned(boolean isPinned) {
+        this.isPinned = isPinned;
+    }
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
+    public void setIsRegistered(boolean isRegistered) {
+        this.isRegistered = isRegistered;
     }
 }

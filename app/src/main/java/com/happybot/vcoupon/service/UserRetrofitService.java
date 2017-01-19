@@ -312,17 +312,17 @@ public class UserRetrofitService extends VCouponRetrofitService {
      * Unpin promotion
      *
      * @param userId
-     * @param page
+     * @param promotionId
      * @param promotionRequestBody
      * @param callback
      */
     public void unpinPromotion(@NonNull String userId,
-                               @NonNull int page,
+                               @NonNull String promotionId,
                                @Body PromotionRequestBody promotionRequestBody,
                                final RetrofitServiceCallback<ResponseObject> callback) {
 
         Call<ResponseObject> objectResponseCall
-                = ((UserInterfaceService) getService()).unpinPromotion(userId, page, promotionRequestBody);
+                = ((UserInterfaceService) getService()).unpinPromotion(userId, promotionId, promotionRequestBody);
 
         callback.setCall(objectResponseCall);
 

@@ -68,9 +68,14 @@ public class NearByPromotionAdapter extends PagerAdapter {
 
 
         tvTitle.setText(promotion.getTitle());
-        tvDiscount.setText("-" + promotion.getDiscount() + promotion.getDiscountType());
         tvCommentCount.setText(promotion.getCommentCount() + "");
         tvPinnedCount.setText(promotion.getPinnedCount() + "");
+
+        String discountType = promotion.getDiscountType();
+        if (discountType.equals("VND"))
+            tvDiscount.setText(promotion.getDiscount() + "k");
+        else
+            tvDiscount.setText("-" + promotion.getDiscount() + discountType);
 
         String remainTime = DateTimeConverter.getRemainTime(promotion.getEndDate());
         tvRemainTime.setText(remainTime);

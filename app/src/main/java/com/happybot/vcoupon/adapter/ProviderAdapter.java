@@ -1,6 +1,7 @@
 package com.happybot.vcoupon.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
+import com.happybot.vcoupon.activity.ProviderDetailActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
@@ -53,7 +55,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ProviderViewHolder holder, int position) {
+    public void onBindViewHolder(final ProviderViewHolder holder, final int position) {
         //Provider provider = providers.get(position);
         final User provider = providers.get(position);
         final int positionSubscribe = position;
@@ -66,6 +68,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
                 .into(holder.provider_small_item_avatar);
         holder.provider_small_item_name.setText(provider.getName());
         holder.provider_small_item_address.setText(provider.getAddress());
+
         holder.provider_small_item_follow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +81,17 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
                     SubscribeBody subscribeBody = new SubscribeBody(provider.getId(), "PROVIDER");
                     userRetrofitService.followPromotion(helper.getUserId(), subscribeBody, new SubscribeDelegate((BaseActivity) view.getContext(), holder, positionSubscribe));
                 }
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ProviderDetailActivity.class);
+                intent.putExtra("DetailProvider", provider);
+                intent.putExtra("Followed", followedProvider[positionSubscribe]);
+                intent.putExtra("Position", position);
+                mContext.startActivity(intent);
             }
         });
     }

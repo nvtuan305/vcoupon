@@ -143,4 +143,29 @@ public class Address implements Parcelable{
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public String getFullAddress() {
+        String address = "";
+
+        if (number != null && !number.equals(""))
+            address += number + ", ";
+
+        if (street != null && !street.equals(""))
+            address += street + ", ";
+
+        if (ward != null && !ward.equals(""))
+            address += ward + ", ";
+
+        if (district != null && !district.equals(""))
+            address += district + ", ";
+
+        if (province != null && !province.equals(""))
+            address += province + ", ";
+
+        StringBuilder newAddress = new StringBuilder(address);
+        if (newAddress.length() >= 2 && newAddress.charAt(newAddress.length() - 2) == ',')
+            newAddress.setCharAt(newAddress.length() - 2, ' ');
+
+        return newAddress.toString();
+    }
 }

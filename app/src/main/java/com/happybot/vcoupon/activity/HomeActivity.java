@@ -175,9 +175,9 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void changeFragment(Fragment fragment, String tag) {
-        if (fragment != null) {
-            fragment.onDestroy();
-        }
+//        if (fragment != null) {
+//            fragment.onDestroy();
+//        }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

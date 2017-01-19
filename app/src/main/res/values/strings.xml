@@ -19,7 +19,7 @@
     <string name="voucher_detail_time">Thời gian:\u0020</string>
     <string name="voucher_detail_sale_percent">Giảm đến:\u0020</string>
     <string name="voucher_detail_number">Còn lại:\u0020</string>
-    <string name="voucher_detail_place">Áp dụng tại</string>
+    <string name="voucher_detail_place">Áp dụng tại: </string>
     <string name="voucher_detail_condition_title">Điều kiện áp dụng</string>
     <string name="splash_description_0">Tìm kiếm, theo dõi và nhận tất cả các loại mã giảm giá xung quanh bạn trong vòng 30s</string>
     <string name="splash_description_1">Vcoupon giúp bạn theo dõi nhiều nhà khuyến mãi, loại khuyến mãi khác nhau</string>

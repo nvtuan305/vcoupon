@@ -7,14 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.RelativeLayout;
 
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.adapter.CustomSwipeAdapter;
+import com.happybot.vcoupon.fragment.category.CategoryFragment;
 
 import me.relex.circleindicator.CircleIndicator;
-
 
 /**
  * Created by Nguyễn Phương Tuấn on 05-Dec-16.
@@ -24,7 +23,8 @@ public class HomeFragment extends Fragment {
 
     ViewPager viewPager;
     CustomSwipeAdapter adapter;
-    RelativeLayout near_by, food, clothes,technology;
+    RelativeLayout near_by, food, clothes, technology;
+    public CategoryFragment nearbyFragment = null;
 
     public HomeFragment() {
     }
@@ -48,12 +48,12 @@ public class HomeFragment extends Fragment {
         near_by.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "0");
-                CategoryFragment categoryFragment = new CategoryFragment();
-                categoryFragment.setArguments(bundle);
+                nearbyFragment = new CategoryFragment();
+                nearbyFragment.setArguments(bundle);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.main_container, categoryFragment, "home");
+                ft.replace(R.id.main_container, nearbyFragment, "home");
                 ft.addToBackStack("home");
                 ft.commit();
             }
@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "1");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "2");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
         technology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("position", "3");
                 CategoryFragment categoryFragment = new CategoryFragment();
                 categoryFragment.setArguments(bundle);
@@ -103,5 +103,4 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-
 }

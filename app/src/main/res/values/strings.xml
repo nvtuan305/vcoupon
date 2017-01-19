@@ -1,9 +1,15 @@
 <resources>
+    <!--Facebook development config - start-->
+    <string name="app_id">225931637863625</string>
+    <string name="facebook_app_id">1538906186136114</string>
+    <string name="google_map_api">AIzaSyBrPHr_0U1qVO1ZpEb2d8CjZaccoWxaxz4</string>
+    <string name="fb_login_protocol_scheme">fb1538906186136114</string>
+    <string name="development_key_hash">NEe8GO67D17rgYGuXhgVqPLo1MQ=</string>
+    <!--Hash key: g3PojjvnyScSZnE6ZnvuSdIVYDM=-->
+    <!--Facebook development config - end-->
+
     <string name="app_name">VCoupon</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="main_toolbar_title">VCOUPON</string>
     <string name="category1">Quanh đây</string>
     <string name="category2">Ăn uống</string>
     <string name="category3">Quần áo</string>
@@ -13,6 +19,55 @@
     <string name="voucher_detail_time">Thời gian:\u0020</string>
     <string name="voucher_detail_sale_percent">Giảm đến:\u0020</string>
     <string name="voucher_detail_number">Còn lại:\u0020</string>
-    <string name="voucher_detail_place">Áp dụng tại</string>
+    <string name="voucher_detail_place">Áp dụng tại: </string>
     <string name="voucher_detail_condition_title">Điều kiện áp dụng</string>
+    <string name="splash_description_0">Tìm kiếm, theo dõi và nhận tất cả các loại mã giảm giá xung quanh bạn trong vòng 30s</string>
+    <string name="splash_description_1">Vcoupon giúp bạn theo dõi nhiều nhà khuyến mãi, loại khuyến mãi khác nhau</string>
+    <string name="splash_description_2">Lưu trữ và sử dụng mã khuyến mãi dễ dàng hơn, bạn sẽ không bao giờ bỏ lỡ bất kỳ khuyến mãi nào</string>
+    <string name="promotion_title">Day la tieu de cua mot chuong trinh khuyen mai</string>
+    <string name="btn_get_promotion_title">Nhận mã</string>
+    <string name="emty_pinned_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="empty_promotion">Không có chương trình khuyến mại nào</string>
+    <string name="et_phone_number">Số điện thoại</string>
+    <string name="et_password">Mật khẩu</string>
+    <string name="login_now">Đăng nhập ngay</string>
+    <string name="sign_up_now">Đăng ký tài khoản</string>
+    <string name="copyright">Copyright by HappyBot © 2016</string>
+    <string name="follow_title">Theo dõi</string>
+    <string name="unfollow_title">Bỏ theo dõi</string>
+    <string name="follow_food_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu ăn uống nha :D</string>
+    <string name="follow_clothes_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu thời trang nha :D</string>
+    <string name="follow_technology_category">Luôn luôn cập nhật các voucher mới nhất để thỏa mãn nhu cầu công nghệ nha :D</string>
+    <string name="sign_in_label">Đăng nhập</string>
+    <string name="sign_up_label">Đăng ký tài khoản</string>
+    <string name="search_title">Nhập để tìm kiếm</string>
+    <string name="search_not_found">Không tìm thấy, vui lòng thử từ khóa khác</string>
+    <string name="search_tab_title_1">Nhà khuyến mại</string>
+    <string name="search_tab_title_2">Khuyến mại</string>
+    <string name="provider_add_promotion_choose_image">Chọn ảnh</string>
+    <string name="provider_add_promotion_title">Tiêu đề mã giảm giá</string>
+    <string name="provider_add_promotion_category">Thể loại:</string>
+    <string name="provider_add_promotion_condition">Điều kiện áp dụng</string>
+    <string name="provider_add_promotion_amountLimit">Số lượng tối đa</string>
+    <string name="provider_add_promotion_isOneCode">Sử dụng chung một mã khuyến mại</string>
+    <string name="provider_add_promotion_discount">Mức giảm % hoặc tiền giảm</string>
+    <string name="provider_add_promotion">Đăng mã giảm giá</string>
+    <string name="provider_add_promotion_startTime">Thời gian bắt đầu</string>
+    <string name="provider_add_promotion_endTime">Thời gian kết thúc</string>
+    <string name="provider_add_promotion_address">Nhập địa chỉ</string>
+    <string name="provider_add_promotion_choose_image_error">Bạn chưa chọn ảnh</string>
+    <string name="provider_add_promotion_title_error">Bạn chưa nhập tiêu đề mã giảm giá</string>
+    <string name="provider_add_promotion_category_error">Bạn chưa chọn category</string>
+    <string name="provider_add_promotion_condition_error">Bạn chưa nhập điều kiện áp dụng</string>
+    <string name="provider_add_promotion_amountLimit_error">Bạn chưa nhập số lượng tối đa</string>
+    <string name="provider_add_promotion_discount_error">Bạn chưa nhập mức giảm % hoặc tiền giảm</string>
+    <string name="provider_add_promotion_startTime_error">Bạn chưa nhập thời gian bắt đầu</string>
+    <string name="provider_add_promotion_endTime_error">Bạn chưa nhập thời gian kết thúc</string>
+    <string name="provider_add_promotion_address_error">Bạn chưa nhập địa chỉ</string>
+    <string name="login_with_facebook">Đăng nhập bằng Facebook</string>
+    <string name="continue_str">Tiếp tục</string>
+    <string name="no_phone_number_info">Bạn cần cung câp số điện thoại để sử dụng ứng dụng. Nhập số điện thoại của bạn và nhấn tiếp tục nhé :)</string>
+    <string name="empty_received_promotion_message">Bạn chưa nhận mã khuyến mại nào.</string>
+    <string name="voucher_code">ABCXY</string>
+    <string name="voucher_comment">Nhập bình luận</string>
 </resources>

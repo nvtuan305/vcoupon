@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "374970725766",
+    "firebase_url": "https://vcoupon-1275f.firebaseio.com",
+    "project_id": "vcoupon-1275f",
+    "storage_bucket": "vcoupon-1275f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374970725766:android:f631d5c7ad88a4a3",
+        "android_client_info": {
+          "package_name": "com.happybot.vcoupon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374970725766-q38vv0s0qa38rn991iuh2j13qhkss3jq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.happybot.vcoupon",
+            "certificate_hash": "E4150EB6D9DD9E94798A33C1F05EA7964C92A1E0"
+          }
+        },
+        {
+          "client_id": "374970725766-currrj2d60l1ovirs0v8m95266sduops.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc7zoGsXw19-ZnNGc-ODOkUZmlVWWXWqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374970725766-currrj2d60l1ovirs0v8m95266sduops.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

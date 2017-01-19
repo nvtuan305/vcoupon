@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up_normal_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.happybot.vcoupon.activity.SignUpNormalUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/ic_logo_green" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etEmailSUN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Địa chỉ Email"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp"
+                app:met_iconLeft="@drawable/ic_profile_glyph_email"
+
+                app:met_iconPadding="0dp" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPasswordSUN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:met_iconLeft="@drawable/ic_profile_glyph_password"
+                app:met_iconPadding="0dp" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etNameSUN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Họ và tên"
+                android:inputType="textPersonName"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:met_iconLeft="@drawable/ic_profile_glyph_username"
+                app:met_iconPadding="0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etGenderSUN"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:elevation="1dp"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="Giới tính"
+                    android:inputType="textPersonName"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:met_iconLeft="@drawable/ic_profile_glyph_gender"
+                    app:met_iconPadding="0dp" />
+
+                <RadioGroup
+                    android:id="@+id/rgGender"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbNam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:checked="true"
+                        android:text="Nam" />
+
+                    <RadioButton
+                        android:id="@+id/rbNu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.11"
+                        android:text="Nữ" />
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPhoneSUN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Số điện thoại"
+                android:inputType="number"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:met_iconLeft="@drawable/ic_profile_glyph_phone"
+                app:met_iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/btnSignupN"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:text="Đăng ký tài khoản"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

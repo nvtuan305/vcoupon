@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.happybot.vcoupon.R;
 import com.happybot.vcoupon.activity.BaseActivity;
-import com.happybot.vcoupon.activity.ProviderDetailActivity;
+import com.happybot.vcoupon.activity.DetailProviderActivity;
 import com.happybot.vcoupon.foregroundtask.ForegroundTaskDelegate;
 import com.happybot.vcoupon.model.SubscribeBody;
 import com.happybot.vcoupon.model.User;
@@ -87,7 +87,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ProviderDetailActivity.class);
+                Intent intent = new Intent(mContext, DetailProviderActivity.class);
                 intent.putExtra("DetailProvider", provider);
                 intent.putExtra("Followed", followedProvider[positionSubscribe]);
                 intent.putExtra("Position", position);

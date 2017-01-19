@@ -31,7 +31,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_api" />
@@ -40,7 +39,6 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -63,37 +61,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.HomeActivity" />
-
         <activity android:name=".activity.IntroActivity" />
-
         <activity
             android:name=".activity.SignInActivity"
             android:label="@string/sign_in_label"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".activity.SignUpProviderActivity"
             android:label="@string/sign_up_label" />
-
         <activity
             android:name=".activity.SignUpNormalUserActivity"
             android:label="@string/sign_up_label" />
-
         <activity android:name=".activity.EditProfileActivity" />
-        <activity android:name=".activity.EditProviderProfileActivity"></activity>
+        <activity android:name=".activity.EditProviderProfileActivity" />
 
-        <!--Firebase Notification-->
+        <!-- Firebase Notification -->
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!--End Firebase Notification-->
+        <!-- End Firebase Notification -->
 
         <activity android:name=".activity.ProvidePhoneNumberActivity" />
         <activity android:name=".activity.VoucherDetailActivity" />
+        <activity android:name=".activity.DetailProviderActivity"></activity>
     </application>
 
 </manifest>

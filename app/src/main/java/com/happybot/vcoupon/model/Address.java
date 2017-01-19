@@ -168,4 +168,26 @@ public class Address implements Parcelable{
 
         return newAddress.toString();
     }
+
+    public String toString() {
+        String address = "";
+
+        if (number != null && !number.equals(""))
+            address += number + ", ";
+
+        if (street != null && !street.equals(""))
+            address += street + ", ";
+
+        if (ward != null && !ward.equals(""))
+            address += ward + ", ";
+
+        if (district != null && !district.equals(""))
+            address += district + ", ";
+
+        StringBuilder newAddress = new StringBuilder(address);
+        if (newAddress.length() >= 2 && newAddress.charAt(newAddress.length() - 2) == ',')
+            newAddress.setCharAt(newAddress.length() - 2, ' ');
+
+        return newAddress.toString();
+    }
 }
